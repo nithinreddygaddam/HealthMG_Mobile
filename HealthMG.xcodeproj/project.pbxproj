@@ -7,21 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */ = {isa = PBXBuildFile; fileRef = 591AD6261D25F32F008E2851 /* icon-blue-health.png */; };
+		591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591AD6291D2653A3008E2851 /* RegisterViewController.swift */; };
+		593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116911D2C7E0B00DCD212 /* HealthManger.swift */; };
+		593116951D2C7E8500DCD212 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116941D2C7E8500DCD212 /* SocketManager.swift */; };
+		5931169D1D2CDAE000DCD212 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931169C1D2CDAE000DCD212 /* User.swift */; };
+		5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181B1D2F930B008528D4 /* DashboardViewController.swift */; };
+		5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */; };
+		593418201D2F9352008528D4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181F1D2F9352008528D4 /* ChatViewController.swift */; };
+		593418221D2F937E008528D4 /* DetailDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418211D2F937E008528D4 /* DetailDashboardViewController.swift */; };
+		593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418231D2F93A9008528D4 /* SettingsViewController.swift */; };
+		593418261D2F93D9008528D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418251D2F93D9008528D4 /* ProfileViewController.swift */; };
+		5934182C1D2F996A008528D4 /* dumbbell-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418271D2F996A008528D4 /* dumbbell-7.png */; };
+		5934182D1D2F996A008528D4 /* message-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418281D2F996A008528D4 /* message-7.png */; };
+		5934182E1D2F996A008528D4 /* spanner-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418291D2F996A008528D4 /* spanner-7.png */; };
+		5934182F1D2F996A008528D4 /* gear-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5934182A1D2F996A008528D4 /* gear-7.png */; };
+		593418301D2F996A008528D4 /* circle-user-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5934182B1D2F996A008528D4 /* circle-user-7.png */; };
+		593418321D3050BC008528D4 /* plus-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418311D3050BC008528D4 /* plus-simple-7.png */; };
+		593418351D3050C6008528D4 /* connect-arrow-up-right-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */; };
+		593418361D3050C6008528D4 /* connect-arrow-down-left-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */; };
+		593418381D30A95F008528D4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418371D30A95F008528D4 /* Request.swift */; };
+		59A759241D2E3795002A3695 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A759231D2E3795002A3695 /* PersistencyManager.swift */; };
+		59A759261D2E391A002A3695 /* SubscriptionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A759251D2E391A002A3695 /* SubscriptionAPI.swift */; };
+		59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */; };
+		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
-		59E735981D25987D007F075E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735971D25987D007F075E /* ViewController.swift */; };
-		59E7359B1D25987D007F075E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E735991D25987D007F075E /* Main.storyboard */; };
 		59E7359D1D25987D007F075E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359C1D25987D007F075E /* Assets.xcassets */; };
 		59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359E1D25987D007F075E /* LaunchScreen.storyboard */; };
+		59E735AF1D259BAB007F075E /* HealthMG_launch_screen_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */; };
+		59E735B11D25E60F007F075E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E735B01D25E60F007F075E /* Main.storyboard */; };
+		6390475BC9D2B371B71E4248 /* Pods_HealthMG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110AD733AC0254D3314F9315 /* Pods_HealthMG.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		110AD733AC0254D3314F9315 /* Pods_HealthMG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthMG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C99407B3E1CA8C7AD34DAD1 /* Pods-HealthMG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG.debug.xcconfig"; sourceTree = "<group>"; };
+		591AD6261D25F32F008E2851 /* icon-blue-health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-health.png"; sourceTree = "<group>"; };
+		591AD6291D2653A3008E2851 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		593116911D2C7E0B00DCD212 /* HealthManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManger.swift; sourceTree = "<group>"; };
+		593116941D2C7E8500DCD212 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		5931169C1D2CDAE000DCD212 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5934181B1D2F930B008528D4 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribtionViewController.swift; sourceTree = "<group>"; };
+		5934181F1D2F9352008528D4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		593418211D2F937E008528D4 /* DetailDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDashboardViewController.swift; sourceTree = "<group>"; };
+		593418231D2F93A9008528D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		593418251D2F93D9008528D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		593418271D2F996A008528D4 /* dumbbell-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dumbbell-7.png"; sourceTree = "<group>"; };
+		593418281D2F996A008528D4 /* message-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-7.png"; sourceTree = "<group>"; };
+		593418291D2F996A008528D4 /* spanner-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spanner-7.png"; sourceTree = "<group>"; };
+		5934182A1D2F996A008528D4 /* gear-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear-7.png"; sourceTree = "<group>"; };
+		5934182B1D2F996A008528D4 /* circle-user-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-user-7.png"; sourceTree = "<group>"; };
+		593418311D3050BC008528D4 /* plus-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-simple-7.png"; sourceTree = "<group>"; };
+		593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-arrow-up-right-7.png"; sourceTree = "<group>"; };
+		593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-arrow-down-left-7.png"; sourceTree = "<group>"; };
+		593418371D30A95F008528D4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		59A759231D2E3795002A3695 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
+		59A759251D2E391A002A3695 /* SubscriptionAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionAPI.swift; sourceTree = "<group>"; };
+		59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E735951D25987D007F075E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59E735971D25987D007F075E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		59E7359A1D25987D007F075E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59E7359C1D25987D007F075E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59E7359F1D25987D007F075E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59E735A11D25987D007F075E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59E735A71D259898007F075E /* HealthMG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthMG.entitlements; sourceTree = "<group>"; };
+		59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthMG_launch_screen_logo.png; sourceTree = SOURCE_ROOT; };
+		59E735B01D25E60F007F075E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		5F0BEB78BC7EB6AF8B738C91 /* Pods-HealthMG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMG.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +82,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6390475BC9D2B371B71E4248 /* Pods_HealthMG.framework in Frameworks */,
+				59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18560F14099FB653BFA35683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59CE6DE01D25EE3F004D382B /* HealthKit.framework */,
+				110AD733AC0254D3314F9315 /* Pods_HealthMG.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		593116931D2C7E5900DCD212 /* View Controller  */ = {
+			isa = PBXGroup;
+			children = (
+				59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */,
+				591AD6291D2653A3008E2851 /* RegisterViewController.swift */,
+				5934181B1D2F930B008528D4 /* DashboardViewController.swift */,
+				5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */,
+				5934181F1D2F9352008528D4 /* ChatViewController.swift */,
+				593418211D2F937E008528D4 /* DetailDashboardViewController.swift */,
+				593418231D2F93A9008528D4 /* SettingsViewController.swift */,
+				593418251D2F93D9008528D4 /* ProfileViewController.swift */,
+			);
+			name = "View Controller ";
+			sourceTree = "<group>";
+		};
+		5931169B1D2CDA2000DCD212 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5931169C1D2CDAE000DCD212 /* User.swift */,
+				593418371D30A95F008528D4 /* Request.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		59E735891D25987D007F075E = {
 			isa = PBXGroup;
 			children = (
+				59E735AD1D259B07007F075E /* Images */,
 				59E735941D25987D007F075E /* HealthMG */,
 				59E735931D25987D007F075E /* Products */,
+				5C158414E5A40E8AD01B5612 /* Pods */,
+				18560F14099FB653BFA35683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +145,46 @@
 		59E735941D25987D007F075E /* HealthMG */ = {
 			isa = PBXGroup;
 			children = (
+				5931169B1D2CDA2000DCD212 /* Model */,
+				593116931D2C7E5900DCD212 /* View Controller  */,
+				59E735A71D259898007F075E /* HealthMG.entitlements */,
 				59E735951D25987D007F075E /* AppDelegate.swift */,
-				59E735971D25987D007F075E /* ViewController.swift */,
-				59E735991D25987D007F075E /* Main.storyboard */,
 				59E7359C1D25987D007F075E /* Assets.xcassets */,
 				59E7359E1D25987D007F075E /* LaunchScreen.storyboard */,
 				59E735A11D25987D007F075E /* Info.plist */,
+				59E735B01D25E60F007F075E /* Main.storyboard */,
+				593116911D2C7E0B00DCD212 /* HealthManger.swift */,
+				593116941D2C7E8500DCD212 /* SocketManager.swift */,
+				59A759231D2E3795002A3695 /* PersistencyManager.swift */,
+				59A759251D2E391A002A3695 /* SubscriptionAPI.swift */,
 			);
 			path = HealthMG;
+			sourceTree = "<group>";
+		};
+		59E735AD1D259B07007F075E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				591AD6261D25F32F008E2851 /* icon-blue-health.png */,
+				59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */,
+				593418271D2F996A008528D4 /* dumbbell-7.png */,
+				593418281D2F996A008528D4 /* message-7.png */,
+				593418291D2F996A008528D4 /* spanner-7.png */,
+				593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */,
+				593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */,
+				5934182A1D2F996A008528D4 /* gear-7.png */,
+				593418311D3050BC008528D4 /* plus-simple-7.png */,
+				5934182B1D2F996A008528D4 /* circle-user-7.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		5C158414E5A40E8AD01B5612 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C99407B3E1CA8C7AD34DAD1 /* Pods-HealthMG.debug.xcconfig */,
+				5F0BEB78BC7EB6AF8B738C91 /* Pods-HealthMG.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +194,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59E735A41D25987D007F075E /* Build configuration list for PBXNativeTarget "HealthMG" */;
 			buildPhases = (
+				DE1A0B351433B74E94A337A7 /* [CP] Check Pods Manifest.lock */,
 				59E7358E1D25987D007F075E /* Sources */,
 				59E7358F1D25987D007F075E /* Frameworks */,
 				59E735901D25987D007F075E /* Resources */,
+				EC3C7D50A652D70DE13BA519 /* [CP] Embed Pods Frameworks */,
+				16D8D4A82745A4954D6E5387 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +222,15 @@
 				TargetAttributes = {
 					59E735911D25987D007F075E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4Z8GLS9K7U;
+						DevelopmentTeam = 3FYM93LDK9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -123,35 +257,98 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
 				59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */,
+				593418321D3050BC008528D4 /* plus-simple-7.png in Resources */,
+				591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */,
+				59E735AF1D259BAB007F075E /* HealthMG_launch_screen_logo.png in Resources */,
+				5934182E1D2F996A008528D4 /* spanner-7.png in Resources */,
 				59E7359D1D25987D007F075E /* Assets.xcassets in Resources */,
-				59E7359B1D25987D007F075E /* Main.storyboard in Resources */,
+				593418361D3050C6008528D4 /* connect-arrow-down-left-7.png in Resources */,
+				5934182C1D2F996A008528D4 /* dumbbell-7.png in Resources */,
+				5934182D1D2F996A008528D4 /* message-7.png in Resources */,
+				59E735B11D25E60F007F075E /* Main.storyboard in Resources */,
+				593418351D3050C6008528D4 /* connect-arrow-up-right-7.png in Resources */,
+				5934182F1D2F996A008528D4 /* gear-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16D8D4A82745A4954D6E5387 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE1A0B351433B74E94A337A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EC3C7D50A652D70DE13BA519 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		59E7358E1D25987D007F075E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59E735981D25987D007F075E /* ViewController.swift in Sources */,
+				59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */,
 				59E735961D25987D007F075E /* AppDelegate.swift in Sources */,
+				59A759261D2E391A002A3695 /* SubscriptionAPI.swift in Sources */,
+				593418221D2F937E008528D4 /* DetailDashboardViewController.swift in Sources */,
+				593418261D2F93D9008528D4 /* ProfileViewController.swift in Sources */,
+				593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */,
+				593116951D2C7E8500DCD212 /* SocketManager.swift in Sources */,
+				593418381D30A95F008528D4 /* Request.swift in Sources */,
+				59A759241D2E3795002A3695 /* PersistencyManager.swift in Sources */,
+				5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */,
+				593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */,
+				591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */,
+				5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */,
+				593418201D2F9352008528D4 /* ChatViewController.swift in Sources */,
+				5931169D1D2CDAE000DCD212 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		59E735991D25987D007F075E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				59E7359A1D25987D007F075E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		59E7359E1D25987D007F075E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -248,23 +445,33 @@
 		};
 		59E735A51D25987D007F075E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C99407B3E1CA8C7AD34DAD1 /* Pods-HealthMG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthMG/HealthMG.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthMG/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nrg.inc.HealthMG;
+				PRODUCT_BUNDLE_IDENTIFIER = nrg.inc.HealthMG7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		59E735A61D25987D007F075E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0BEB78BC7EB6AF8B738C91 /* Pods-HealthMG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HealthMG/HealthMG.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HealthMG/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nrg.inc.HealthMG;
+				PRODUCT_BUNDLE_IDENTIFIER = nrg.inc.HealthMG7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -287,6 +494,7 @@
 				59E735A61D25987D007F075E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

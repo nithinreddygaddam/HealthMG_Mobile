@@ -1,0 +1,62 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.2.0)
+  - ARSLineProgress (1.2.1)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Charts (2.2.5):
+    - Charts/Core (= 2.2.5)
+  - Charts/Core (2.2.5)
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - PNChartSwift (0.0.2)
+  - PureLayout (3.0.2)
+  - SimpleKeychain (0.7.0)
+  - Socket.IO-Client-Swift (6.1.4)
+  - SwiftDate (3.0.8)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - ARSLineProgress (~> 1.0)
+  - ChameleonFramework/Swift
+  - Charts
+  - CocoaLumberjack
+  - PNChartSwift (from `https://github.com/kevinzhow/PNChart-Swift.git`)
+  - PureLayout
+  - SimpleKeychain
+  - Socket.IO-Client-Swift (~> 6.1.4)
+  - SwiftDate
+  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  PNChartSwift:
+    :git: https://github.com/kevinzhow/PNChart-Swift.git
+
+CHECKOUT OPTIONS:
+  PNChartSwift:
+    :commit: 88eb8bcb4cd415d02775b2d355542b8bd338712d
+    :git: https://github.com/kevinzhow/PNChart-Swift.git
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
+  ARSLineProgress: 6761482b13a0b0b8723fe25e0117cdc543f46ff8
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  PNChartSwift: bcdfbffd65920072463eff42d0dfb46189bf4495
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
+  Socket.IO-Client-Swift: 79dfbbe170d7816c84e2d3cc2baa3d227549e067
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+PODFILE CHECKSUM: 41d3289fdbfe5224b3017007c4398b76f31c51ba
+
+COCOAPODS: 1.0.1
