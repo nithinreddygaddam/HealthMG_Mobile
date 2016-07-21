@@ -9,16 +9,45 @@
 import UIKit
 import ChameleonFramework
 import ARSLineProgress
+import Alamofire
+import SwiftyJSON
+import SimpleKeychain
+import SkyFloatingLabelTextField
 
 var loggedUser = User();
 
 class LoginViewController: UIViewController {
+    
+    let username = SkyFloatingLabelTextField(frame: CGRectMake(90, 200, 200, 45))
+    let password = SkyFloatingLabelTextField(frame: CGRectMake(90, 250, 200, 45))
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor.flatGreenColor()
-
-        // Do any additional setup after loading the view.
+        
+        username.placeholder = "Username"
+        username.title = "Username"
+        username.autocapitalizationType = .None
+        self.view.addSubview(username)
+        
+        username.tintColor = UIColor.flatSkyBlueColorDark() // the color of the blinking cursor
+        username.textColor = UIColor.flatWhiteColor()
+        username.placeholderColor = UIColor.flatWhiteColor()
+        username.lineColor = UIColor.flatWhiteColor()
+        username.selectedTitleColor = UIColor.flatSkyBlueColor()
+        username.selectedLineColor = UIColor.flatSkyBlueColor()
+    
+        password.placeholder = "Password"
+        password.title = "Password"
+        password.secureTextEntry = true
+        self.view.addSubview(password)
+        
+        password.tintColor = UIColor.flatSkyBlueColorDark() // the color of the blinking cursor
+        password.textColor = UIColor.flatWhiteColor()
+        password.placeholderColor = UIColor.flatWhiteColor()
+        password.lineColor = UIColor.flatWhiteColor()
+        password.selectedTitleColor = UIColor.flatSkyBlueColor()
+        password.selectedLineColor = UIColor.flatSkyBlueColor()
+    
     }
     
     //To dismiss keyboard
@@ -33,53 +62,56 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var txtUsername: UITextField!
-    
     @IBAction func IBLogin(sender: AnyObject) {
-        //Keychain framework for credentials
         
         view.endEditing(true) //dismiss keyboard
         
-        if(self.txtUsername.text != nil && self.txtPassword.text != nil){
-            SocketIOManager.sharedInstance.login(self.txtUsername.text!, password: self.txtPassword.text!, completionHandler: { (userData) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if userData["_id"]! != nil {
-//                        userInfo.append(userData["lastName"] as! String)
-                        if ARSLineProgress.shown { return }
+        if(self.username.text != nil && self.password.text != nil){
+            
+            Alamofire.request(.POST, "http://127.0.0.1:3000/login", parameters: ["username": self.username.text!, "password": self.password.text!]) //check the comma!!!!
+                .responseJSON { response in
+                    
+            let json = JSON(data: response.data!)
+                    
+            if json["user"]["_id"] != nil {
+                //userInfo.append(userData["lastName"] as! String)
+                
+                let jwt = json["token"].string
+                A0SimpleKeychain().setString(jwt!, forKey:"user-jwt")
+                
+                if ARSLineProgress.shown { return }
+                    
+                    progressObject = NSProgress(totalUnitCount: 60)
+                    ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+                    
+                    print(json["user"])
+                        print(jwt)
+                    
+                    loggedUser = User(id: json["user"]["_id"].string!, username: json["user"]["username"].string!, fName: json["user"]["firstName"].string!, lName: json["user"]["lastName"].string!, eMail: json["user"]["email"].string!, dob: json["user"]["dateOfBirth"].string!, gender: json["user"]["gender"].string!)
                         
-                        progressObject = NSProgress(totalUnitCount: 60)
-                        ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
-                            
-                            print(userData)
-                            
-                            loggedUser = User(id: userData["_id"] as! String, username: userData["username"] as! String, fName: userData["firstName"] as! String, lName: userData["lastName"] as! String, eMail: userData["email"] as! String, dob: userData["dateOfBirth"] as! String, gender: userData["gender"] as! String)
-                            
-                            self.performSegueWithIdentifier("loginSegue", sender: nil)
-                        })
-                        
-                        self.progressDemoHelper(success: true)
-                        
-                    }
-                    else{
-                        if ARSLineProgress.shown { return }
-                        
+                    SocketIOManager.sharedInstance.establishConnection()
+                        self.performSegueWithIdentifier("loginSegue", sender: nil)
+
+                })
+                    
+                self.progressDemoHelper(success: true)
+                    
+                }
+                else{
+                    if ARSLineProgress.shown { return }
+                    
                         progressObject = NSProgress(totalUnitCount: 60)
                         ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
                             print("This copmletion block is going to be overriden by cancel completion block in launchTimer() method.")
                         })
-                        
+                                            
                         self.progressDemoHelper(success: false)
                     }
-                    
-                })
-            })
+                }
+            }
         }
     }
-    
-    
 
-}
 
 private var progress: CGFloat = 0.0
 private var progressObject: NSProgress?

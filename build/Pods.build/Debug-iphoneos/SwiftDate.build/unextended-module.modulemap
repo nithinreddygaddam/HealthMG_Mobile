@@ -1,0 +1,10 @@
+framework module SwiftDate {
+  umbrella header "SwiftDate-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftDate.__Swift {
+    exclude header "SwiftDate-Swift.h"
+}

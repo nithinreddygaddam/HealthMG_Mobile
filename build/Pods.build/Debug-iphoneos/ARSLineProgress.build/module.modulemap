@@ -1,0 +1,10 @@
+framework module ARSLineProgress {
+  umbrella header "ARSLineProgress-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module ARSLineProgress.Swift {
+    header "ARSLineProgress-Swift.h"
+}

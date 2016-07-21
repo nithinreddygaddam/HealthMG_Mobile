@@ -7,14 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5913CCC91D356A47003C147C /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCC81D356A47003C147C /* SocketIOManager.swift */; };
+		5913CCCB1D360E4F003C147C /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCCA1D360E4F003C147C /* ChatListViewController.swift */; };
+		5913CCE11D36BDEF003C147C /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCDC1D36BDEF003C147C /* ChatCell.swift */; };
+		5913CCE21D36BDEF003C147C /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCDD1D36BDEF003C147C /* BaseCell.swift */; };
+		5913CCE41D36BDEF003C147C /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCDF1D36BDEF003C147C /* ChatCell.xib */; };
+		5913CCED1D383BFC003C147C /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE61D383BFC003C147C /* gear.png */; };
+		5913CCEE1D383BFC003C147C /* subscribers.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE71D383BFC003C147C /* subscribers.png */; };
+		5913CCEF1D383BFC003C147C /* publishers.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE81D383BFC003C147C /* publishers.png */; };
+		5913CCF01D383BFC003C147C /* subscribtions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE91D383BFC003C147C /* subscribtions.png */; };
+		5913CCF11D383BFC003C147C /* add_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEA1D383BFC003C147C /* add_user.png */; };
+		5913CCF21D383BFC003C147C /* services.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEB1D383BFC003C147C /* services.png */; };
+		5913CCF31D383BFC003C147C /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEC1D383BFC003C147C /* heart.png */; };
+		5913CCFA1D3ACC37003C147C /* jog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCF91D3ACC37003C147C /* jog.jpg */; };
+		5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCFB1D3ACCD2003C147C /* jog2.jpg */; };
+		5913CCFE1D3AD5C2003C147C /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */; };
+		5913CD031D3BF2A9003C147C /* ChatWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CD021D3BF2A9003C147C /* ChatWindowController.swift */; };
 		591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */ = {isa = PBXBuildFile; fileRef = 591AD6261D25F32F008E2851 /* icon-blue-health.png */; };
 		591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591AD6291D2653A3008E2851 /* RegisterViewController.swift */; };
 		593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116911D2C7E0B00DCD212 /* HealthManger.swift */; };
-		593116951D2C7E8500DCD212 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116941D2C7E8500DCD212 /* SocketManager.swift */; };
 		5931169D1D2CDAE000DCD212 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931169C1D2CDAE000DCD212 /* User.swift */; };
 		5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181B1D2F930B008528D4 /* DashboardViewController.swift */; };
 		5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */; };
-		593418201D2F9352008528D4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181F1D2F9352008528D4 /* ChatViewController.swift */; };
 		593418221D2F937E008528D4 /* DetailDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418211D2F937E008528D4 /* DetailDashboardViewController.swift */; };
 		593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418231D2F93A9008528D4 /* SettingsViewController.swift */; };
 		593418261D2F93D9008528D4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418251D2F93D9008528D4 /* ProfileViewController.swift */; };
@@ -24,32 +38,46 @@
 		5934182F1D2F996A008528D4 /* gear-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5934182A1D2F996A008528D4 /* gear-7.png */; };
 		593418301D2F996A008528D4 /* circle-user-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5934182B1D2F996A008528D4 /* circle-user-7.png */; };
 		593418321D3050BC008528D4 /* plus-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418311D3050BC008528D4 /* plus-simple-7.png */; };
-		593418351D3050C6008528D4 /* connect-arrow-up-right-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */; };
-		593418361D3050C6008528D4 /* connect-arrow-down-left-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */; };
+		593418351D3050C6008528D4 /* up-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418331D3050C6008528D4 /* up-arrow.png */; };
+		593418361D3050C6008528D4 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* down-arrow.png */; };
 		593418381D30A95F008528D4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593418371D30A95F008528D4 /* Request.swift */; };
-		59A759241D2E3795002A3695 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A759231D2E3795002A3695 /* PersistencyManager.swift */; };
-		59A759261D2E391A002A3695 /* SubscriptionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A759251D2E391A002A3695 /* SubscriptionAPI.swift */; };
+		59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59623F441D3C6B0D00AA3B79 /* Main.storyboard */; };
+		59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A170811D3F713C004458B7 /* DashboardCell.swift */; };
+		59A170841D3F713C004458B7 /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A170821D3F713C004458B7 /* DashboardCell.xib */; };
 		59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */; };
 		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
 		59E7359D1D25987D007F075E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359C1D25987D007F075E /* Assets.xcassets */; };
 		59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359E1D25987D007F075E /* LaunchScreen.storyboard */; };
 		59E735AF1D259BAB007F075E /* HealthMG_launch_screen_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */; };
-		59E735B11D25E60F007F075E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E735B01D25E60F007F075E /* Main.storyboard */; };
 		6390475BC9D2B371B71E4248 /* Pods_HealthMG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110AD733AC0254D3314F9315 /* Pods_HealthMG.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		110AD733AC0254D3314F9315 /* Pods_HealthMG.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthMG.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C99407B3E1CA8C7AD34DAD1 /* Pods-HealthMG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMG.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG.debug.xcconfig"; sourceTree = "<group>"; };
+		5913CCC81D356A47003C147C /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		5913CCCA1D360E4F003C147C /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		5913CCDC1D36BDEF003C147C /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		5913CCDD1D36BDEF003C147C /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		5913CCDF1D36BDEF003C147C /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		5913CCE61D383BFC003C147C /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = HealthMG/gear.png; sourceTree = "<group>"; };
+		5913CCE71D383BFC003C147C /* subscribers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subscribers.png; path = HealthMG/subscribers.png; sourceTree = "<group>"; };
+		5913CCE81D383BFC003C147C /* publishers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = publishers.png; path = HealthMG/publishers.png; sourceTree = "<group>"; };
+		5913CCE91D383BFC003C147C /* subscribtions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subscribtions.png; path = HealthMG/subscribtions.png; sourceTree = "<group>"; };
+		5913CCEA1D383BFC003C147C /* add_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user.png; path = HealthMG/add_user.png; sourceTree = "<group>"; };
+		5913CCEB1D383BFC003C147C /* services.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = services.png; path = HealthMG/services.png; sourceTree = "<group>"; };
+		5913CCEC1D383BFC003C147C /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart.png; path = HealthMG/heart.png; sourceTree = "<group>"; };
+		5913CCF91D3ACC37003C147C /* jog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jog.jpg; path = HealthMG/jog.jpg; sourceTree = "<group>"; };
+		5913CCFB1D3ACCD2003C147C /* jog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jog2.jpg; path = HealthMG/jog2.jpg; sourceTree = "<group>"; };
+		5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		5913CD021D3BF2A9003C147C /* ChatWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatWindowController.swift; sourceTree = "<group>"; };
 		591AD6261D25F32F008E2851 /* icon-blue-health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-health.png"; sourceTree = "<group>"; };
 		591AD6291D2653A3008E2851 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		593116911D2C7E0B00DCD212 /* HealthManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManger.swift; sourceTree = "<group>"; };
-		593116941D2C7E8500DCD212 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		5931169C1D2CDAE000DCD212 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5934181B1D2F930B008528D4 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribtionViewController.swift; sourceTree = "<group>"; };
-		5934181F1D2F9352008528D4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		593418211D2F937E008528D4 /* DetailDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDashboardViewController.swift; sourceTree = "<group>"; };
 		593418231D2F93A9008528D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		593418251D2F93D9008528D4 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -59,11 +87,12 @@
 		5934182A1D2F996A008528D4 /* gear-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear-7.png"; sourceTree = "<group>"; };
 		5934182B1D2F996A008528D4 /* circle-user-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-user-7.png"; sourceTree = "<group>"; };
 		593418311D3050BC008528D4 /* plus-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-simple-7.png"; sourceTree = "<group>"; };
-		593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-arrow-up-right-7.png"; sourceTree = "<group>"; };
-		593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-arrow-down-left-7.png"; sourceTree = "<group>"; };
+		593418331D3050C6008528D4 /* up-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up-arrow.png"; sourceTree = "<group>"; };
+		593418341D3050C6008528D4 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
 		593418371D30A95F008528D4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		59A759231D2E3795002A3695 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
-		59A759251D2E391A002A3695 /* SubscriptionAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionAPI.swift; sourceTree = "<group>"; };
+		59623F441D3C6B0D00AA3B79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		59A170811D3F713C004458B7 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		59A170821D3F713C004458B7 /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
 		59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +102,6 @@
 		59E735A11D25987D007F075E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59E735A71D259898007F075E /* HealthMG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthMG.entitlements; sourceTree = "<group>"; };
 		59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthMG_launch_screen_logo.png; sourceTree = SOURCE_ROOT; };
-		59E735B01D25E60F007F075E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		5F0BEB78BC7EB6AF8B738C91 /* Pods-HealthMG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthMG.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthMG/Pods-HealthMG.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +127,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5913CCDA1D36BDC8003C147C /* Custom cells */ = {
+			isa = PBXGroup;
+			children = (
+				59A170811D3F713C004458B7 /* DashboardCell.swift */,
+				59A170821D3F713C004458B7 /* DashboardCell.xib */,
+				5913CCDC1D36BDEF003C147C /* ChatCell.swift */,
+				5913CCDD1D36BDEF003C147C /* BaseCell.swift */,
+				5913CCDF1D36BDEF003C147C /* ChatCell.xib */,
+			);
+			name = "Custom cells";
+			sourceTree = "<group>";
+		};
 		593116931D2C7E5900DCD212 /* View Controller  */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +146,12 @@
 				591AD6291D2653A3008E2851 /* RegisterViewController.swift */,
 				5934181B1D2F930B008528D4 /* DashboardViewController.swift */,
 				5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */,
-				5934181F1D2F9352008528D4 /* ChatViewController.swift */,
 				593418211D2F937E008528D4 /* DetailDashboardViewController.swift */,
 				593418231D2F93A9008528D4 /* SettingsViewController.swift */,
 				593418251D2F93D9008528D4 /* ProfileViewController.swift */,
+				5913CCCA1D360E4F003C147C /* ChatListViewController.swift */,
+				5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */,
+				5913CD021D3BF2A9003C147C /* ChatWindowController.swift */,
 			);
 			name = "View Controller ";
 			sourceTree = "<group>";
@@ -145,6 +187,7 @@
 		59E735941D25987D007F075E /* HealthMG */ = {
 			isa = PBXGroup;
 			children = (
+				5913CCDA1D36BDC8003C147C /* Custom cells */,
 				5931169B1D2CDA2000DCD212 /* Model */,
 				593116931D2C7E5900DCD212 /* View Controller  */,
 				59E735A71D259898007F075E /* HealthMG.entitlements */,
@@ -152,11 +195,9 @@
 				59E7359C1D25987D007F075E /* Assets.xcassets */,
 				59E7359E1D25987D007F075E /* LaunchScreen.storyboard */,
 				59E735A11D25987D007F075E /* Info.plist */,
-				59E735B01D25E60F007F075E /* Main.storyboard */,
+				59623F441D3C6B0D00AA3B79 /* Main.storyboard */,
 				593116911D2C7E0B00DCD212 /* HealthManger.swift */,
-				593116941D2C7E8500DCD212 /* SocketManager.swift */,
-				59A759231D2E3795002A3695 /* PersistencyManager.swift */,
-				59A759251D2E391A002A3695 /* SubscriptionAPI.swift */,
+				5913CCC81D356A47003C147C /* SocketIOManager.swift */,
 			);
 			path = HealthMG;
 			sourceTree = "<group>";
@@ -164,13 +205,22 @@
 		59E735AD1D259B07007F075E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5913CCF91D3ACC37003C147C /* jog.jpg */,
+				5913CCFB1D3ACCD2003C147C /* jog2.jpg */,
+				5913CCE61D383BFC003C147C /* gear.png */,
+				5913CCE71D383BFC003C147C /* subscribers.png */,
+				5913CCE81D383BFC003C147C /* publishers.png */,
+				5913CCE91D383BFC003C147C /* subscribtions.png */,
+				5913CCEA1D383BFC003C147C /* add_user.png */,
+				5913CCEB1D383BFC003C147C /* services.png */,
+				5913CCEC1D383BFC003C147C /* heart.png */,
 				591AD6261D25F32F008E2851 /* icon-blue-health.png */,
 				59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */,
 				593418271D2F996A008528D4 /* dumbbell-7.png */,
 				593418281D2F996A008528D4 /* message-7.png */,
 				593418291D2F996A008528D4 /* spanner-7.png */,
-				593418331D3050C6008528D4 /* connect-arrow-up-right-7.png */,
-				593418341D3050C6008528D4 /* connect-arrow-down-left-7.png */,
+				593418331D3050C6008528D4 /* up-arrow.png */,
+				593418341D3050C6008528D4 /* down-arrow.png */,
 				5934182A1D2F996A008528D4 /* gear-7.png */,
 				593418311D3050BC008528D4 /* plus-simple-7.png */,
 				5934182B1D2F996A008528D4 /* circle-user-7.png */,
@@ -258,18 +308,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
+				5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */,
+				5913CCEE1D383BFC003C147C /* subscribers.png in Resources */,
+				59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */,
+				5913CCEF1D383BFC003C147C /* publishers.png in Resources */,
 				59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */,
 				593418321D3050BC008528D4 /* plus-simple-7.png in Resources */,
 				591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */,
 				59E735AF1D259BAB007F075E /* HealthMG_launch_screen_logo.png in Resources */,
+				59A170841D3F713C004458B7 /* DashboardCell.xib in Resources */,
 				5934182E1D2F996A008528D4 /* spanner-7.png in Resources */,
+				5913CCFA1D3ACC37003C147C /* jog.jpg in Resources */,
+				5913CCE41D36BDEF003C147C /* ChatCell.xib in Resources */,
 				59E7359D1D25987D007F075E /* Assets.xcassets in Resources */,
-				593418361D3050C6008528D4 /* connect-arrow-down-left-7.png in Resources */,
+				593418361D3050C6008528D4 /* down-arrow.png in Resources */,
+				5913CCF31D383BFC003C147C /* heart.png in Resources */,
+				5913CCED1D383BFC003C147C /* gear.png in Resources */,
 				5934182C1D2F996A008528D4 /* dumbbell-7.png in Resources */,
+				5913CCF11D383BFC003C147C /* add_user.png in Resources */,
+				5913CCF01D383BFC003C147C /* subscribtions.png in Resources */,
 				5934182D1D2F996A008528D4 /* message-7.png in Resources */,
-				59E735B11D25E60F007F075E /* Main.storyboard in Resources */,
-				593418351D3050C6008528D4 /* connect-arrow-up-right-7.png in Resources */,
+				593418351D3050C6008528D4 /* up-arrow.png in Resources */,
 				5934182F1D2F996A008528D4 /* gear-7.png in Resources */,
+				5913CCF21D383BFC003C147C /* services.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,21 +389,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5913CCE21D36BDEF003C147C /* BaseCell.swift in Sources */,
+				5913CD031D3BF2A9003C147C /* ChatWindowController.swift in Sources */,
 				59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */,
 				59E735961D25987D007F075E /* AppDelegate.swift in Sources */,
-				59A759261D2E391A002A3695 /* SubscriptionAPI.swift in Sources */,
+				5913CCFE1D3AD5C2003C147C /* PermissionViewController.swift in Sources */,
+				5913CCCB1D360E4F003C147C /* ChatListViewController.swift in Sources */,
 				593418221D2F937E008528D4 /* DetailDashboardViewController.swift in Sources */,
 				593418261D2F93D9008528D4 /* ProfileViewController.swift in Sources */,
 				593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */,
-				593116951D2C7E8500DCD212 /* SocketManager.swift in Sources */,
 				593418381D30A95F008528D4 /* Request.swift in Sources */,
-				59A759241D2E3795002A3695 /* PersistencyManager.swift in Sources */,
 				5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */,
+				5913CCE11D36BDEF003C147C /* ChatCell.swift in Sources */,
 				593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */,
 				591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */,
+				5913CCC91D356A47003C147C /* SocketIOManager.swift in Sources */,
 				5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */,
-				593418201D2F9352008528D4 /* ChatViewController.swift in Sources */,
 				5931169D1D2CDAE000DCD212 /* User.swift in Sources */,
+				59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import MGSwipeTableCell
+import ChameleonFramework
 
+var subscribtion: [String: AnyObject] = [ : ]
 
-class SubscribtionViewController: UIViewController {
+class SubscribtionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var pubSub = "Publishers"
+    var tableIndex = 0
     var publisherUsername: String!
-    private var publishersList = [User]()
-    private var subscribersList = [User]()
-
+    private var publishersList = [[String: AnyObject]]()
+    private var subscribersList = [[String: AnyObject]]()
+    private var user2: [String: AnyObject] = [ : ]
+    
+    @IBOutlet var tableView: UITableView!
+    
+    var rightButton : UIBarButtonItem!
+    var leftButton : UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        publishersList = SubscriptionAPI.sharedInstance.getPublishers()
-        // Do any additional setup after loading the view.
+        leftButton = UIBarButtonItem(image: UIImage(named:"up-arrow.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(IBPubSub))
+        rightButton = UIBarButtonItem(image: UIImage(named:"plus-simple-7.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(askForPublisher))
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.title = "Publishers"
+
+        SocketIOManager.sharedInstance.getPublishers(loggedUser.id, completionHandler: { (publishers) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.publishersList = publishers!
+                self.tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+                self.tableView.reloadData()
+            })
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,31 +50,55 @@ class SubscribtionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var btAdd: UIBarButtonItem!
-    
-    @IBOutlet weak var btPubSub: UIBarButtonItem!
-    
-    @IBAction func IBPubSub(sender: AnyObject) {
-        if pubSub == "Publishers"{
-            pubSub = "Subscribers"
-            self.btAdd.enabled = false
-            self.navBar.title = "Subscribers"
-            self.btPubSub.image = UIImage(named: "connect-arrow-down-left-7.png")
-            
-            subscribersList = SubscriptionAPI.sharedInstance.getSubscribers()
-            
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "chatSegue2") {
+            let cwvc = segue.destinationViewController as! ChatWindowController;
+            cwvc.user2 = user2
         }
-        else{
-            pubSub = "Publishers"
-            self.btAdd.enabled = true
-            self.navBar.title = "Publishers"
-            self.btPubSub.image = UIImage(named: "connect-arrow-up-right-7.png")
+        else if(segue.identifier == "permissionSegue") {
+            let pvc = segue.destinationViewController as! PermissionViewController;
+            pvc.user2 = user2
         }
-        
+
     }
     
-    @IBAction func IBAdd(sender: AnyObject) {
-        askForPublisher()
+    func doNothing(){}
+    
+    
+    func IBPubSub() {
+        if pubSub == "Publishers"{
+            
+             self.pubSub = "Subscribers"
+            rightButton = UIBarButtonItem(title: " ", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doNothing))
+            leftButton = UIBarButtonItem(image: UIImage(named: "down-arrow.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(IBPubSub))
+            self.navigationItem.leftBarButtonItem = leftButton
+            self.navigationItem.rightBarButtonItem = rightButton
+            self.navigationItem.title = "Subscribers"
+                SocketIOManager.sharedInstance.getSubscribers(loggedUser.id, completionHandler: { (subscribers) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.subscribersList = subscribers!
+                        self.tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+                        self.tableView.reloadData()
+                    })
+                })
+        }
+        else{
+            
+            self.pubSub = "Publishers"
+            leftButton = UIBarButtonItem(image: UIImage(named:"up-arrow.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(IBPubSub))
+            rightButton = UIBarButtonItem(image: UIImage(named:"plus-simple-7.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(askForPublisher))
+            self.navigationItem.leftBarButtonItem = leftButton
+            self.navigationItem.rightBarButtonItem = rightButton
+            self.navigationItem.title = "Publishers"
+                SocketIOManager.sharedInstance.getPublishers(loggedUser.id, completionHandler: { (publishers) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.publishersList = publishers!
+                        self.tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+                        self.tableView.reloadData()
+                    })
+                })
+        }
+        
     }
     
     func askForPublisher() {
@@ -62,18 +108,18 @@ class SubscribtionViewController: UIViewController {
         
         let OKAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action) -> Void in
             let textfield = alertController.textFields![0]
-            if textfield.text?.characters.count == 0 {
+            if textfield.text?.characters.count == 0 || textfield.text?.lowercaseString == loggedUser.username {
                 self.askForPublisher()
             }
             else {
                 self.publisherUsername = textfield.text
                 
-                SocketIOManager.sharedInstance.addSubscription(loggedUser.id, publishersUsername: self.publisherUsername, completionHandler: { (publisher) -> Void in
+                SocketIOManager.sharedInstance.requestSubscription(loggedUser.id, publishersUsername: self.publisherUsername, completionHandler: { (publisher) -> Void in
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         if publisher != nil {
-//                            publishersList.append(publisher)
-                            
-                            
+                            self.publishersList.append(publisher!)
+                            self.tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+                            self.tableView.reloadData()
                         }
                     })
                 })
@@ -93,15 +139,103 @@ class SubscribtionViewController: UIViewController {
     }
 
     
-    @IBOutlet weak var navBar: UINavigationItem!
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if pubSub == "Publishers"{
+            return publishersList.count
+        }
+        else{
+            return subscribersList.count
+        }
     }
-    */
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! MGSwipeTableCell!
+        
+        var firstName: String?
+        var lastName: String?
+        var Name: String?
+        
+        if cell == nil
+        {
+            cell = MGSwipeTableCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+        }
+
+        
+        if pubSub == "Publishers" && publishersList.count > 0{
+            firstName = publishersList[indexPath.row]["firstName"] as? String
+            lastName = publishersList[indexPath.row]["lastName"] as? String
+            Name = firstName! + " " + lastName!
+            cell.textLabel?.text = Name
+        }
+        else if pubSub == "Subscribers" &&  subscribersList.count > 0{
+            firstName = subscribersList[indexPath.row]["firstName"] as? String
+            lastName = subscribersList[indexPath.row]["lastName"] as? String
+            Name = firstName! + " " + lastName!
+            cell.textLabel?.text = Name
+        }
+        else{
+            cell.textLabel?.text = " "
+        }
+        
+        //configure left buttons
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"message-7.png"), backgroundColor: UIColor.flatGreenColor(),
+            callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                if self.pubSub == "Publishers" {
+                    self.user2 = self.publishersList[indexPath.row]
+                    self.performSegueWithIdentifier("chatSegue2", sender: nil)
+                }
+                else if self.pubSub == "Subscribers" {
+                   self.user2 = self.subscribersList[indexPath.row]
+                    self.performSegueWithIdentifier("chatSegue2", sender: nil)
+                }
+
+                return true
+            })]
+        cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
+        
+        //configure right buttons
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.flatRedColor(),
+            callback: {
+                (sender: MGSwipeTableCell!) -> Bool in
+                if self.pubSub == "Publishers" {
+                    SocketIOManager.sharedInstance.deletePublisher(self.publishersList[indexPath.row])
+                }
+                else if self.pubSub == "Subscribers" {
+                    SocketIOManager.sharedInstance.deleteSubscriber(self.subscribersList[indexPath.row])
+                }
+                return true
+            })
+//            ,MGSwipeButton(title: "More",backgroundColor: UIColor.flatGrayColor(),
+//                callback: {
+//                    (sender: MGSwipeTableCell!) -> Bool in
+//                    print("Convenience callback for swipe buttons3!")
+//                    return true
+//                })
+        ]
+        
+        cell.rightSwipeSettings.transition = MGSwipeTransition.Rotate3D
+
+        
+        return cell
+    }
+
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if pubSub == "Publishers" && publishersList.count > 0{
+            
+        }
+        else if pubSub == "Subscribers" && subscribersList.count > 0{
+            SocketIOManager.sharedInstance.getSubscribtion(loggedUser.id, subscriberID: subscribersList[indexPath.row]["_id"] as! String, completionHandler: {(subscribtion2) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    subscribtion = subscribtion2!
+                    self.user2 = self.subscribersList[indexPath.row]
+                     self.performSegueWithIdentifier("permissionSegue", sender: nil)
+                })
+            })
+           
+        }
+    }
+ 
 
 }

@@ -1,0 +1,10 @@
+framework module PNChartSwift {
+  umbrella header "PNChartSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module PNChartSwift.__Swift {
+    exclude header "PNChartSwift-Swift.h"
+}

@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "9.0"
 use_frameworks!
 
@@ -22,8 +23,14 @@ target 'HealthMG' do
     pod 'paper-onboarding'
     pod "DGRunkeeperSwitch", "~> 1.1"       #for switches
     pod 'MPGNotification', '~> 1.2'         # for chat notification
-    pod 'Chatto', '= 1.0.0'
+    pod 'Chatto', '= 1.0.0'                 #not used
+    pod 'ChattoAdditions', '~>1.0.0'        #not used
     pod 'JBChartView'
+    pod 'Alamofire', '~> 3.4'
+    pod 'MGSwipeTableCell'
+    
+    pod 'Eureka', '~> 1.7'
+    pod 'SkyFloatingLabelTextField', '~> 1.0'
     
 
 

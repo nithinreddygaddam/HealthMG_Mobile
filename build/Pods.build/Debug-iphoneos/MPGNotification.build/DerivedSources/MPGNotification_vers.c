@@ -1,0 +1,1 @@
+ const unsigned char MPGNotificationVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:MPGNotification  PROJECT:Pods-1" "\n"; const double MPGNotificationVersionNumber __attribute__ ((used)) = (double)1.;

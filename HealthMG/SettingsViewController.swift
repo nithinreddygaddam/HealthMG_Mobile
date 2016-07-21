@@ -7,14 +7,54 @@
 //
 
 import UIKit
+import Eureka
+import SimpleKeychain
 
-class SettingsViewController: UIViewController {
-
+class SettingsViewController: FormViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        form +++ Section("Mandatory Fields")
+            <<< TextRow("username"){ row in
+                row.title = "Username"
+                row.placeholder = loggedUser.username
+            }
+//            <<< PasswordRow("password"){
+//                $0.title = "Password"
+//                $0.placeholder =
+//            }
+            <<< NameRow("fName"){
+                $0.title = "First Name"
+                $0.placeholder = loggedUser.fName
+            }
+            <<< NameRow("lName"){
+                $0.title = "Last Name"
+                $0.placeholder = loggedUser.lName
+            }
+            <<< EmailRow("eMail"){
+                $0.title = "Email"
+                $0.placeholder = loggedUser.eMail
+            }
+            <<< DateInlineRow("dob"){
+                $0.title = "Date of Birth"
+                $0.value = NSDate(timeIntervalSinceReferenceDate: 0)
+            }
+            <<< PickerInlineRow<String>("gender") {
+                $0.title = "Gender"
+                $0.options = ["Male","Female"]
+                $0.value = loggedUser.gender
+            }
+        +++ Section("Log Out")
+            <<< ButtonRow(){
+                $0.title = "Log Out"
+                } .onCellSelection({ (cell, row) in
+                    SocketIOManager.sharedInstance.closeConnection()
+                    A0SimpleKeychain().deleteEntryForKey("user-jwt")
+                    print("logout")
+                    self.performSegueWithIdentifier("logOutSegue", sender: nil)
+                })
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -22,14 +62,5 @@ class SettingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

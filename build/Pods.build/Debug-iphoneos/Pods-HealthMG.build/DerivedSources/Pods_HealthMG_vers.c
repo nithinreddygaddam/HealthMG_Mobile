@@ -1,0 +1,1 @@
+ const unsigned char Pods_HealthMGVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:Pods_HealthMG  PROJECT:Pods-1" "\n"; const double Pods_HealthMGVersionNumber __attribute__ ((used)) = (double)1.;
