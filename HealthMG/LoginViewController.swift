@@ -61,6 +61,9 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func IBOffline(sender: AnyObject) {
+        self.performSegueWithIdentifier("loginSegue", sender: nil)
+    }
     
     @IBAction func IBLogin(sender: AnyObject) {
         

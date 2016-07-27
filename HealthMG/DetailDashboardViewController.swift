@@ -14,6 +14,7 @@ class DetailDashboardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+                self.tabBarController?.tabBar.hidden = true
     }
 
     override func didReceiveMemoryWarning() {

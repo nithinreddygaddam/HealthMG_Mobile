@@ -50,6 +50,17 @@ class SocketIOManager: NSObject {
         }
     }
     
+//    func checkConnection( completionHandler: (available: boolean?) -> Void) {
+//        
+//        socket.emit("ping")
+//        
+//        socket.on("pong") { ( dataArray, ack) -> Void in
+//            
+//            completionHandler(available: true )
+//            
+//        }
+//    }
+    
     func sendHeartRate(timeStamp: String, date: String, time:String, hr: String, uuid: String, publisher: String) {
         socket.emit("heartRate", timeStamp, date, time, hr, uuid, publisher)
     }
@@ -112,7 +123,7 @@ class SocketIOManager: NSObject {
     }
     
     func deleteSubscriber(subscriber: [String: AnyObject]) {
-        socket.emit("deleteSubcribtion", subscriberID, loggedUser)
+        socket.emit("deleteSubcribtion", subscriber, loggedUser.id)
     }
     
     func getChats(userID: String, completionHandler: (chatsList: [[String: AnyObject]]!, lastMsg: [[String: AnyObject]]?) -> Void) {

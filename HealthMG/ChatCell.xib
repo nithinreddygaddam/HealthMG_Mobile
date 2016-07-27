@@ -59,7 +59,7 @@
                 <outlet property="lblChatMessage" destination="vGY-vB-1NI" id="YXj-Ms-qiB"/>
                 <outlet property="lblMessageDetails" destination="ZuJ-v8-Xlf" id="sQu-zY-NMu"/>
             </connections>
-            <point key="canvasLocation" x="693" y="303"/>
+            <point key="canvasLocation" x="487" y="277"/>
         </tableViewCell>
     </objects>
 </document>

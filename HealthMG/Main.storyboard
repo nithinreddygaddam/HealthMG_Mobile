@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
+                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNn-mP-LSd">
@@ -64,26 +64,36 @@
                                     <segue destination="bWr-NM-cHI" kind="show" id="7mL-4i-fK2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueq-Rw-Ujc">
+                                <rect key="frame" x="257" y="617" width="97" height="30"/>
+                                <state key="normal" title="Offline mode">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="IBOffline:" destination="QYG-me-lye" eventType="touchUpInside" id="Guf-L4-xWk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GNn-mP-LSd" secondAttribute="trailing" constant="25" id="3EJ-Ck-eXp"/>
-                            <constraint firstItem="u9M-Ve-WVP" firstAttribute="top" secondItem="dHT-O5-v4t" secondAttribute="bottom" constant="137" id="4gx-xv-dp8"/>
                             <constraint firstAttribute="trailing" secondItem="dHT-O5-v4t" secondAttribute="trailing" constant="25" id="7FS-vV-GxK"/>
                             <constraint firstItem="dHT-O5-v4t" firstAttribute="top" secondItem="GNn-mP-LSd" secondAttribute="bottom" constant="28" id="AQk-Hg-s37"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jdB-E8-Jhg" secondAttribute="trailing" constant="28" id="Ej8-JY-Grc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ueq-Rw-Ujc" secondAttribute="trailing" constant="5" id="F6x-VG-h8B"/>
                             <constraint firstAttribute="trailing" secondItem="Ayc-WC-wma" secondAttribute="trailing" id="I45-aZ-aUl"/>
                             <constraint firstItem="dHT-O5-v4t" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" constant="24" id="KI2-gP-gb4"/>
-                            <constraint firstItem="u9M-Ve-WVP" firstAttribute="top" secondItem="Ayc-WC-wma" secondAttribute="bottom" id="KWl-xf-xeL"/>
                             <constraint firstItem="Ayc-WC-wma" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" id="NBA-aJ-iMP"/>
                             <constraint firstItem="Ayc-WC-wma" firstAttribute="top" secondItem="ocE-IE-LIo" secondAttribute="top" id="Ucv-84-NGv"/>
                             <constraint firstItem="Ayc-WC-wma" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" id="WiK-3p-dee"/>
                             <constraint firstAttribute="trailing" secondItem="Ayc-WC-wma" secondAttribute="trailing" id="gFf-Yt-oRu"/>
+                            <constraint firstItem="u9M-Ve-WVP" firstAttribute="top" secondItem="ueq-Rw-Ujc" secondAttribute="bottom" constant="20" id="jeh-vT-Vo2"/>
                             <constraint firstItem="GNn-mP-LSd" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" constant="24" id="mma-O2-Rkk"/>
                             <constraint firstItem="jdB-E8-Jhg" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leadingMargin" constant="28" id="nB6-6a-hxn"/>
                             <constraint firstItem="GNn-mP-LSd" firstAttribute="top" secondItem="jdB-E8-Jhg" secondAttribute="bottom" constant="291" id="pqq-ux-R86"/>
                             <constraint firstItem="jdB-E8-Jhg" firstAttribute="top" secondItem="eJ5-pL-YPb" secondAttribute="bottom" constant="57" id="rQ1-HW-daG"/>
                             <constraint firstItem="Ayc-WC-wma" firstAttribute="top" secondItem="ocE-IE-LIo" secondAttribute="top" id="roO-SC-dHX"/>
+                            <constraint firstItem="ueq-Rw-Ujc" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leadingMargin" constant="241" id="ur9-CB-9PN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="EWw-dZ-jkB">
@@ -139,16 +149,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="dumbbell-7.png" id="Pzc-KI-EmM"/>
+                    <navigationItem key="navigationItem" id="FjM-DS-f2m"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tblView" destination="1SK-HI-Sff" id="EyF-4g-33y"/>
-                        <segue destination="Oym-ZO-hzx" kind="showDetail" identifier="detailDashboardSegue" id="CTB-Z7-E2c"/>
+                        <segue destination="Oym-ZO-hzx" kind="show" identifier="detailDashboardSegue" id="ljV-2W-Fhn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiF-YN-6ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778.5" y="331.5"/>
+            <point key="canvasLocation" x="2365.5" y="331.5"/>
         </scene>
         <!--DetailDashboard-->
         <scene sceneID="lFR-Ja-637">
@@ -161,13 +171,70 @@
                     <view key="view" contentMode="scaleToFill" id="uk8-4r-4oq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-eG-N0j" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="375" height="291"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-IW-kOK" customClass="StatView" customModule="HealthMG" customModuleProvider="target">
+                                <rect key="frame" x="14" y="408" width="165" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DkY-gp-yIu" customClass="StatView" customModule="HealthMG" customModuleProvider="target">
+                                <rect key="frame" x="197" y="408" width="165" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JC0-8A-8cD" customClass="StatView" customModule="HealthMG" customModuleProvider="target">
+                                <rect key="frame" x="197" y="512" width="165" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvZ-hM-cSG" customClass="StatView" customModule="HealthMG" customModuleProvider="target">
+                                <rect key="frame" x="14" y="512" width="165" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jti-7E-lrx">
+                                <rect key="frame" x="0.0" y="354" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOx-sV-wuS">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Today"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S06-9c-3Kg">
+                                        <rect key="frame" x="75" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Daily"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mn-VT-RdV">
+                                        <rect key="frame" x="150" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Weekly"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6U-mC-hos">
+                                        <rect key="frame" x="225" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Monthly"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Dk-ZN-3QQ">
+                                        <rect key="frame" x="300" y="0.0" width="75" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Yearly"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jti-7E-lrx" secondAttribute="trailing" id="EbO-Vi-BJf"/>
+                            <constraint firstItem="Jti-7E-lrx" firstAttribute="leading" secondItem="uk8-4r-4oq" secondAttribute="leading" id="U80-Rn-jk1"/>
+                            <constraint firstItem="Jti-7E-lrx" firstAttribute="top" secondItem="bxN-6r-72N" secondAttribute="bottom" constant="290" id="vGL-dN-L7f"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ5-c2-l8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2413.5" y="331.5"/>
+            <point key="canvasLocation" x="3000.5" y="331.5"/>
         </scene>
         <!--Subscribtion-->
         <scene sceneID="5h4-37-GA9">
@@ -339,7 +406,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="guG-PO-L5b" kind="relationship" relationship="viewControllers" id="dOb-A5-0gW"/>
+                        <segue destination="oLS-en-qCO" kind="relationship" relationship="viewControllers" id="dOb-A5-0gW"/>
                         <segue destination="EiE-fr-vzA" kind="relationship" relationship="viewControllers" id="6g9-1i-dut"/>
                         <segue destination="PnL-oE-guH" kind="relationship" relationship="viewControllers" id="IXU-z8-wEe"/>
                         <segue destination="TMT-Qo-U4W" kind="relationship" relationship="viewControllers" id="Bjz-3U-jBY"/>
@@ -387,6 +454,25 @@
             </objects>
             <point key="canvasLocation" x="1232.5" y="1263.5"/>
         </scene>
+        <!--Dashboard-->
+        <scene sceneID="reG-VQ-1X3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oLS-en-qCO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dumbbell-7.png" id="Pzc-KI-EmM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d4k-pd-1T9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="guG-PO-L5b" kind="relationship" relationship="rootViewController" id="xPh-sD-ae7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0q-3Q-Iso" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778.5" y="331.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="circle-user-7.png" width="30" height="30"/>
@@ -398,7 +484,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Thn-cB-9kQ"/>
         <segue reference="ooI-wA-GMl"/>
-        <segue reference="JiE-KQ-Hd5"/>
+        <segue reference="NFO-CU-2Rf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19376453757286072" green="0.50850099325180054" blue="0.85232251882553101" alpha="1" colorSpace="calibratedRGB"/>
 </document>
