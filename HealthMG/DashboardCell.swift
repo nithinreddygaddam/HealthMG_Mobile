@@ -49,6 +49,7 @@ class DashboardCell: UITableViewCell {
         barChartView.descriptionText = ""
         barChartView.drawValueAboveBarEnabled = false
         barChartView.xAxis.drawAxisLineEnabled = false
+
         
 //        barChartView.leftAxis.axisMinValue = 0.0
 //        barChartView.leftAxis.axisMaxValue = 1000.0
@@ -76,7 +77,7 @@ class DashboardCell: UITableViewCell {
         }
         
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
-        let chartData = BarChartData(xVals: yaxis, dataSet: chartDataSet)
+        let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         barChartView.data = chartData
         
         

@@ -2,6 +2,7 @@ PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (3.4.1)
   - ARSLineProgress (1.2.1)
+  - AsyncSwift (1.7.2)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 3.4)
   - ARSLineProgress (~> 1.0)
+  - AsyncSwift
   - ChameleonFramework/Swift
   - Charts
   - Chatto (= 1.0.0)
@@ -69,6 +71,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   ARSLineProgress: 6761482b13a0b0b8723fe25e0117cdc543f46ff8
+  AsyncSwift: 46a78bceb11f0e5bb52747f740d9692ec78d2d7c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
   Chatto: 531b14bbb7d21dfc50a86fc4ff70a90367171403
@@ -88,6 +91,6 @@ SPEC CHECKSUMS:
   SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 0bc537988dc9d19dc8743f21544740c1000d51c0
+PODFILE CHECKSUM: ba273a10e73ad6616fc367736361234f2aa09946
 
 COCOAPODS: 1.0.1

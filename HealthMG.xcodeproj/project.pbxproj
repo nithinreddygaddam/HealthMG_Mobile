@@ -26,6 +26,7 @@
 		591871511D48878D00D3426E /* StatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591871501D48878D00D3426E /* StatView.xib */; };
 		591871531D4889D800D3426E /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591871521D4889D800D3426E /* StatView.swift */; };
 		591871551D488A1B00D3426E /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591871541D488A1B00D3426E /* BaseCell.swift */; };
+		591871571D4925DF00D3426E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591871561D4925DF00D3426E /* HealthKitManager.swift */; };
 		591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */ = {isa = PBXBuildFile; fileRef = 591AD6261D25F32F008E2851 /* icon-blue-health.png */; };
 		591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591AD6291D2653A3008E2851 /* RegisterViewController.swift */; };
 		593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116911D2C7E0B00DCD212 /* HealthManger.swift */; };
@@ -45,6 +46,7 @@
 		593418361D3050C6008528D4 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* down-arrow.png */; };
 		59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59623F441D3C6B0D00AA3B79 /* Main.storyboard */; };
 		59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A170811D3F713C004458B7 /* DashboardCell.swift */; };
+		59CC242B1D4B465500F7206F /* HeartRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CC242A1D4B465500F7206F /* HeartRateCell.xib */; };
 		59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */; };
 		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
@@ -76,6 +78,7 @@
 		591871501D48878D00D3426E /* StatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatView.xib; sourceTree = "<group>"; };
 		591871521D4889D800D3426E /* StatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
 		591871541D488A1B00D3426E /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		591871561D4925DF00D3426E /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		591AD6261D25F32F008E2851 /* icon-blue-health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-health.png"; sourceTree = "<group>"; };
 		591AD6291D2653A3008E2851 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		593116911D2C7E0B00DCD212 /* HealthManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManger.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		593418341D3050C6008528D4 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
 		59623F441D3C6B0D00AA3B79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		59A170811D3F713C004458B7 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		59CC242A1D4B465500F7206F /* HeartRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateCell.xib; sourceTree = "<group>"; };
 		59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +143,7 @@
 				5918714A1D47F89A00D3426E /* DashboardCell.xib */,
 				591871501D48878D00D3426E /* StatView.xib */,
 				591871521D4889D800D3426E /* StatView.swift */,
+				59CC242A1D4B465500F7206F /* HeartRateCell.xib */,
 			);
 			name = "Custom cells";
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				59623F441D3C6B0D00AA3B79 /* Main.storyboard */,
 				593116911D2C7E0B00DCD212 /* HealthManger.swift */,
 				5913CCC81D356A47003C147C /* SocketIOManager.swift */,
+				591871561D4925DF00D3426E /* HealthKitManager.swift */,
 			);
 			path = HealthMG;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 			files = (
 				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
 				591871511D48878D00D3426E /* StatView.xib in Resources */,
+				59CC242B1D4B465500F7206F /* HeartRateCell.xib in Resources */,
 				5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */,
 				5913CCEE1D383BFC003C147C /* subscribers.png in Resources */,
 				59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */,
@@ -396,6 +403,7 @@
 				5913CD031D3BF2A9003C147C /* ChatWindowController.swift in Sources */,
 				59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */,
 				59E735961D25987D007F075E /* AppDelegate.swift in Sources */,
+				591871571D4925DF00D3426E /* HealthKitManager.swift in Sources */,
 				5913CCFE1D3AD5C2003C147C /* PermissionViewController.swift in Sources */,
 				591871551D488A1B00D3426E /* BaseCell.swift in Sources */,
 				5913CCCB1D360E4F003C147C /* ChatListViewController.swift in Sources */,

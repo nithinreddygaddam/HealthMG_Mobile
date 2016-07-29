@@ -31,6 +31,7 @@ target 'HealthMG' do
     
     pod 'Eureka', '~> 1.7'
     pod 'SkyFloatingLabelTextField', '~> 1.0'
+    pod "AsyncSwift"
     
 
 

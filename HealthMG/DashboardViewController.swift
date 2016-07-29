@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import HealthKit
+import Async
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -15,12 +17,43 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var configurationOK = false
     let reuseIdentifier = "idCellDashboard"
     
+    var yAxis:[[String]]  = []
+    var xAxis:[[Double]]  = []
+    var yAxisTemp:[String]  = []
+    var xAxisTemp:[Double]  = []
+    var xAxisMin:[Double]  = []
+    var xAxisMax:[Double]  = []
+    var stats:[Double]  = []
+    var total = 0.0
+    var min = 0.0
+    var max = 0.0
+    
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
+    
+    let weekdays = [
+        "nil",
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ]
+    
+    private let healthKitManager = HealthKitManager.sharedInstance
+    private var steps = [HKQuantitySample]()
+    private let dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        requestHealthKitAuthorization()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +92,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         tblView.delegate = self
         tblView.dataSource = self
         tblView.registerNib(UINib(nibName: "DashboardCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-//        tblView.hidden = true
         tblView.estimatedRowHeight = 133.0
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.tableFooterView = UIView(frame: CGRectZero)
+        tblView.hidden = true
         
     }
     
@@ -82,12 +115,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:DashboardCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! DashboardCell
         
-//        cell. = attributes[indexPath.row]
-        let yaxis = ["1","2","3"]
-        let rates = [4.0,5.0,6.0]
-        cell.setChart(yaxis, values: rates)
-        let newView = UIView(frame: CGRectMake(200, 10, 100, 50))
-        cell.contentView.addSubview(newView)
+        cell.lblAtrribute.text = attributes[indexPath.row]
+//        cell.yaxis = yAxis
+//        cell.rates = xAxis
+        if (attributes[indexPath.row] != "Heart Rate" && yAxis.count == (attributes.count - 1)){
+            cell.lblStat.text = String(round(stats[indexPath.row]))
+            cell.setChart(yAxis[indexPath.row], values: xAxis[indexPath.row])
+        }
+//        let newView = UIView(frame: CGRectMake(200, 10, 100, 50))
+//        cell.contentView.addSubview(newView)
 //        cell.detailTextLabel?.text = (users[indexPath.row]["isConnected"] as! Bool) ? "Online" : "Offline"
 //        cell.detailTextLabel?.textColor = (users[indexPath.row]["isConnected"] as! Bool) ? UIColor.greenColor() : UIColor.redColor()
         
@@ -99,4 +135,220 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //        return 133.0
 //    }
 
+    
 }
+
+private extension DashboardViewController {
+    
+    func requestHealthKitAuthorization() {
+        let dataTypesToRead = NSSet(objects: healthKitManager.quantityType[0], healthKitManager.quantityType[1], healthKitManager.quantityType[2], healthKitManager.quantityType[3] )
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
+            if success {
+                self.runQueries { (success) -> Void in
+                    if success {
+                        // do second task if success
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tblView.reloadData()
+                            self.tblView.hidden = false
+                        })
+                    }
+                }
+                
+            } else {
+                print(error!.description)
+            }
+            })
+    }
+    
+
+    func runQueries( completion: (success: Bool) -> Void) {
+
+        self.query(0){ (success) -> Void in
+            if success {
+                self.xAxis.append(self.xAxisTemp)
+                self.yAxis.append(self.yAxisTemp)
+                self.stats.append(self.total)
+                self.total = 0.0
+                self.xAxisTemp = []
+                self.yAxisTemp = []
+                
+                self.query(1){ (success) -> Void in
+                    if success {
+                        self.xAxis.append(self.xAxisTemp)
+                        self.yAxis.append(self.yAxisTemp)
+                        self.stats.append(self.total)
+                        self.total = 0.0
+                        self.xAxisTemp = []
+                        self.yAxisTemp = []
+                        
+                        self.query(2){ (success) -> Void in
+                            if success {
+                                self.xAxis.append(self.xAxisTemp)
+                                self.yAxis.append(self.yAxisTemp)
+                                self.stats.append(self.total)
+                                self.total = 0.0
+                                self.xAxisTemp = []
+                                self.yAxisTemp = []
+                                
+                                self.query(3){ (success) -> Void in
+                                    if success {
+                                        self.xAxis.append(self.xAxisTemp)
+                                        self.yAxis.append(self.yAxisTemp)
+                                        self.stats.append(self.total)
+                                        self.total = 0.0
+                                        self.xAxisTemp = []
+                                        self.yAxisTemp = []
+                                        
+                                        completion(success: true)
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func query(i: Int, completion: (success: Bool) -> Void) {
+        let quantityType = healthKitManager.quantityType[i]
+        
+        //interval set by a day
+        let interval = NSDateComponents()
+        interval.day = 1
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        // Set the anchor date to Monday at 12:00 a.m.
+        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
+        
+        let offset = (7 + anchorComponents.weekday - 2) % 7
+        anchorComponents.day -= offset
+        anchorComponents.hour = 0
+        
+        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
+            fatalError("*** unable to create a valid date from the given components ***")
+        }
+        
+        let predicate: NSPredicate = HKSampleQuery.predicateForSamplesWithStartDate(NSDate.distantPast(), endDate: NSDate(), options: HKQueryOptions.None)
+        
+        let query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
+                                                quantitySamplePredicate: predicate,
+                                                options: .CumulativeSum,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
+            
+
+        // Set the results handler
+        query.initialResultsHandler = {
+            query, results, error in
+            
+            guard let statsCollection = results else {
+                // Perform proper error handling here
+                fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
+            }
+            
+            let endDate = NSDate()
+            
+            guard let startDate = calendar.dateByAddingUnit(.Day, value: -6, toDate: endDate, options: []) else {
+                fatalError("*** Unable to calculate the start date ***")
+            }
+            
+            statsCollection.enumerateStatisticsFromDate(startDate, toDate: endDate) { [unowned self] statistics, stop in
+                
+                if(i != 3){
+                    if let quantity = statistics.sumQuantity() {
+                        let date = statistics.startDate
+                        let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
+                        
+                        self.xAxisTemp.append(value)
+                        self.total += value
+                        
+                        let myComponents = calendar.components(.Weekday, fromDate: date)
+                        self.yAxisTemp.append(self.weekdays[myComponents.weekday])
+                        print(self.weekdays[myComponents.weekday])
+                        print(value)
+                    }
+                }
+                else{
+                    if let quantity = statistics.maximumQuantity() {
+                        let date = statistics.startDate
+                        let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
+                        
+                        self.xAxisMin.append(value)
+                        if self.min > value{
+                            self.min = value
+                        }
+                        
+                        let myComponents = calendar.components(.Weekday, fromDate: date)
+                        self.yAxisTemp.append(self.weekdays[myComponents.weekday])
+                        print(self.weekdays[myComponents.weekday])
+                        print(value)
+                    }
+                    if let quantity = statistics.minimumQuantity() {
+                        let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
+                        
+                        self.xAxisMax.append(value)
+                        
+                        if self.max < value{
+                            self.max = value
+                        }
+                        
+                    }
+                }
+            }
+             completion(success: true)
+        }
+        
+        healthKitManager.healthStore!.executeQuery(query)
+    }
+    
+    
+    
+    
+    //    func queryStepsSum() {
+    //        let sumOption = HKStatisticsOptions.CumulativeSum
+    //        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: nil, options: sumOption) { [unowned self] (query, result, error) in
+    //            if let sumQuantity = result?.sumQuantity() {
+    ////                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier) as UITableViewCell
+    //                let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
+    ////                headerView.textLabel.text = "\(numberOfSteps) total"
+    ////                self.tableView.tableHeaderView = headerView
+    //                print("Number of steps: ")
+    //                print(numberOfSteps)
+    //            }
+    ////            self.activityIndicator.stopAnimating()
+    //        }
+    //        healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
+    //    }
+    
+    //    func querySteps() {
+    //        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount!,
+    //                                        predicate: nil,
+    //                                        limit: 100,
+    //                                        sortDescriptors: nil)
+    //        { [unowned self] (query, results, error) in
+    //            if let results = results as? [HKQuantitySample] {
+    //                self.steps = results
+    ////                self.tableView.reloadData()
+    //            }
+    ////            self.activityIndicator.stopAnimating()
+    //        }
+    //        healthKitManager.healthStore?.executeQuery(sampleQuery)
+    //    }
+}
+
+
+
+
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(stepCellIdentifier) as UITableViewCell
+//        let step = steps[indexPath.row]
+//        let numberOfSteps = Int(step.quantity.doubleValueForUnit(healthKitManager.stepsUnit))
+//        cell.textLabel.text = "\(numberOfSteps) steps"
+//        cell.detailTextLabel?.text = dateFormatter.stringFromDate(step.startDate)
+//        return cell
+//    }
+
+

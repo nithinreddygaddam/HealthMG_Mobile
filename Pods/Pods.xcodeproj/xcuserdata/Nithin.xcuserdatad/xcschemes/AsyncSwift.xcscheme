@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4EA5EF6B87EE6B8ED2139B9D893F81A1"
-               BuildableName = "Pods_HealthMG.framework"
-               BlueprintName = "Pods-HealthMG"
+               BlueprintIdentifier = "D1DC35DB2C695031A72543555FB23729"
+               BuildableName = "Async.framework"
+               BlueprintName = "AsyncSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4EA5EF6B87EE6B8ED2139B9D893F81A1"
-            BuildableName = "Pods_HealthMG.framework"
-            BlueprintName = "Pods-HealthMG"
+            BlueprintIdentifier = "D1DC35DB2C695031A72543555FB23729"
+            BuildableName = "Async.framework"
+            BlueprintName = "AsyncSwift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

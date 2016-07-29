@@ -565,11 +565,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "490787774.78192"
+            timestampString = "491419751.988972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "DashboardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -581,12 +581,220 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardCell.swift"
-            timestampString = "491295444.027606"
+            timestampString = "491295764.433957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "awakeFromNib()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491464062.889689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "query(_:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491464062.889689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "query(_:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491448835.173408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "requestHealthKitAuthorization()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491448835.173408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "requestHealthKitAuthorization()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491420061.097447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1).(closure #2)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491420061.09759"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491448835.173408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "requestHealthKitAuthorization()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491462986.991603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491462986.991718"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491448835.173408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "requestHealthKitAuthorization()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491450037.011191"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthMG.DashboardViewController.((requestHealthKitAuthorization in _52FBBEE53227D4ED56A8A27E3BE39003) () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "HealthMG"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nithin/Desktop/HealthMG/HealthMG/DashboardViewController.swift"
+                  timestampString = "491450037.011405"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthMG/DashboardViewController.swift"
+            timestampString = "491448835.173408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
