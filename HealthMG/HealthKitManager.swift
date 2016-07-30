@@ -25,7 +25,11 @@ class HealthKitManager {
         }
     }()
     
-    let quantityType:[AnyObject] = [HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!, HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!, HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!, HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!]
-    let units:[AnyObject] = [HKUnit.countUnit(), HKUnit.mileUnit(), HKUnit.kilocalorieUnit(), HKUnit.minuteUnit()  ]
+    let quantityType:[AnyObject] = [HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
+                                    HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)!,
+                                    HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)!,
+                                    HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!]
+    
+    let units:[AnyObject] = [HKUnit.countUnit(), HKUnit.mileUnit(), HKUnit.kilocalorieUnit(), HKUnit(fromString: "count/min")  ]
 
 }

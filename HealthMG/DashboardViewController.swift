@@ -16,7 +16,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var configurationOK = false
     let reuseIdentifier = "idCellDashboard"
-    
+    //x and y axis are interchanged here
     var yAxis:[[String]]  = []
     var xAxis:[[Double]]  = []
     var yAxisTemp:[String]  = []
@@ -92,6 +92,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         tblView.delegate = self
         tblView.dataSource = self
         tblView.registerNib(UINib(nibName: "DashboardCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tblView.registerNib(UINib(nibName: "HeartRateCell", bundle: nil), forCellReuseIdentifier: "idCellHeartRate")
         tblView.estimatedRowHeight = 133.0
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.tableFooterView = UIView(frame: CGRectZero)
@@ -113,15 +114,26 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
     //displays user's information
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:DashboardCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! DashboardCell
         
-        cell.lblAtrribute.text = attributes[indexPath.row]
+        if attributes[indexPath.row] == "Heart Rate"{
+            let cell2:HeartRateCell = tableView.dequeueReusableCellWithIdentifier("idCellHeartRate") as! HeartRateCell
+            cell2.lblStatMin.text = String(min)
+            cell2.lblStatMax.text = String(max)
+            // x and y are interchanged
+            if (yAxis.count == (attributes.count)){
+            cell2.setChartData(yAxis[indexPath.row], yAxisMax: xAxisMax, yAxisMin : xAxisMin)
+            }
+            return cell2
+        }
+        else{
+            let cell:DashboardCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! DashboardCell
+            cell.lblAtrribute.text = attributes[indexPath.row]
 //        cell.yaxis = yAxis
 //        cell.rates = xAxis
-        if (attributes[indexPath.row] != "Heart Rate" && yAxis.count == (attributes.count - 1)){
-            cell.lblStat.text = String(round(stats[indexPath.row]))
-            cell.setChart(yAxis[indexPath.row], values: xAxis[indexPath.row])
-        }
+            if (yAxis.count == (attributes.count)){
+                cell.lblStat.text = String(round(stats[indexPath.row]))
+                cell.setChart(yAxis[indexPath.row], values: xAxis[indexPath.row])
+            }
 //        let newView = UIView(frame: CGRectMake(200, 10, 100, 50))
 //        cell.contentView.addSubview(newView)
 //        cell.detailTextLabel?.text = (users[indexPath.row]["isConnected"] as! Bool) ? "Online" : "Offline"
@@ -129,11 +141,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         return cell
+        }
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 133.0
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 133.0
+    }
 
     
 }
@@ -163,7 +176,7 @@ private extension DashboardViewController {
 
     func runQueries( completion: (success: Bool) -> Void) {
 
-        self.query(0){ (success) -> Void in
+        self.query(0, min: false){ (success) -> Void in
             if success {
                 self.xAxis.append(self.xAxisTemp)
                 self.yAxis.append(self.yAxisTemp)
@@ -172,7 +185,7 @@ private extension DashboardViewController {
                 self.xAxisTemp = []
                 self.yAxisTemp = []
                 
-                self.query(1){ (success) -> Void in
+                self.query(1, min: false){ (success) -> Void in
                     if success {
                         self.xAxis.append(self.xAxisTemp)
                         self.yAxis.append(self.yAxisTemp)
@@ -181,7 +194,7 @@ private extension DashboardViewController {
                         self.xAxisTemp = []
                         self.yAxisTemp = []
                         
-                        self.query(2){ (success) -> Void in
+                        self.query(2, min: false){ (success) -> Void in
                             if success {
                                 self.xAxis.append(self.xAxisTemp)
                                 self.yAxis.append(self.yAxisTemp)
@@ -190,16 +203,19 @@ private extension DashboardViewController {
                                 self.xAxisTemp = []
                                 self.yAxisTemp = []
                                 
-                                self.query(3){ (success) -> Void in
+                                self.query(3, min: false){ (success) -> Void in
                                     if success {
-                                        self.xAxis.append(self.xAxisTemp)
                                         self.yAxis.append(self.yAxisTemp)
-                                        self.stats.append(self.total)
-                                        self.total = 0.0
-                                        self.xAxisTemp = []
                                         self.yAxisTemp = []
                                         
-                                        completion(success: true)
+                                        self.query(3, min: true){ (success) -> Void in
+                                            if success {
+//                                                self.yAxis.append(self.yAxisTemp)
+                                                self.yAxisTemp = []
+                                                
+                                                completion(success: true)
+                                            }
+                                        }
                                     }
                                 }
 
@@ -211,7 +227,7 @@ private extension DashboardViewController {
         }
     }
 
-    func query(i: Int, completion: (success: Bool) -> Void) {
+    func query(i: Int, min: Bool, completion: (success: Bool) -> Void) {
         let quantityType = healthKitManager.quantityType[i]
         
         //interval set by a day
@@ -233,17 +249,32 @@ private extension DashboardViewController {
         
         let predicate: NSPredicate = HKSampleQuery.predicateForSamplesWithStartDate(NSDate.distantPast(), endDate: NSDate(), options: HKQueryOptions.None)
         
-        let query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
+        var query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
                                                 quantitySamplePredicate: predicate,
                                                 options: .CumulativeSum,
                                                 anchorDate: anchorDate,
                                                 intervalComponents: interval)
-            
+        
+        if( i == 3 && min == true){
+            query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
+                                                    quantitySamplePredicate: predicate,
+                                                    options: .DiscreteMin,
+                                                    anchorDate: anchorDate,
+                                                    intervalComponents: interval)
+        }
+        else if( i == 3 && min == false){
+            query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
+                                                quantitySamplePredicate: predicate,
+                                                options: .DiscreteMax,
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
+        }
+        
 
         // Set the results handler
         query.initialResultsHandler = {
             query, results, error in
-            
+        
             guard let statsCollection = results else {
                 // Perform proper error handling here
                 fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
@@ -271,7 +302,7 @@ private extension DashboardViewController {
                         print(value)
                     }
                 }
-                else{
+                else if (i == 3 && min == false){
                     if let quantity = statistics.maximumQuantity() {
                         let date = statistics.startDate
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
@@ -286,10 +317,13 @@ private extension DashboardViewController {
                         print(self.weekdays[myComponents.weekday])
                         print(value)
                     }
+                }
+                else if (i == 3 && min == true){
                     if let quantity = statistics.minimumQuantity() {
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
                         
                         self.xAxisMax.append(value)
+                        print(value)
                         
                         if self.max < value{
                             self.max = value

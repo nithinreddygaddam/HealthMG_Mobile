@@ -597,12 +597,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491464062.889689"
+            timestampString = "491480731.271382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "query(_:completion:)"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "query(_:min:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -613,27 +613,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491464062.889689"
+            timestampString = "491479605.756376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "query(_:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491448835.173408"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
          </BreakpointContent>
@@ -645,11 +629,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491448835.173408"
+            timestampString = "491479605.756376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
             <Locations>
@@ -693,11 +677,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491448835.173408"
+            timestampString = "491479605.756376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
             <Locations>
@@ -741,11 +725,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491448835.173408"
+            timestampString = "491479605.756376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
             <Locations>
@@ -789,11 +773,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthMG/DashboardViewController.swift"
-            timestampString = "491448835.173408"
+            timestampString = "491479605.756376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "requestHealthKitAuthorization()"
             landmarkType = "5">
          </BreakpointContent>

@@ -46,7 +46,8 @@
 		593418361D3050C6008528D4 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* down-arrow.png */; };
 		59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59623F441D3C6B0D00AA3B79 /* Main.storyboard */; };
 		59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A170811D3F713C004458B7 /* DashboardCell.swift */; };
-		59CC242B1D4B465500F7206F /* HeartRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CC242A1D4B465500F7206F /* HeartRateCell.xib */; };
+		59B091481D4B4D9D007E10D1 /* HeartRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */; };
+		59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */; };
 		59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */; };
 		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
@@ -98,7 +99,8 @@
 		593418341D3050C6008528D4 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
 		59623F441D3C6B0D00AA3B79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		59A170811D3F713C004458B7 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
-		59CC242A1D4B465500F7206F /* HeartRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateCell.xib; sourceTree = "<group>"; };
+		59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateCell.swift; sourceTree = "<group>"; };
+		59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateCell.xib; sourceTree = "<group>"; };
 		59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +145,8 @@
 				5918714A1D47F89A00D3426E /* DashboardCell.xib */,
 				591871501D48878D00D3426E /* StatView.xib */,
 				591871521D4889D800D3426E /* StatView.swift */,
-				59CC242A1D4B465500F7206F /* HeartRateCell.xib */,
+				59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */,
+				59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */,
 			);
 			name = "Custom cells";
 			sourceTree = "<group>";
@@ -318,7 +321,7 @@
 			files = (
 				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
 				591871511D48878D00D3426E /* StatView.xib in Resources */,
-				59CC242B1D4B465500F7206F /* HeartRateCell.xib in Resources */,
+				59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */,
 				5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */,
 				5913CCEE1D383BFC003C147C /* subscribers.png in Resources */,
 				59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */,
@@ -418,6 +421,7 @@
 				5913CCC91D356A47003C147C /* SocketIOManager.swift in Sources */,
 				5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */,
 				5931169D1D2CDAE000DCD212 /* User.swift in Sources */,
+				59B091481D4B4D9D007E10D1 /* HeartRateCell.swift in Sources */,
 				59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
