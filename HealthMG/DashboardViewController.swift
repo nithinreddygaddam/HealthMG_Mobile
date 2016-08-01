@@ -27,6 +27,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var total = 0.0
     var min = 0.0
     var max = 0.0
+    var index = 0
     
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
     
@@ -76,8 +77,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == "detailDashboardSegue" {
-//                let chatViewController = segue.destinationViewController as! ChatViewController
-//                chatViewController.nickname = nickname
+                let detailDashboardViewController = segue.destinationViewController as! DetailDashboardViewController
+                detailDashboardViewController.index = index
+                print("value set!!!!!!!!!!")
             }
         }
     }
@@ -146,6 +148,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 133.0
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        index = indexPath.row
+        print("cell selected")
+        self.performSegueWithIdentifier("detailDashboardSegue", sender: nil)
+        
     }
 
     

@@ -44,7 +44,11 @@
 		593418321D3050BC008528D4 /* plus-simple-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418311D3050BC008528D4 /* plus-simple-7.png */; };
 		593418351D3050C6008528D4 /* up-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418331D3050C6008528D4 /* up-arrow.png */; };
 		593418361D3050C6008528D4 /* down-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 593418341D3050C6008528D4 /* down-arrow.png */; };
-		59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59623F441D3C6B0D00AA3B79 /* Main.storyboard */; };
+		5946E8151D4F3657006B91E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5946E8141D4F3657006B91E1 /* Main.storyboard */; };
+		59583C301D4D2A3C00FF2523 /* BarChartDashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59583C2F1D4D2A3C00FF2523 /* BarChartDashboard.xib */; };
+		59583C321D4D2A7500FF2523 /* LineChartDashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59583C311D4D2A7500FF2523 /* LineChartDashboard.xib */; };
+		59583C381D4D30DA00FF2523 /* BarChartDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59583C371D4D30DA00FF2523 /* BarChartDashboard.swift */; };
+		59583C3A1D4D30F800FF2523 /* LineChartDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59583C391D4D30F800FF2523 /* LineChartDashboard.swift */; };
 		59A170831D3F713C004458B7 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A170811D3F713C004458B7 /* DashboardCell.swift */; };
 		59B091481D4B4D9D007E10D1 /* HeartRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */; };
 		59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */; };
@@ -97,7 +101,11 @@
 		593418311D3050BC008528D4 /* plus-simple-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-simple-7.png"; sourceTree = "<group>"; };
 		593418331D3050C6008528D4 /* up-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up-arrow.png"; sourceTree = "<group>"; };
 		593418341D3050C6008528D4 /* down-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow.png"; sourceTree = "<group>"; };
-		59623F441D3C6B0D00AA3B79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5946E8141D4F3657006B91E1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		59583C2F1D4D2A3C00FF2523 /* BarChartDashboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarChartDashboard.xib; sourceTree = "<group>"; };
+		59583C311D4D2A7500FF2523 /* LineChartDashboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChartDashboard.xib; sourceTree = "<group>"; };
+		59583C371D4D30DA00FF2523 /* BarChartDashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartDashboard.swift; sourceTree = "<group>"; };
+		59583C391D4D30F800FF2523 /* LineChartDashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartDashboard.swift; sourceTree = "<group>"; };
 		59A170811D3F713C004458B7 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateCell.swift; sourceTree = "<group>"; };
 		59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateCell.xib; sourceTree = "<group>"; };
@@ -135,7 +143,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5913CCDA1D36BDC8003C147C /* Custom cells */ = {
+		5913CCDA1D36BDC8003C147C /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
 				59A170811D3F713C004458B7 /* DashboardCell.swift */,
@@ -147,8 +155,12 @@
 				591871521D4889D800D3426E /* StatView.swift */,
 				59B091471D4B4D9D007E10D1 /* HeartRateCell.swift */,
 				59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */,
+				59583C2F1D4D2A3C00FF2523 /* BarChartDashboard.xib */,
+				59583C311D4D2A7500FF2523 /* LineChartDashboard.xib */,
+				59583C371D4D30DA00FF2523 /* BarChartDashboard.swift */,
+				59583C391D4D30F800FF2523 /* LineChartDashboard.swift */,
 			);
-			name = "Custom cells";
+			name = "Custom views";
 			sourceTree = "<group>";
 		};
 		593116931D2C7E5900DCD212 /* View Controller  */ = {
@@ -198,7 +210,7 @@
 		59E735941D25987D007F075E /* HealthMG */ = {
 			isa = PBXGroup;
 			children = (
-				5913CCDA1D36BDC8003C147C /* Custom cells */,
+				5913CCDA1D36BDC8003C147C /* Custom views */,
 				5931169B1D2CDA2000DCD212 /* Model */,
 				593116931D2C7E5900DCD212 /* View Controller  */,
 				59E735A71D259898007F075E /* HealthMG.entitlements */,
@@ -206,7 +218,7 @@
 				59E7359C1D25987D007F075E /* Assets.xcassets */,
 				59E7359E1D25987D007F075E /* LaunchScreen.storyboard */,
 				59E735A11D25987D007F075E /* Info.plist */,
-				59623F441D3C6B0D00AA3B79 /* Main.storyboard */,
+				5946E8141D4F3657006B91E1 /* Main.storyboard */,
 				593116911D2C7E0B00DCD212 /* HealthManger.swift */,
 				5913CCC81D356A47003C147C /* SocketIOManager.swift */,
 				591871561D4925DF00D3426E /* HealthKitManager.swift */,
@@ -322,9 +334,11 @@
 				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
 				591871511D48878D00D3426E /* StatView.xib in Resources */,
 				59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */,
+				59583C321D4D2A7500FF2523 /* LineChartDashboard.xib in Resources */,
 				5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */,
+				59583C301D4D2A3C00FF2523 /* BarChartDashboard.xib in Resources */,
 				5913CCEE1D383BFC003C147C /* subscribers.png in Resources */,
-				59623F451D3C6B0D00AA3B79 /* Main.storyboard in Resources */,
+				5946E8151D4F3657006B91E1 /* Main.storyboard in Resources */,
 				5913CCEF1D383BFC003C147C /* publishers.png in Resources */,
 				59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */,
 				593418321D3050BC008528D4 /* plus-simple-7.png in Resources */,
@@ -404,9 +418,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5913CD031D3BF2A9003C147C /* ChatWindowController.swift in Sources */,
+				59583C381D4D30DA00FF2523 /* BarChartDashboard.swift in Sources */,
 				59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */,
 				59E735961D25987D007F075E /* AppDelegate.swift in Sources */,
 				591871571D4925DF00D3426E /* HealthKitManager.swift in Sources */,
+				59583C3A1D4D30F800FF2523 /* LineChartDashboard.swift in Sources */,
 				5913CCFE1D3AD5C2003C147C /* PermissionViewController.swift in Sources */,
 				591871551D488A1B00D3426E /* BaseCell.swift in Sources */,
 				5913CCCB1D360E4F003C147C /* ChatListViewController.swift in Sources */,
