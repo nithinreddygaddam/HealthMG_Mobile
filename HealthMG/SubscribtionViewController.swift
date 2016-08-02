@@ -199,10 +199,10 @@ class SubscribtionViewController: UIViewController, UITableViewDelegate, UITable
             callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 if self.pubSub == "Publishers" {
-                    SocketIOManager.sharedInstance.deletePublisher(self.publishersList[indexPath.row])
+                    SocketIOManager.sharedInstance.deletePublisher(loggedUser.id, publisher: self.publishersList[indexPath.row])
                 }
                 else if self.pubSub == "Subscribers" {
-                    SocketIOManager.sharedInstance.deleteSubscriber(self.subscribersList[indexPath.row])
+                    SocketIOManager.sharedInstance.deleteSubscriber(loggedUser.id, subscriber: self.subscribersList[indexPath.row])
                 }
                 return true
             })

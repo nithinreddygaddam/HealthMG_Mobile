@@ -27,7 +27,7 @@ class LineChartDashboard: UIView {
         lineChartView.legend.enabled = false
         lineChartView.scaleYEnabled = false
         lineChartView.scaleXEnabled = false
-        lineChartView.pinchZoomEnabled = true
+        lineChartView.pinchZoomEnabled = false
         lineChartView.doubleTapToZoomEnabled = false
 //        lineChartView.highlighter = nil
         lineChartView.rightAxis.enabled = false

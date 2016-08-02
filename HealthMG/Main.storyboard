@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
+                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNn-mP-LSd">
@@ -78,22 +78,20 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GNn-mP-LSd" secondAttribute="trailing" constant="25" id="3EJ-Ck-eXp"/>
                             <constraint firstAttribute="trailing" secondItem="dHT-O5-v4t" secondAttribute="trailing" constant="25" id="7FS-vV-GxK"/>
+                            <constraint firstItem="Ayc-WC-wma" firstAttribute="top" secondItem="ocE-IE-LIo" secondAttribute="top" id="7vR-MS-SFV"/>
+                            <constraint firstItem="Ayc-WC-wma" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" id="9pr-Oy-fz5"/>
                             <constraint firstItem="dHT-O5-v4t" firstAttribute="top" secondItem="GNn-mP-LSd" secondAttribute="bottom" constant="28" id="AQk-Hg-s37"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jdB-E8-Jhg" secondAttribute="trailing" constant="28" id="Ej8-JY-Grc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ueq-Rw-Ujc" secondAttribute="trailing" constant="5" id="F6x-VG-h8B"/>
-                            <constraint firstAttribute="trailing" secondItem="Ayc-WC-wma" secondAttribute="trailing" id="I45-aZ-aUl"/>
                             <constraint firstItem="dHT-O5-v4t" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" constant="24" id="KI2-gP-gb4"/>
-                            <constraint firstItem="Ayc-WC-wma" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" id="NBA-aJ-iMP"/>
-                            <constraint firstItem="Ayc-WC-wma" firstAttribute="top" secondItem="ocE-IE-LIo" secondAttribute="top" id="Ucv-84-NGv"/>
-                            <constraint firstItem="Ayc-WC-wma" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" id="WiK-3p-dee"/>
-                            <constraint firstAttribute="trailing" secondItem="Ayc-WC-wma" secondAttribute="trailing" id="gFf-Yt-oRu"/>
+                            <constraint firstItem="u9M-Ve-WVP" firstAttribute="top" secondItem="Ayc-WC-wma" secondAttribute="bottom" id="ck6-t0-mHy"/>
                             <constraint firstItem="u9M-Ve-WVP" firstAttribute="top" secondItem="ueq-Rw-Ujc" secondAttribute="bottom" constant="20" id="jeh-vT-Vo2"/>
                             <constraint firstItem="GNn-mP-LSd" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leading" constant="24" id="mma-O2-Rkk"/>
                             <constraint firstItem="jdB-E8-Jhg" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leadingMargin" constant="28" id="nB6-6a-hxn"/>
                             <constraint firstItem="GNn-mP-LSd" firstAttribute="top" secondItem="jdB-E8-Jhg" secondAttribute="bottom" constant="291" id="pqq-ux-R86"/>
                             <constraint firstItem="jdB-E8-Jhg" firstAttribute="top" secondItem="eJ5-pL-YPb" secondAttribute="bottom" constant="57" id="rQ1-HW-daG"/>
-                            <constraint firstItem="Ayc-WC-wma" firstAttribute="top" secondItem="ocE-IE-LIo" secondAttribute="top" id="roO-SC-dHX"/>
                             <constraint firstItem="ueq-Rw-Ujc" firstAttribute="leading" secondItem="ocE-IE-LIo" secondAttribute="leadingMargin" constant="241" id="ur9-CB-9PN"/>
+                            <constraint firstAttribute="trailing" secondItem="Ayc-WC-wma" secondAttribute="trailing" id="vKT-pP-UU5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="EWw-dZ-jkB">
@@ -421,7 +419,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="TyS-Ob-q1h">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zKo-9j-llz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="zKo-9j-llz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="4Ho-Rd-dMm">
                         <autoresizingMask key="autoresizingMask"/>

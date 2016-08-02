@@ -13,6 +13,12 @@
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jat-hm-zii" customClass="BarChartView" customModule="Charts">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72R-wW-vhh" customClass="BarChartView" customModule="Charts">
+                            <rect key="frame" x="0.0" y="0.0" width="92" height="21"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -21,8 +27,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="barChartView" destination="Jat-hm-zii" id="ZFU-uU-cVI"/>
+                <outlet property="markerView" destination="72R-wW-vhh" id="v1j-In-RNJ"/>
             </connections>
-            <point key="canvasLocation" x="329.5" y="167.5"/>
+            <point key="canvasLocation" x="117.5" y="220.5"/>
         </view>
     </objects>
 </document>

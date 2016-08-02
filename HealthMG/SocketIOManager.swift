@@ -11,6 +11,7 @@ import SimpleKeychain
 import SwiftyJSON
 
 var connected : Bool = false
+//var available : Bool = false
 
 class SocketIOManager: NSObject {
     
@@ -50,7 +51,7 @@ class SocketIOManager: NSObject {
         }
     }
     
-//    func checkConnection( completionHandler: (available: boolean?) -> Void) {
+//    func checkConnection( completionHandler: (available: bool) -> Void) {
 //        
 //        socket.emit("ping")
 //        
@@ -96,9 +97,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getPublishers(userID: String, completionHandler: (publishers: [[String: AnyObject]]?) -> Void) {
+    func getPublishers(userID: String?, completionHandler: (publishers: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getPublishersList", userID)
+        socket.emit("getPublishersList", userID!)
         
         socket.on("successPubList") { ( dataArray, ack) -> Void in
             
@@ -107,9 +108,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getSubscribers(userID: String, completionHandler: (subscribers: [[String: AnyObject]]?) -> Void) {
+    func getSubscribers(userID: String?, completionHandler: (subscribers: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getSubscribersList", userID)
+        socket.emit("getSubscribersList", userID!)
         
         socket.on("successSubList") { ( dataArray, ack) -> Void in
             
@@ -118,17 +119,17 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func deletePublisher(publisher: [String: AnyObject]) {
-        socket.emit("deleteSubcribtion", loggedUser.id, publisher)
+    func deletePublisher(userID: String?, publisher: [String: AnyObject]) {
+        socket.emit("deleteSubcribtion", userID!, publisher)
     }
     
-    func deleteSubscriber(subscriber: [String: AnyObject]) {
-        socket.emit("deleteSubcribtion", subscriber, loggedUser.id)
+    func deleteSubscriber(userID: String?, subscriber: [String: AnyObject]) {
+        socket.emit("deleteSubcribtion", subscriber, userID!)
     }
     
-    func getChats(userID: String, completionHandler: (chatsList: [[String: AnyObject]]!, lastMsg: [[String: AnyObject]]?) -> Void) {
+    func getChats(userID: String?, completionHandler: (chatsList: [[String: AnyObject]]!, lastMsg: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getChastList", userID)
+        socket.emit("getChastList", userID!)
         
         socket.on("successChatsList") { ( dataArray, ack) -> Void in
             
@@ -137,13 +138,13 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func deleteChat(conversationID: String) {
-        socket.emit("deleteChat", conversationID)
+    func deleteChat(conversationID: String?) {
+        socket.emit("deleteChat", conversationID!)
     }
     
-    func getConversation(conversationID: String, completionHandler: (chat: [[String: AnyObject]]?) -> Void) {
+    func getConversation(conversationID: String?, completionHandler: (chat: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getConversation", conversationID)
+        socket.emit("getConversation", conversationID!)
         
         socket.on("successConversation") { ( dataArray, ack) -> Void in
             
@@ -152,9 +153,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getUser(userID: String, completionHandler: (user: [String: AnyObject]!, permissions: [String: AnyObject]?) -> Void) {
+    func getUser(userID: String?, completionHandler: (user: [String: AnyObject]!, permissions: [String: AnyObject]?) -> Void) {
         
-        socket.emit("getUser", userID)
+        socket.emit("getUser", userID!)
         
         socket.on("successUser") { ( dataArray, ack) -> Void in
             
@@ -167,37 +168,37 @@ class SocketIOManager: NSObject {
         socket.emit("changePermission", subscribtion)
     }
     
-    func getHeartRates(user: [String: AnyObject], completionHandler: (userHeartRatesData: [[String: AnyObject]]?) -> Void) {
-        
-        socket.emit("getHeartRates", user)
-        
-        socket.on("successHeartRates") { ( dataArray, ack) -> Void in
-            let flag = dataArray[1]
-            if (flag as! NSObject == 0){
-                completionHandler(userHeartRatesData: dataArray[0] as? [[String: AnyObject]])
-            }
-            else{
-                //garbage values
-                completionHandler(userHeartRatesData: [[ "dob": 20, "lastName": 3]])
-            }
-        }
-        
-    }
+//    func getHeartRates(user: [String: AnyObject], completionHandler: (userHeartRatesData: [[String: AnyObject]]?) -> Void) {
+//        
+//        socket.emit("getHeartRates", user)
+//        
+//        socket.on("successHeartRates") { ( dataArray, ack) -> Void in
+//            let flag = dataArray[1]
+//            if (flag as! NSObject == 0){
+//                completionHandler(userHeartRatesData: dataArray[0] as? [[String: AnyObject]])
+//            }
+//            else{
+//                //garbage values
+//                completionHandler(userHeartRatesData: [[ "dob": 20, "lastName": 3]])
+//            }
+//        }
+//        
+//    }
+//    
+//    func getUpdates(user: [String: AnyObject], completionHandler: (messageInfo: [[String: AnyObject]]?) -> Void) {
+//        socket.on("newHeartBeats") { (dataArray, socketAck) -> Void in
+//            
+//            let a = dataArray[0]["publisher"] as? String
+//            let b = user["_id"] as! String
+//            if(a == b){
+//                completionHandler(messageInfo: dataArray[0] as? [[String : AnyObject]])
+//            }
+//            
+//        }
+//    }
     
-    func getUpdates(user: [String: AnyObject], completionHandler: (messageInfo: [[String: AnyObject]]?) -> Void) {
-        socket.on("newHeartBeats") { (dataArray, socketAck) -> Void in
-            
-            let a = dataArray[0]["publisher"] as? String
-            let b = user["_id"] as! String
-            if(a == b){
-                completionHandler(messageInfo: dataArray[0] as? [[String : AnyObject]])
-            }
-            
-        }
-    }
-    
-    func requestSubscription(userID: String, publishersUsername: String, completionHandler: (subscription: [String: AnyObject]?) -> Void) {
-        socket.emit("requestSubscription", userID, publishersUsername)
+    func requestSubscription(userID: String?, publishersUsername: String, completionHandler: (subscription: [String: AnyObject]?) -> Void) {
+        socket.emit("requestSubscription", userID!, publishersUsername)
         
         socket.on("successRequesting") { ( dataArray, ack) -> Void in
             
@@ -205,9 +206,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getSubscribtion(userID: String, subscriberID: String, completionHandler: (subscribtion: [String: AnyObject]?) -> Void) {
+    func getSubscribtion(userID: String?, subscriberID: String, completionHandler: (subscribtion: [String: AnyObject]?) -> Void) {
         
-        socket.emit("getSubscribtion", userID, subscriberID)
+        socket.emit("getSubscribtion", userID!, subscriberID)
         
         socket.on("successSubscribtion") { ( dataArray, ack) -> Void in
             
@@ -216,8 +217,8 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func sendMessage(conversationID: String, loggedUser: String, user2: String, message: String) {
-        socket.emit("chatMessage", conversationID, loggedUser, user2, message)
+    func sendMessage(conversationID: String?, loggedUser: String, user2: String, message: String) {
+        socket.emit("chatMessage", conversationID!, loggedUser, user2, message)
     }
     
     func getChatMessage(completionHandler: (messageInfo: [String: AnyObject]?) -> Void) {
@@ -234,9 +235,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getMessages(conversationID: String, completionHandler: (chat: [[String: AnyObject]]?) -> Void) {
+    func getMessages(conversationID: String?, completionHandler: (chat: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getChatMessages", conversationID)
+        socket.emit("getChatMessages", conversationID!)
         
         socket.on("successChatMessages") { ( dataArray, ack) -> Void in
             
@@ -245,9 +246,9 @@ class SocketIOManager: NSObject {
         }
     }
 
-    func getConversationID(loggedUser: String, user2: String, completionHandler: (conversationID: String?) -> Void) {
+    func getConversationID(loggedUser: String?, user2: String, completionHandler: (conversationID: String?) -> Void) {
         
-        socket.emit("getConversationID", loggedUser, user2)
+        socket.emit("getConversationID", loggedUser!, user2)
         
         socket.on("successConversationID") { ( dataArray, ack) -> Void in
             
@@ -258,9 +259,9 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func getConversationsList(completionHandler: (conversationsList: [[String: AnyObject]]?) -> Void) {
+    func getConversationsList(userID: String?, completionHandler: (conversationsList: [[String: AnyObject]]?) -> Void) {
         
-        socket.emit("getConversationsList", loggedUser.id)
+        socket.emit("getConversationsList", userID!)
         
         socket.on("successConversationsList") { (dataArray, socketAck) -> Void in
             

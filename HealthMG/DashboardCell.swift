@@ -17,6 +17,7 @@ class DashboardCell: UITableViewCell {
 
     @IBOutlet weak var barChartView: BarChartView!
 //    @IBOutlet weak var imgBckg: UIImageView!
+    @IBOutlet weak var lblUnit: UILabel!
     @IBOutlet weak var lblStat: UILabel!
     @IBOutlet weak var lblAtrribute: UILabel!
 

@@ -12,6 +12,7 @@ import Async
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+
     @IBOutlet weak var tblView: UITableView!
     
     var configurationOK = false
@@ -30,7 +31,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var index = 0
     
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
-    
+    let units:[String] = [" ", "miles", "kcal", "bpm"]
     let weekdays = [
         "nil",
         "Sun",
@@ -54,6 +55,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
 
         requestHealthKitAuthorization()
+        //disabling to tabs in the offline mode
+        if loggedUser.id == nil {
+            if  let arrayOfTabBarItems = tabBarController!.tabBar.items as! AnyObject as? NSArray,tabBarItem = arrayOfTabBarItems[2] as? UITabBarItem {
+                tabBarItem.enabled = false
+            }
+            if  let arrayOfTabBarItems = tabBarController!.tabBar.items as! AnyObject as? NSArray,tabBarItem = arrayOfTabBarItems[1] as? UITabBarItem {
+                tabBarItem.enabled = false
+            }
+        }
         
     }
 
@@ -79,7 +89,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             if identifier == "detailDashboardSegue" {
                 let detailDashboardViewController = segue.destinationViewController as! DetailDashboardViewController
                 detailDashboardViewController.index = index
-                print("value set!!!!!!!!!!")
             }
         }
     }
@@ -133,7 +142,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 //        cell.yaxis = yAxis
 //        cell.rates = xAxis
             if (yAxis.count == (attributes.count)){
-                cell.lblStat.text = String(round(stats[indexPath.row]))
+                cell.lblStat.text = String(round(100.0 * stats[indexPath.row]) / 100.0)
+                cell.lblUnit.text = units[indexPath.row]
                 cell.setChart(yAxis[indexPath.row], values: xAxis[indexPath.row])
             }
 //        let newView = UIView(frame: CGRectMake(200, 10, 100, 50))
@@ -318,7 +328,7 @@ private extension DashboardViewController {
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
                         
                         self.xAxisMin.append(value)
-                        if self.min > value{
+                         if ((self.min > value || self.min == 0.0) && (value > 0)) {
                             self.min = value
                         }
                         

@@ -10,20 +10,15 @@ import UIKit
 import ChameleonFramework
 import Charts
 
-class BarChartDashboard: UIView {
+class BarChartDashboard: UIView, ChartViewDelegate {
     
     var yaxis = [String]()
     var rates =  [Double]()
+    var skipLabels = 0
     
     @IBOutlet weak var barChartView: BarChartView!
-    
-//    override init(frame: CGRect) {
-//        super.init(frame:frame)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
+    @IBOutlet weak var markerView: BaloonMarker!
+    var baloon: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,29 +26,31 @@ class BarChartDashboard: UIView {
         
         barChartView.noDataText = "No data to load"
         barChartView.xAxis.labelPosition = .Bottom
-        barChartView.xAxis.setLabelsToSkip(0)
         barChartView.legend.enabled = false
-//        barChartView.scaleYEnabled = false
-//        barChartView.scaleXEnabled = false
-        barChartView.pinchZoomEnabled = true
+        barChartView.scaleYEnabled = false
+        barChartView.scaleXEnabled = false
+        barChartView.pinchZoomEnabled = false
         barChartView.doubleTapToZoomEnabled = false
-        barChartView.highlighter = nil
         barChartView.rightAxis.enabled = false
         barChartView.xAxis.drawGridLinesEnabled = false
         barChartView.leftAxis.enabled = true
         barChartView.leftAxis.drawGridLinesEnabled = false
         barChartView.descriptionText = ""
-        barChartView.drawValueAboveBarEnabled = false
         barChartView.xAxis.drawAxisLineEnabled = false
         barChartView.drawValueAboveBarEnabled = false
         
-        setChart(yaxis, values: rates)
+        barChartView.delegate = self
         
+        baloon = (NSBundle.mainBundle().loadNibNamed("BaloonMarker", owner: self, options: nil)[0] as? UIView)!
+        markerView.addSubview(baloon)
+        self.baloon.frame = self.markerView.bounds
     }
     
-    func setChart(dataPoints: [String], values: [Double]) {
+
+    func setChart(dataPoints: [String], values: [Double], skipLabels: Int) {
         
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInBounce)
+        barChartView.xAxis.setLabelsToSkip(skipLabels)
         
         var dataEntries: [BarChartDataEntry] = []
         
@@ -65,11 +62,15 @@ class BarChartDashboard: UIView {
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         barChartView.data = chartData
-//        barChartView.isDrawValueAboveBarEnabled = false
-//        barChartView.barData =
         
-        
-        
+    }
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        let markerPosition = chartView.getMarkerPosition(entry: entry, highlight: highlight)
+        // Adding top marker
+        (self.baloon as! BaloonMarker).lblMarker.text = "\(entry.value)"
+        (self.baloon as! BaloonMarker).center = CGPointMake(markerPosition.x, self.markerView.center.y)
+        (self.baloon as! BaloonMarker).hidden = false
     }
     
     

@@ -29,7 +29,6 @@
 		591871571D4925DF00D3426E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591871561D4925DF00D3426E /* HealthKitManager.swift */; };
 		591AD6271D25F32F008E2851 /* icon-blue-health.png in Resources */ = {isa = PBXBuildFile; fileRef = 591AD6261D25F32F008E2851 /* icon-blue-health.png */; };
 		591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591AD6291D2653A3008E2851 /* RegisterViewController.swift */; };
-		593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593116911D2C7E0B00DCD212 /* HealthManger.swift */; };
 		5931169D1D2CDAE000DCD212 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5931169C1D2CDAE000DCD212 /* User.swift */; };
 		5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181B1D2F930B008528D4 /* DashboardViewController.swift */; };
 		5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */; };
@@ -54,6 +53,8 @@
 		59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */; };
 		59CE6DDF1D25EC6B004D382B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */; };
 		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
+		59DCDB921D50457B003552A1 /* BaloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DCDB911D50457B003552A1 /* BaloonMarker.swift */; };
+		59DCDB941D506518003552A1 /* BaloonMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DCDB931D506518003552A1 /* BaloonMarker.xib */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
 		59E7359D1D25987D007F075E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359C1D25987D007F075E /* Assets.xcassets */; };
 		59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359E1D25987D007F075E /* LaunchScreen.storyboard */; };
@@ -86,7 +87,6 @@
 		591871561D4925DF00D3426E /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		591AD6261D25F32F008E2851 /* icon-blue-health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-health.png"; sourceTree = "<group>"; };
 		591AD6291D2653A3008E2851 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		593116911D2C7E0B00DCD212 /* HealthManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManger.swift; sourceTree = "<group>"; };
 		5931169C1D2CDAE000DCD212 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5934181B1D2F930B008528D4 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		5934181D1D2F932B008528D4 /* SubscribtionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribtionViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		59B0914D1D4B6156007E10D1 /* HeartRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateCell.xib; sourceTree = "<group>"; };
 		59CE6DDE1D25EC6B004D382B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		59DCDB911D50457B003552A1 /* BaloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaloonMarker.swift; sourceTree = "<group>"; };
+		59DCDB931D506518003552A1 /* BaloonMarker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaloonMarker.xib; sourceTree = "<group>"; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E735951D25987D007F075E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59E7359C1D25987D007F075E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 				59583C311D4D2A7500FF2523 /* LineChartDashboard.xib */,
 				59583C371D4D30DA00FF2523 /* BarChartDashboard.swift */,
 				59583C391D4D30F800FF2523 /* LineChartDashboard.swift */,
+				59DCDB911D50457B003552A1 /* BaloonMarker.swift */,
+				59DCDB931D506518003552A1 /* BaloonMarker.xib */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -219,7 +223,6 @@
 				59E7359E1D25987D007F075E /* LaunchScreen.storyboard */,
 				59E735A11D25987D007F075E /* Info.plist */,
 				5946E8141D4F3657006B91E1 /* Main.storyboard */,
-				593116911D2C7E0B00DCD212 /* HealthManger.swift */,
 				5913CCC81D356A47003C147C /* SocketIOManager.swift */,
 				591871561D4925DF00D3426E /* HealthKitManager.swift */,
 			);
@@ -339,6 +342,7 @@
 				59583C301D4D2A3C00FF2523 /* BarChartDashboard.xib in Resources */,
 				5913CCEE1D383BFC003C147C /* subscribers.png in Resources */,
 				5946E8151D4F3657006B91E1 /* Main.storyboard in Resources */,
+				59DCDB941D506518003552A1 /* BaloonMarker.xib in Resources */,
 				5913CCEF1D383BFC003C147C /* publishers.png in Resources */,
 				59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */,
 				593418321D3050BC008528D4 /* plus-simple-7.png in Resources */,
@@ -429,11 +433,11 @@
 				593418221D2F937E008528D4 /* DetailDashboardViewController.swift in Sources */,
 				591871531D4889D800D3426E /* StatView.swift in Sources */,
 				593418261D2F93D9008528D4 /* ProfileViewController.swift in Sources */,
-				593116921D2C7E0B00DCD212 /* HealthManger.swift in Sources */,
 				5934181E1D2F932B008528D4 /* SubscribtionViewController.swift in Sources */,
 				5913CCE11D36BDEF003C147C /* ChatCell.swift in Sources */,
 				593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */,
 				591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */,
+				59DCDB921D50457B003552A1 /* BaloonMarker.swift in Sources */,
 				5913CCC91D356A47003C147C /* SocketIOManager.swift in Sources */,
 				5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */,
 				5931169D1D2CDAE000DCD212 /* User.swift in Sources */,

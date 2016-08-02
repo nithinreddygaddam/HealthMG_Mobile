@@ -34,7 +34,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         
         conversationsList.removeAll()
         
-        SocketIOManager.sharedInstance.getConversationsList( { (conversationsList) -> Void in
+        SocketIOManager.sharedInstance.getConversationsList( loggedUser.id, completionHandler: { (conversationsList) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if(conversationsList != nil){
                     self.conversationsList = conversationsList!

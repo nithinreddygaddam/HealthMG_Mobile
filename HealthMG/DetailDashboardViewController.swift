@@ -20,6 +20,11 @@ class DetailDashboardViewController: UIViewController {
     var total = 0.0
     var min = 0.0
     var max = 0.0
+    var minDate: String = ""
+    var maxDate: String = ""
+    var count = 0.0
+    var last = 0.0
+    var lastDate: String = ""
     
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
     
@@ -63,13 +68,22 @@ class DetailDashboardViewController: UIViewController {
     @IBOutlet weak var statView2: StatView!
     @IBOutlet weak var statView3: StatView!
     @IBOutlet weak var statView4: StatView!
+    var stat1: UIView!
+    var stat2: UIView!
+    var stat3: UIView!
+    var stat4: UIView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = attributes[index]
         // Do any additional setup after loading the view.
-                self.tabBarController?.tabBar.hidden = true
+//                self.tabBarController?.tabBar.hidden = true
         runQueries(1)
+        
+        stat1 = NSBundle.mainBundle().loadNibNamed("StatView", owner: self, options: nil)[0] as? UIView
+        stat2 = NSBundle.mainBundle().loadNibNamed("StatView", owner: self, options: nil)[0] as? UIView
+        stat3 = NSBundle.mainBundle().loadNibNamed("StatView", owner: self, options: nil)[0] as? UIView
+        stat4 = NSBundle.mainBundle().loadNibNamed("StatView", owner: self, options: nil)[0] as? UIView
         
         if index != 3{
             chart = NSBundle.mainBundle().loadNibNamed("BarChartDashboard", owner: self, options: nil)[0] as? UIView
@@ -80,6 +94,15 @@ class DetailDashboardViewController: UIViewController {
         
         self.chartView.addSubview(chart)
         self.chart.frame = self.chartView.bounds
+        
+        self.statView1.addSubview(stat1)
+        self.stat1.frame = self.statView1.bounds
+        self.statView2.addSubview(stat2)
+        self.stat2.frame = self.statView2.bounds
+        self.statView3.addSubview(stat3)
+        self.stat3.frame = self.statView3.bounds
+        self.statView4.addSubview(stat4)
+        self.stat4.frame = self.statView4.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,26 +135,6 @@ class DetailDashboardViewController: UIViewController {
 
 private extension DetailDashboardViewController {
     
-//    func requestHealthKitAuthorization() {
-//        let dataTypesToRead = NSSet(objects: healthKitManager.quantityType[0], healthKitManager.quantityType[1], healthKitManager.quantityType[2], healthKitManager.quantityType[3] )
-//        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
-//            if success {
-//                self.runQueries { (success) -> Void in
-//                    if success {
-//                        // do second task if success
-//                        dispatch_async(dispatch_get_main_queue(), {
-////                            self.tblView.reloadData()
-////                            self.tblView.hidden = false
-//                        })
-//                    }
-//                }
-//                
-//            } else {
-//                print(error!.description)
-//            }
-//            })
-//    }
-    
     
     func runQueries(period: Int) {
         
@@ -139,6 +142,11 @@ private extension DetailDashboardViewController {
         xAxis = []
         xAxisMin = []
         xAxisMax = []
+        min = 0.00
+        max = 0.00
+        total = 0.00
+        count = 0.00
+        last = 0.00
         
         if self.index == 3{
             self.query(false, periodIndex: period){ (success) -> Void in
@@ -149,6 +157,7 @@ private extension DetailDashboardViewController {
                             // do second task if success
                             dispatch_async(dispatch_get_main_queue(), {
                                 (self.chart as! LineChartDashboard).setChartData(self.yAxis, yAxisMax: self.xAxisMax, yAxisMin : self.xAxisMin)
+                                
                             })
                         }
                     }
@@ -159,7 +168,36 @@ private extension DetailDashboardViewController {
                 if success {
                     // do second task if success
                     dispatch_async(dispatch_get_main_queue(), {
-                        (self.chart as! BarChartDashboard).setChart(self.yAxis, values: self.xAxis)
+                        var skip = 0
+                        switch self.period[period] {
+                        case "Today":
+                            skip = 10
+                        case "Daily":
+                            skip = 5
+                        case "Weekly":
+                            skip = 6
+                        case "Monthly":
+                            skip = 0
+                        case "365 Days":
+                            skip = 30
+                        default:
+                            skip = 0
+                        }
+
+                        (self.chart as! BarChartDashboard).setChart(self.yAxis, values: self.xAxis, skipLabels: skip)
+                        (self.stat1 as! StatView).lblType.text = "last"
+                        (self.stat1 as! StatView).lblStat.text = String(round(100.0 * self.last) / 100.0)
+                        (self.stat1 as! StatView).lblDate.text = self.lastDate
+                        (self.stat2 as! StatView).lblType.text = "average"
+                        (self.stat2 as! StatView).lblStat.text = String(round(100.0 * self.total/self.count) / 100.0)
+                        (self.stat2 as! StatView).lblDate.text = " "
+                        (self.stat3 as! StatView).lblType.text = "min"
+                        (self.stat3 as! StatView).lblStat.text = String(round(100.0 * self.min) / 100.0)
+                        (self.stat3 as! StatView).lblDate.text = self.minDate
+                        (self.stat4 as! StatView).lblType.text = "max"
+                        (self.stat4 as! StatView).lblStat.text = String(round(100.0 * self.max) / 100.0)
+                        (self.stat4 as! StatView).lblDate.text = self.maxDate
+                        
                     })
                 }
             }
@@ -266,6 +304,7 @@ private extension DetailDashboardViewController {
                         
                         self.xAxis.append(value)
                         self.total += value
+                        self.count += 1
                         var dateStr: String
                         
                         switch self.period[periodIndex] {
@@ -303,6 +342,21 @@ private extension DetailDashboardViewController {
                             dateStr = self.months[myComponents.month] + " "
                             myComponents = calendar.components(.Day, fromDate: startDate)
                             dateStr += String(myComponents.day)
+                        }
+                        
+                        if ((self.min > value || self.min == 0.0) && (value > 0)) {
+                            self.min = value
+                            self.minDate = dateStr
+                        }
+                        
+                        if self.max < value{
+                            self.max = value
+                            self.maxDate = dateStr
+                        }
+                        
+                        if(value > 0.0){
+                            self.last = value
+                            self.lastDate = dateStr
                         }
                         
                         self.yAxis.append(dateStr)
@@ -343,38 +397,4 @@ private extension DetailDashboardViewController {
         
         healthKitManager.healthStore!.executeQuery(query)
     }
-    
-    
-    
-    
-    //    func queryStepsSum() {
-    //        let sumOption = HKStatisticsOptions.CumulativeSum
-    //        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: nil, options: sumOption) { [unowned self] (query, result, error) in
-    //            if let sumQuantity = result?.sumQuantity() {
-    ////                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier) as UITableViewCell
-    //                let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-    ////                headerView.textLabel.text = "\(numberOfSteps) total"
-    ////                self.tableView.tableHeaderView = headerView
-    //                print("Number of steps: ")
-    //                print(numberOfSteps)
-    //            }
-    ////            self.activityIndicator.stopAnimating()
-    //        }
-    //        healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
-    //    }
-    
-    //    func querySteps() {
-    //        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount!,
-    //                                        predicate: nil,
-    //                                        limit: 100,
-    //                                        sortDescriptors: nil)
-    //        { [unowned self] (query, results, error) in
-    //            if let results = results as? [HKQuantitySample] {
-    //                self.steps = results
-    ////                self.tableView.reloadData()
-    //            }
-    ////            self.activityIndicator.stopAnimating()
-    //        }
-    //        healthKitManager.healthStore?.executeQuery(sampleQuery)
-    //    }
 }
