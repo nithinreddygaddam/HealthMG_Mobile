@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import Async
+import ChameleonFramework
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -32,6 +33,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
     let units:[String] = [" ", "miles", "kcal", "bpm"]
+    let colors:[UIColor] = [FlatSkyBlue(), FlatLime(), FlatYellow(), FlatWatermelon()]
     let weekdays = [
         "nil",
         "Sun",
@@ -95,7 +97,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func configureNavigationBar() {
-        navigationItem.title = "DashBoard"
+        navigationItem.title = "Dashboard"
     }
     
     
@@ -139,11 +141,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             let cell:DashboardCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! DashboardCell
             cell.lblAtrribute.text = attributes[indexPath.row]
-//        cell.yaxis = yAxis
-//        cell.rates = xAxis
+            cell.lblAtrribute.textColor = colors[indexPath.row]
             if (yAxis.count == (attributes.count)){
                 cell.lblStat.text = String(round(100.0 * stats[indexPath.row]) / 100.0)
+                cell.lblStat.textColor = colors[indexPath.row]
                 cell.lblUnit.text = units[indexPath.row]
+                cell.lblUnit.textColor = colors[indexPath.row]
+                cell.color = indexPath.row
                 cell.setChart(yAxis[indexPath.row], values: xAxis[indexPath.row])
             }
 //        let newView = UIView(frame: CGRectMake(200, 10, 100, 50))

@@ -10,12 +10,15 @@ import UIKit
 import ChameleonFramework
 import Charts
 
-class LineChartDashboard: UIView {
+class LineChartDashboard: UIView, ChartViewDelegate  {
     
-    var yaxis = [String]()
-    var rates =  [Double]()
+    var xValues = [String]()
     
     @IBOutlet weak var lineChartView: LineChartView!
+    
+    @IBOutlet weak var markerView: BaloonMarker!
+    
+    var baloon: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,12 +39,25 @@ class LineChartDashboard: UIView {
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.descriptionText = ""
         lineChartView.xAxis.drawAxisLineEnabled = false
-        //        lineChartView.delegate = self
+        lineChartView.delegate = self
+        lineChartView.xAxis.labelTextColor = FlatWhite()
+        lineChartView.leftAxis.labelTextColor = FlatWhite()
+        lineChartView.leftAxis.axisLineColor = FlatBlack()
+
+        
+        
+        baloon = (NSBundle.mainBundle().loadNibNamed("BaloonMarker", owner: self, options: nil)[0] as? UIView)!
+        markerView.addSubview(baloon)
+        markerView.hidden = true
         
         
     }
     
-    func setChartData(xAxis : [String], yAxisMax : [Double], yAxisMin : [Double]) {
+    func setChartData(xAxis : [String], yAxisMax : [Double], yAxisMin : [Double], skipLabels: Int) {
+        
+        lineChartView.xAxis.setLabelsToSkip(skipLabels)
+        xValues = xAxis
+        
         // 1 - creating an array of data entries
         var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
         for i in 0 ..< xAxis.count {
@@ -54,7 +70,7 @@ class LineChartDashboard: UIView {
         set1.setColor(UIColor.redColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
         set1.setCircleColor(UIColor.redColor()) // our circle will be dark red
         set1.lineWidth = 2.0
-        set1.circleRadius = 4.1 // the radius of the node circle
+        set1.circleRadius = 2 // the radius of the node circle
         set1.fillAlpha = 65 / 255.0
         set1.fillColor = UIColor.redColor()
         //        set1.highlightColor = UIColor.blackColor()
@@ -72,7 +88,7 @@ class LineChartDashboard: UIView {
         set2.setColor(UIColor.greenColor().colorWithAlphaComponent(0.5))
         set2.setCircleColor(UIColor.greenColor())
         set2.lineWidth = 2.0
-        set2.circleRadius = 4.1
+        set2.circleRadius = 2
         set2.fillAlpha = 65 / 255.0
         set2.fillColor = UIColor.greenColor()
         //        set2.highlightColor = UIColor.whiColor()
@@ -86,10 +102,23 @@ class LineChartDashboard: UIView {
         
         //pass our months in for our x-axis label value along with our dataSets
         let data: LineChartData = LineChartData(xVals: xAxis, dataSets: dataSets)
-        data.setValueTextColor(UIColor.whiteColor())
+        data.setDrawValues(false)
         
         //finally set our data
         self.lineChartView.data = data
+    }
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        let markerPosition = chartView.getMarkerPosition(entry: entry, highlight: highlight)
+        // Adding top marker
+        //        (self.baloon as! BaloonMarker).lblMarker.text = "\(entry.value)"
+        (self.baloon as! BaloonMarker).lblMarker.text = xValues[entry.xIndex] + " : " + String(round(entry.value * 100.0) / 100.0 )
+        (self.baloon as! BaloonMarker).center = CGPointMake(markerPosition.x, self.markerView.center.y)
+        markerView.hidden = false
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase) {
+        markerView.hidden = true
     }
     
 }

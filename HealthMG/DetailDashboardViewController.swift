@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import ChameleonFramework
 
 class DetailDashboardViewController: UIViewController {
 
@@ -25,11 +26,13 @@ class DetailDashboardViewController: UIViewController {
     var count = 0.0
     var last = 0.0
     var lastDate: String = ""
+    var lastMax = 0.0
+    var totalMax = 0.0
     
     let attributes:[String] = ["Steps", "Distance", "Calories", "Heart Rate"]
+    let colors:[UIColor] = [FlatSkyBlue(), FlatLime(), FlatYellow(), FlatWatermelon()]
     
     //constants for priods (Today, Daily, Monthly....)
-//    let period: [[String]] = [["Daily", 1, 3], ["Today", 1, 3], ["Weekly", 1, 3],["Monthly", 1 , 3], ["365 Days", 1, 3]]
     let period: [String] = ["Today" , "Daily", "Weekly", "Monthly", "365 Days"]
     
     let weekdays = [
@@ -62,6 +65,12 @@ class DetailDashboardViewController: UIViewController {
     @IBOutlet weak var chartView: UIView!
     var chart: UIView!
     
+    @IBOutlet weak var btnToday: UIButton!
+    @IBOutlet weak var btnDaily: UIButton!
+    @IBOutlet weak var btnWeekly: UIButton!
+    @IBOutlet weak var btnMonthly: UIButton!
+    @IBOutlet weak var btn365Days: UIButton!
+    
     private let healthKitManager = HealthKitManager.sharedInstance
 
     @IBOutlet weak var statView1: StatView!
@@ -72,12 +81,16 @@ class DetailDashboardViewController: UIViewController {
     var stat2: UIView!
     var stat3: UIView!
     var stat4: UIView!
+    
+    var prev: UIButton!
    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = attributes[index]
         // Do any additional setup after loading the view.
 //                self.tabBarController?.tabBar.hidden = true
+        btnDaily.backgroundColor = colors[index]
+        prev =  btnDaily
         runQueries(1)
         
         stat1 = NSBundle.mainBundle().loadNibNamed("StatView", owner: self, options: nil)[0] as? UIView
@@ -109,24 +122,38 @@ class DetailDashboardViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func btnToday(sender: AnyObject) {
+        btnToday.backgroundColor = colors[index]
+        prev.backgroundColor = FlatGrayDark()
+        prev =  btnToday
         runQueries(0)
     }
     @IBAction func btnDaily(sender: AnyObject) {
+        btnDaily.backgroundColor = colors[index]
+        prev.backgroundColor = FlatGrayDark()
+        prev =  btnDaily
         runQueries(1)
     }
     
     @IBAction func btnWeekly(sender: AnyObject) {
+        btnWeekly.backgroundColor = colors[index]
+        prev.backgroundColor = FlatGrayDark()
+        prev =  btnWeekly
         runQueries(2)
     }
     
     @IBAction func btnMonthy(sender: AnyObject) {
+        btnMonthly.backgroundColor = colors[index]
+        prev.backgroundColor = FlatGrayDark()
+        prev =  btnMonthly
          runQueries(3)
     }
     
     @IBAction func btn365Days(sender: AnyObject) {
+        btn365Days.backgroundColor = colors[index]
+        prev.backgroundColor = FlatGrayDark()
+        prev =  btn365Days
         runQueries(4)
     }
     
@@ -147,6 +174,24 @@ private extension DetailDashboardViewController {
         total = 0.00
         count = 0.00
         last = 0.00
+        lastMax = 0.00
+        totalMax = 0.00
+        
+        var skip = 0
+        switch self.period[period] {
+        case "Today":
+            skip = 0
+        case "Daily":
+            skip = 5
+        case "Weekly":
+            skip = 6
+        case "Monthly":
+            skip = 0
+        case "365 Days":
+            skip = 40
+        default:
+            skip = 0
+        }
         
         if self.index == 3{
             self.query(false, periodIndex: period){ (success) -> Void in
@@ -156,7 +201,22 @@ private extension DetailDashboardViewController {
                     
                             // do second task if success
                             dispatch_async(dispatch_get_main_queue(), {
-                                (self.chart as! LineChartDashboard).setChartData(self.yAxis, yAxisMax: self.xAxisMax, yAxisMin : self.xAxisMin)
+                                (self.chart as! LineChartDashboard).setChartData(self.yAxis, yAxisMax: self.xAxisMax, yAxisMin : self.xAxisMin, skipLabels: skip)
+                                
+                                (self.stat1 as! StatView).lblType.text = "last"
+                                (self.stat1 as! StatView).lblStat.text = String(self.last) + " - " + String(self.lastMax)
+                                (self.stat1 as! StatView).lblDate.text = self.lastDate
+                                (self.stat2 as! StatView).lblType.text = "average"
+                                (self.stat2 as! StatView).lblStat.text = String(round(100.0 * self.total/self.count) / 100.0) + " - "
+                                (self.stat2 as! StatView).lblStat.text = (self.stat2 as! StatView).lblStat.text! + String(round(100.0 * self.totalMax/self.count) / 100.0)
+                                (self.stat2 as! StatView).lblDate.text = " "
+                                (self.stat3 as! StatView).lblType.text = "min"
+                                (self.stat3 as! StatView).lblStat.text = String(round(100.0 * self.min) / 100.0)
+                                (self.stat3 as! StatView).lblDate.text = self.minDate
+                                (self.stat4 as! StatView).lblType.text = "max"
+                                (self.stat4 as! StatView).lblStat.text = String(round(100.0 * self.max) / 100.0)
+                                (self.stat4 as! StatView).lblDate.text = self.maxDate
+
                                 
                             })
                         }
@@ -168,22 +228,7 @@ private extension DetailDashboardViewController {
                 if success {
                     // do second task if success
                     dispatch_async(dispatch_get_main_queue(), {
-                        var skip = 0
-                        switch self.period[period] {
-                        case "Today":
-                            skip = 10
-                        case "Daily":
-                            skip = 5
-                        case "Weekly":
-                            skip = 6
-                        case "Monthly":
-                            skip = 0
-                        case "365 Days":
-                            skip = 30
-                        default:
-                            skip = 0
-                        }
-
+                        (self.chart as! BarChartDashboard).color = self.index
                         (self.chart as! BarChartDashboard).setChart(self.yAxis, values: self.xAxis, skipLabels: skip)
                         (self.stat1 as! StatView).lblType.text = "last"
                         (self.stat1 as! StatView).lblStat.text = String(round(100.0 * self.last) / 100.0)
@@ -214,7 +259,7 @@ private extension DetailDashboardViewController {
         let interval = NSDateComponents()
         switch period[periodIndex] {
         case "Today":
-            interval.minute = 10
+            interval.minute = 5
         case "Daily":
             interval.day = 1
         case "Weekly":
@@ -230,37 +275,37 @@ private extension DetailDashboardViewController {
         
         let calendar = NSCalendar.currentCalendar()
         
-        // Set the anchor date to Monday at 12:00 a.m.
-        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
+//        // Set the anchor date to Monday at 12:00 a.m.
+//        let anchorComponents = calendar.components([.Day, .Month, .Year, .Weekday], fromDate: NSDate())
+//        
+//        let offset = (7 + anchorComponents.weekday - 2) % 7
+//        anchorComponents.day -= offset
+//        anchorComponents.hour = 0
         
-        let offset = (7 + anchorComponents.weekday - 2) % 7
-        anchorComponents.day -= offset
-        anchorComponents.hour = 0
-        
-        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
-            fatalError("*** unable to create a valid date from the given components ***")
-        }
+//        guard let anchorDate = calendar.dateFromComponents(anchorComponents) else {
+//            fatalError("*** unable to create a valid date from the given components ***")
+//        }
         
         let predicate: NSPredicate = HKSampleQuery.predicateForSamplesWithStartDate(NSDate.distantPast(), endDate: NSDate(), options: HKQueryOptions.None)
         
         var query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
                                                 quantitySamplePredicate: predicate,
                                                 options: .CumulativeSum,
-                                                anchorDate: anchorDate,
+                                                anchorDate: NSDate(),
                                                 intervalComponents: interval)
         
         if( index == 3 && min == true){
             query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
                                                 quantitySamplePredicate: predicate,
                                                 options: .DiscreteMin,
-                                                anchorDate: anchorDate,
+                                                anchorDate: NSDate(),
                                                 intervalComponents: interval)
         }
         else if( index == 3 && min == false){
             query = HKStatisticsCollectionQuery(quantityType: quantityType as! HKQuantityType,
                                                 quantitySamplePredicate: predicate,
                                                 options: .DiscreteMax,
-                                                anchorDate: anchorDate,
+                                                anchorDate: NSDate(),
                                                 intervalComponents: interval)
         }
         
@@ -275,12 +320,12 @@ private extension DetailDashboardViewController {
             }
             
             let endDate = NSDate()
-            let startDate: NSDate
+            var startDate: NSDate
             
             
             switch self.period[periodIndex] {
             case "Today":
-                startDate = calendar.dateByAddingUnit(.Hour, value: -23, toDate: endDate, options: [])!
+                startDate = calendar.dateByAddingUnit(.Hour, value: -19, toDate: endDate, options: [])!
             case "Daily":
                 startDate = calendar.dateByAddingUnit(.Day, value: -31, toDate: endDate, options: [])!
             case "Weekly":
@@ -296,53 +341,56 @@ private extension DetailDashboardViewController {
             
             statsCollection.enumerateStatisticsFromDate(startDate, toDate: endDate) { [unowned self] statistics, stop in
                 
+                let startDate = statistics.startDate
+                let endDate = statistics.endDate
+                var dateStr: String
+                
+                switch self.period[periodIndex] {
+                case "Today":
+                    var myComponents = calendar.components(.Hour, fromDate: startDate)
+                    dateStr = String(myComponents.hour) + ":"
+                    myComponents = calendar.components(.Minute, fromDate: startDate)
+                    dateStr += String(myComponents.minute)
+                case "Daily":
+                    var myComponents = calendar.components(.Weekday, fromDate: startDate)
+                    dateStr = self.weekdays[myComponents.weekday] + " "
+                    myComponents = calendar.components(.Month, fromDate: startDate)
+                    dateStr += self.months[myComponents.month] + " "
+                    myComponents = calendar.components(.Day, fromDate: startDate)
+                    dateStr += String(myComponents.day)
+                case "Weekly":
+                    var myComponents = calendar.components(.Month, fromDate: startDate)
+                    dateStr = self.months[myComponents.month] + " "
+                    myComponents = calendar.components(.Day, fromDate: startDate)
+                    dateStr += String(myComponents.day)
+                    myComponents = calendar.components(.Month, fromDate: endDate)
+                    dateStr += "-" + self.months[myComponents.month] + " "
+                    myComponents = calendar.components(.Day, fromDate: endDate)
+                    dateStr += String(myComponents.day)
+                case "Monthly":
+                    let myComponents = calendar.components(.Month, fromDate: startDate)
+                    dateStr = self.months[myComponents.month]
+                case "365 Days":
+                    var myComponents = calendar.components(.Month, fromDate: startDate)
+                    dateStr = self.months[myComponents.month] + " "
+                    myComponents = calendar.components(.Day, fromDate: startDate)
+                    dateStr += String(myComponents.day)
+                default:
+                    var myComponents = calendar.components(.Month, fromDate: startDate)
+                    dateStr = self.months[myComponents.month] + " "
+                    myComponents = calendar.components(.Day, fromDate: startDate)
+                    dateStr += String(myComponents.day)
+                }
+
+                
                 if(self.index != 3){
                     if let quantity = statistics.sumQuantity() {
-                        let startDate = statistics.startDate
-                        let endDate = statistics.endDate
+                        
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[self.index] as! HKUnit)
                         
                         self.xAxis.append(value)
                         self.total += value
                         self.count += 1
-                        var dateStr: String
-                        
-                        switch self.period[periodIndex] {
-                        case "Today":
-                            var myComponents = calendar.components(.Hour, fromDate: startDate)
-                            dateStr = String(myComponents.hour) + ":"
-                            myComponents = calendar.components(.Minute, fromDate: startDate)
-                            dateStr += String(myComponents.minute)
-                        case "Daily":
-                            var myComponents = calendar.components(.Weekday, fromDate: startDate)
-                            dateStr = self.weekdays[myComponents.weekday] + " "
-                            myComponents = calendar.components(.Month, fromDate: startDate)
-                            dateStr += self.months[myComponents.month] + " "
-                            myComponents = calendar.components(.Day, fromDate: startDate)
-                            dateStr += String(myComponents.day)
-                        case "Weekly":
-                            var myComponents = calendar.components(.Month, fromDate: startDate)
-                            dateStr = self.months[myComponents.month] + " "
-                            myComponents = calendar.components(.Day, fromDate: startDate)
-                            dateStr += String(myComponents.day)
-                            myComponents = calendar.components(.Month, fromDate: endDate)
-                            dateStr += "-" + self.months[myComponents.month] + " "
-                            myComponents = calendar.components(.Day, fromDate: endDate)
-                            dateStr += String(myComponents.day)
-                        case "Monthly":
-                            let myComponents = calendar.components(.Month, fromDate: startDate)
-                            dateStr = self.months[myComponents.month]
-                        case "365 Days":
-                            var myComponents = calendar.components(.Month, fromDate: startDate)
-                            dateStr = self.months[myComponents.month] + " "
-                            myComponents = calendar.components(.Day, fromDate: startDate)
-                            dateStr += String(myComponents.day)
-                        default:
-                            var myComponents = calendar.components(.Month, fromDate: startDate)
-                            dateStr = self.months[myComponents.month] + " "
-                            myComponents = calendar.components(.Day, fromDate: startDate)
-                            dateStr += String(myComponents.day)
-                        }
                         
                         if ((self.min > value || self.min == 0.0) && (value > 0)) {
                             self.min = value
@@ -364,26 +412,35 @@ private extension DetailDashboardViewController {
                 }
                 else if (self.index == 3 && min == false){
                     if let quantity = statistics.maximumQuantity() {
-                        let date = statistics.startDate
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[self.index] as! HKUnit)
+
+                        self.total += value
+                        self.count += 1
                         
                         self.xAxisMin.append(value)
-                        if self.min > value{
+                        if ((self.min > value || self.min == 0.0) && (value > 0)) {
                             self.min = value
                         }
                         
-                        let myComponents = calendar.components(.Weekday, fromDate: date)
-                        self.yAxis.append(self.weekdays[myComponents.weekday])
-                        print(self.weekdays[myComponents.weekday])
-                        print(value)
+                        if(value > 0.0){
+                            self.last = value
+                            self.lastDate = dateStr
+                        }
+                        
+                        self.yAxis.append(dateStr)
                     }
                 }
                 else if (self.index == 3 && min == true){
                     if let quantity = statistics.minimumQuantity() {
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[self.index] as! HKUnit)
                         
+                        self.totalMax += value
+                        
                         self.xAxisMax.append(value)
-                        print(value)
+                        
+                        if(value > 0.0){
+                            self.lastMax = value
+                        }
                         
                         if self.max < value{
                             self.max = value

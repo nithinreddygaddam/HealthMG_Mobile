@@ -11,12 +11,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sdb-a0-LGr" id="Gc8-mb-WEE">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="132.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="1vX-Dm-GGn" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="117" y="12" width="195" height="110"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="195" id="pg5-UI-oEl"/>
+                            <constraint firstAttribute="height" constant="110" id="rxh-y3-8Nl"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ5-AW-Qc8">
                         <rect key="frame" x="13" y="28" width="107" height="26"/>
@@ -39,13 +43,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="cLu-Rk-UNw" firstAttribute="leading" secondItem="nXi-9T-Yg5" secondAttribute="trailing" constant="8" id="2C9-aE-4Rg"/>
-                    <constraint firstAttribute="trailing" secondItem="1vX-Dm-GGn" secondAttribute="trailing" constant="8" id="65x-G5-0h1"/>
+                    <constraint firstAttribute="trailing" secondItem="1vX-Dm-GGn" secondAttribute="trailing" constant="8" id="4pY-JG-g2X"/>
                     <constraint firstAttribute="bottom" secondItem="nXi-9T-Yg5" secondAttribute="bottom" constant="44" id="Au1-Y2-tdn"/>
-                    <constraint firstItem="1vX-Dm-GGn" firstAttribute="leading" secondItem="cLu-Rk-UNw" secondAttribute="trailing" constant="12" id="G7U-8I-vAa"/>
                     <constraint firstAttribute="bottom" secondItem="cLu-Rk-UNw" secondAttribute="bottom" constant="49" id="KRC-vh-CXj"/>
+                    <constraint firstAttribute="bottom" secondItem="1vX-Dm-GGn" secondAttribute="bottom" constant="10.5" id="KuT-9p-wDh"/>
+                    <constraint firstItem="1vX-Dm-GGn" firstAttribute="top" secondItem="Gc8-mb-WEE" secondAttribute="top" constant="12" id="Plj-3x-Hbw"/>
                     <constraint firstItem="nXi-9T-Yg5" firstAttribute="leading" secondItem="Gc8-mb-WEE" secondAttribute="leading" constant="13" id="cXL-iP-dwA"/>
-                    <constraint firstAttribute="bottom" secondItem="1vX-Dm-GGn" secondAttribute="bottom" constant="10.5" id="spG-fG-Oje"/>
-                    <constraint firstItem="1vX-Dm-GGn" firstAttribute="centerY" secondItem="Gc8-mb-WEE" secondAttribute="centerY" id="umV-La-o1x"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -11,14 +11,10 @@
 		5913CCCB1D360E4F003C147C /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCCA1D360E4F003C147C /* ChatListViewController.swift */; };
 		5913CCE11D36BDEF003C147C /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCDC1D36BDEF003C147C /* ChatCell.swift */; };
 		5913CCE41D36BDEF003C147C /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCDF1D36BDEF003C147C /* ChatCell.xib */; };
-		5913CCED1D383BFC003C147C /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE61D383BFC003C147C /* gear.png */; };
 		5913CCEE1D383BFC003C147C /* subscribers.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE71D383BFC003C147C /* subscribers.png */; };
 		5913CCEF1D383BFC003C147C /* publishers.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE81D383BFC003C147C /* publishers.png */; };
 		5913CCF01D383BFC003C147C /* subscribtions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCE91D383BFC003C147C /* subscribtions.png */; };
-		5913CCF11D383BFC003C147C /* add_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEA1D383BFC003C147C /* add_user.png */; };
-		5913CCF21D383BFC003C147C /* services.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEB1D383BFC003C147C /* services.png */; };
 		5913CCF31D383BFC003C147C /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCEC1D383BFC003C147C /* heart.png */; };
-		5913CCFA1D3ACC37003C147C /* jog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCF91D3ACC37003C147C /* jog.jpg */; };
 		5913CCFC1D3ACCD3003C147C /* jog2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5913CCFB1D3ACCD2003C147C /* jog2.jpg */; };
 		5913CCFE1D3AD5C2003C147C /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */; };
 		5913CD031D3BF2A9003C147C /* ChatWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913CD021D3BF2A9003C147C /* ChatWindowController.swift */; };
@@ -69,14 +65,10 @@
 		5913CCCA1D360E4F003C147C /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		5913CCDC1D36BDEF003C147C /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		5913CCDF1D36BDEF003C147C /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
-		5913CCE61D383BFC003C147C /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = HealthMG/gear.png; sourceTree = "<group>"; };
 		5913CCE71D383BFC003C147C /* subscribers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subscribers.png; path = HealthMG/subscribers.png; sourceTree = "<group>"; };
 		5913CCE81D383BFC003C147C /* publishers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = publishers.png; path = HealthMG/publishers.png; sourceTree = "<group>"; };
 		5913CCE91D383BFC003C147C /* subscribtions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = subscribtions.png; path = HealthMG/subscribtions.png; sourceTree = "<group>"; };
-		5913CCEA1D383BFC003C147C /* add_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_user.png; path = HealthMG/add_user.png; sourceTree = "<group>"; };
-		5913CCEB1D383BFC003C147C /* services.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = services.png; path = HealthMG/services.png; sourceTree = "<group>"; };
 		5913CCEC1D383BFC003C147C /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart.png; path = HealthMG/heart.png; sourceTree = "<group>"; };
-		5913CCF91D3ACC37003C147C /* jog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jog.jpg; path = HealthMG/jog.jpg; sourceTree = "<group>"; };
 		5913CCFB1D3ACCD2003C147C /* jog2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jog2.jpg; path = HealthMG/jog2.jpg; sourceTree = "<group>"; };
 		5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		5913CD021D3BF2A9003C147C /* ChatWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatWindowController.swift; sourceTree = "<group>"; };
@@ -232,14 +224,10 @@
 		59E735AD1D259B07007F075E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				5913CCF91D3ACC37003C147C /* jog.jpg */,
 				5913CCFB1D3ACCD2003C147C /* jog2.jpg */,
-				5913CCE61D383BFC003C147C /* gear.png */,
 				5913CCE71D383BFC003C147C /* subscribers.png */,
 				5913CCE81D383BFC003C147C /* publishers.png */,
 				5913CCE91D383BFC003C147C /* subscribtions.png */,
-				5913CCEA1D383BFC003C147C /* add_user.png */,
-				5913CCEB1D383BFC003C147C /* services.png */,
 				5913CCEC1D383BFC003C147C /* heart.png */,
 				591AD6261D25F32F008E2851 /* icon-blue-health.png */,
 				59E735AE1D259BAB007F075E /* HealthMG_launch_screen_logo.png */,
@@ -350,19 +338,15 @@
 				59E735AF1D259BAB007F075E /* HealthMG_launch_screen_logo.png in Resources */,
 				5934182E1D2F996A008528D4 /* spanner-7.png in Resources */,
 				5918714B1D47F89A00D3426E /* DashboardCell.xib in Resources */,
-				5913CCFA1D3ACC37003C147C /* jog.jpg in Resources */,
 				5913CCE41D36BDEF003C147C /* ChatCell.xib in Resources */,
 				59E7359D1D25987D007F075E /* Assets.xcassets in Resources */,
 				593418361D3050C6008528D4 /* down-arrow.png in Resources */,
 				5913CCF31D383BFC003C147C /* heart.png in Resources */,
-				5913CCED1D383BFC003C147C /* gear.png in Resources */,
 				5934182C1D2F996A008528D4 /* dumbbell-7.png in Resources */,
-				5913CCF11D383BFC003C147C /* add_user.png in Resources */,
 				5913CCF01D383BFC003C147C /* subscribtions.png in Resources */,
 				5934182D1D2F996A008528D4 /* message-7.png in Resources */,
 				593418351D3050C6008528D4 /* up-arrow.png in Resources */,
 				5934182F1D2F996A008528D4 /* gear-7.png in Resources */,
-				5913CCF21D383BFC003C147C /* services.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

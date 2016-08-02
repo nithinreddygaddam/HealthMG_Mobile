@@ -14,6 +14,8 @@ class DashboardCell: UITableViewCell {
     
     var yaxis = [String]()
     var rates =  [Double]()
+    var color: Int = 0
+    let colors:[UIColor] = [FlatSkyBlue(), FlatLime(), FlatYellow(), FlatWatermelon()]
 
     @IBOutlet weak var barChartView: BarChartView!
 //    @IBOutlet weak var imgBckg: UIImageView!
@@ -79,7 +81,9 @@ class DashboardCell: UITableViewCell {
         }
         
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
+        chartDataSet.colors = [colors[color]]
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
+        chartData.setDrawValues(false)
         barChartView.data = chartData
         
         

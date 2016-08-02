@@ -17,14 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HealthMG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSG-hy-Ebu">
-                                <rect key="frame" x="108" y="126" width="159" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HealthMG_launch_screen_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="lVK-Xt-P8t">
-                                <rect key="frame" x="7" y="289" width="360" height="158"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.55000001192092896" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-ac-z5F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-blue-health.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-ak-Pzc">
+                                <rect key="frame" x="71" y="211" width="232" height="245"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -37,6 +34,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HealthMG_launch_screen_logo.png" width="2096" height="770"/>
+        <image name="icon-blue-health.png" width="600" height="600"/>
+        <image name="jog2.jpg" width="2000" height="1000"/>
     </resources>
 </document>

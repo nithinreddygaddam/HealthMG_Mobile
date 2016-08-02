@@ -13,7 +13,10 @@
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-HV-2Ib" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.12637259070000001" green="0.12639245390000001" blue="0.1263653636" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edj-kP-iE4" customClass="BaloonMarker" customModule="HealthMG" customModuleProvider="target">
+                    <rect key="frame" x="10" y="10" width="162" height="18"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -21,6 +24,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lineChartView" destination="3Gf-HV-2Ib" id="q5H-xz-O2h"/>
+                <outlet property="markerView" destination="edj-kP-iE4" id="sqI-uX-2Bv"/>
             </connections>
             <point key="canvasLocation" x="427.5" y="259.5"/>
         </view>

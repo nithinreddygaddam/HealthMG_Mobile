@@ -13,11 +13,14 @@ import Charts
 class BarChartDashboard: UIView, ChartViewDelegate {
     
     var yaxis = [String]()
-    var rates =  [Double]()
+    var xaxis =  [Double]()
     var skipLabels = 0
+    var color: Int = 0
+    let colors:[UIColor] = [FlatSkyBlue(), FlatLime(), FlatYellow(), FlatWatermelon()]
     
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var markerView: BaloonMarker!
+
     var baloon: UIView!
 
     override func awakeFromNib() {
@@ -38,20 +41,23 @@ class BarChartDashboard: UIView, ChartViewDelegate {
         barChartView.descriptionText = ""
         barChartView.xAxis.drawAxisLineEnabled = false
         barChartView.drawValueAboveBarEnabled = false
+        barChartView.xAxis.labelTextColor = FlatWhite()
+        barChartView.leftAxis.labelTextColor = FlatWhite()
+        barChartView.leftAxis.axisLineColor = FlatBlack()
         
         barChartView.delegate = self
         
         baloon = (NSBundle.mainBundle().loadNibNamed("BaloonMarker", owner: self, options: nil)[0] as? UIView)!
         markerView.addSubview(baloon)
-        self.baloon.frame = self.markerView.bounds
+        markerView.hidden = true
     }
     
 
     func setChart(dataPoints: [String], values: [Double], skipLabels: Int) {
         
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInBounce)
         barChartView.xAxis.setLabelsToSkip(skipLabels)
         
+        yaxis = dataPoints
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -60,7 +66,9 @@ class BarChartDashboard: UIView, ChartViewDelegate {
         }
         
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
+        chartDataSet.colors = [colors[color]]
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
+        chartData.setDrawValues(false)
         barChartView.data = chartData
         
     }
@@ -68,9 +76,14 @@ class BarChartDashboard: UIView, ChartViewDelegate {
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         let markerPosition = chartView.getMarkerPosition(entry: entry, highlight: highlight)
         // Adding top marker
-        (self.baloon as! BaloonMarker).lblMarker.text = "\(entry.value)"
+//        (self.baloon as! BaloonMarker).lblMarker.text = "\(entry.value)"
+        (self.baloon as! BaloonMarker).lblMarker.text = yaxis[entry.xIndex] + " : " + String(round(entry.value * 100.0) / 100.0 )
         (self.baloon as! BaloonMarker).center = CGPointMake(markerPosition.x, self.markerView.center.y)
-        (self.baloon as! BaloonMarker).hidden = false
+        markerView.hidden = false
+    }
+    
+    func chartValueNothingSelected(chartView: ChartViewBase) {
+        markerView.hidden = true
     }
     
     
