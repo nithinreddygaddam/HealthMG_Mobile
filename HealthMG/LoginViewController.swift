@@ -47,7 +47,18 @@ class LoginViewController: UIViewController {
         password.lineColor = UIColor.flatWhiteColor()
         password.selectedTitleColor = UIColor.flatSkyBlueColor()
         password.selectedLineColor = UIColor.flatSkyBlueColor()
+        
+        
+    }
     
+    override func viewDidAppear(animated: Bool) {
+        let jwt = A0SimpleKeychain().stringForKey("user-jwt") as String?
+        
+        if(jwt != nil && loggedUser.id != nil){
+            SocketIOManager.sharedInstance.establishConnection()
+            let vc : UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as UIViewController!;
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
     }
     
     //To dismiss keyboard
@@ -71,7 +82,11 @@ class LoginViewController: UIViewController {
         
         if(self.username.text != nil && self.password.text != nil){
             
-            Alamofire.request(.POST, "http://127.0.0.1:3000/login", parameters: ["username": self.username.text!, "password": self.password.text!]) //check the comma!!!!
+            let path = NSBundle.mainBundle().pathForResource("PropertyList", ofType: "plist")
+            let dict = NSDictionary(contentsOfFile: path!)
+            let url = dict!.objectForKey("awsURL") as! String
+            
+            Alamofire.request(.POST, "http://" + url + "/login", parameters: ["username": self.username.text!, "password": self.password.text!]) //check the comma!!!!
                 .responseJSON { response in
                     
             let json = JSON(data: response.data!)
@@ -84,13 +99,16 @@ class LoginViewController: UIViewController {
                 
                 if ARSLineProgress.shown { return }
                     
-                    progressObject = NSProgress(totalUnitCount: 60)
+                    progressObject = NSProgress(totalUnitCount: 30)
                     ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
                     
-                    print(json["user"])
-                        print(jwt)
-                    
                     loggedUser = User(id: json["user"]["_id"].string!, username: json["user"]["username"].string!, fName: json["user"]["firstName"].string!, lName: json["user"]["lastName"].string!, eMail: json["user"]["email"].string!, dob: json["user"]["dateOfBirth"].string!, gender: json["user"]["gender"].string!)
+                        
+                        let userDefaults = NSUserDefaults.standardUserDefaults()
+                        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(loggedUser)
+                        userDefaults.setObject(encodedData, forKey: "loggedUser")
+                        userDefaults.synchronize()
+
                         
                     SocketIOManager.sharedInstance.establishConnection()
                         self.performSegueWithIdentifier("loginSegue", sender: nil)
@@ -103,7 +121,7 @@ class LoginViewController: UIViewController {
                 else{
                     if ARSLineProgress.shown { return }
                     
-                        progressObject = NSProgress(totalUnitCount: 60)
+                        progressObject = NSProgress(totalUnitCount: 30)
                         ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
                             print("This copmletion block is going to be overriden by cancel completion block in launchTimer() method.")
                         })

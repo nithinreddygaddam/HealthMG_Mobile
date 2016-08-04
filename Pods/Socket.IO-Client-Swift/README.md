@@ -88,21 +88,21 @@ Carthage
 -----------------
 Add this line to your `Cartfile`:
 ```
-github "socketio/socket.io-client-swift" ~> 6.1.4 # Or latest version
+github "socketio/socket.io-client-swift" ~> 6.1.6 # Or latest version
 ```
 
 Run `carthage update --platform ios,macosx`.
 
-CocoaPods 0.36.0 or later (iOS 8+)
+CocoaPods 1.0.0 or later
 ------------------
 Create `Podfile` and add `pod 'Socket.IO-Client-Swift'`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
 use_frameworks!
 
-pod 'Socket.IO-Client-Swift', '~> 6.1.4' # Or latest version
+target 'YourApp' do
+    pod 'Socket.IO-Client-Swift', '~> 6.1.6' # Or latest version
+end
 ```
 
 Install pods:
@@ -121,7 +121,7 @@ import SocketIOClientSwift
 Objective-C:
 
 ```Objective-C
-#import <SocketIOClientSwift/SocketIOClientSwift-Swift.h>
+@import SocketIOClientSwift;
 ```
 
 CocoaSeeds
@@ -130,7 +130,7 @@ CocoaSeeds
 Add this line to your `Seedfile`:
 
 ```
-github "socketio/socket.io-client-swift", "v6.1.4", :files => "Source/*.swift" # Or latest version
+github "socketio/socket.io-client-swift", "v6.1.6", :files => "Source/*.swift" # Or latest version
 ```
 
 Run `seed install`.
@@ -166,7 +166,7 @@ case ReconnectWait(Int) // Amount of time to wait between reconnects. Default is
 case SessionDelegate(NSURLSessionDelegate) // Sets an NSURLSessionDelegate for the underlying engine. Useful if you need to handle self-signed certs. Default is nil.
 case Secure(Bool) // If the connection should use TLS. Default is false.
 case Security(SSLSecurity) // Allows you to set which certs are valid. Useful for SSL pinning.
-case SelfSigned(Bool) // Sets WebSocket.selfSignedSSL (Don't do this, iOS will yell at you)
+case SelfSigned(Bool) // Sets WebSocket.selfSignedSSL. Use this if you're using self-signed certs.
 case VoipEnabled(Bool) // Only use this option if you're using the client with VoIP services. Changes the way the WebSocket is created. Default is false
 ```
 Methods

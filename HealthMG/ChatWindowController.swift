@@ -12,10 +12,42 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tblChat: UITableView!
     @IBOutlet weak var tvMessageEditor: UITextView!
+    @IBOutlet weak var conBottomEditor: NSLayoutConstraint!
+
+    
     var user2: [String: AnyObject] = [ : ]
     var user2Name: String!
     var loggedUserName: String!
     var conversationID: String?
+    
+    let weekdays = [
+        "nil",
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ]
+    
+    let months = [
+        "nil",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ]
+    
+    let calendar = NSCalendar.currentCalendar()
     
     //    @IBOutlet weak var conBottomEditor: NSLayoutConstraint!
     
@@ -37,21 +69,6 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Down
         swipeGestureRecognizer.delegate = self
         view.addGestureRecognizer(swipeGestureRecognizer)
-        
-        if self.conversationID == nil {
-            SocketIOManager.sharedInstance.getConversationID(loggedUser.id, user2: user2["_id"] as! String, completionHandler: { (conversation) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if conversation != nil{
-                        self.conversationID = conversation!
-                        self.getMsgs()
-                    }
-                })
-            })
-            
-        }
-        else{
-            self.getMsgs()
-        }
         
     }
     
@@ -83,15 +100,32 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tvMessageEditor.delegate = self
-
+                
         configureTableView()
+        
+        tvMessageEditor.delegate = self
 
     }
     
     //Method used to recieve message
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if self.conversationID == nil {
+            SocketIOManager.sharedInstance.getConversationID(loggedUser.id, user2: user2["_id"] as! String, completionHandler: { (conversation) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if conversation != nil{
+                        self.conversationID = conversation!
+                        self.getMsgs()
+                    }
+                })
+            })
+            
+        }
+        else{
+            self.getMsgs()
+        }
+
         
         SocketIOManager.sharedInstance.getChatMessage { (messageInfo) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -110,17 +144,24 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
 
+    //To dismiss keyboard
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
 
     // MARK: IBAction Methods
     // Checks weather there is a message to send then sends the message an clears the editor and closes the keyboard
     @IBAction func sendMessage(sender: AnyObject) {
         if tvMessageEditor.text.characters.count > 0 {
-            SocketIOManager.sharedInstance.sendMessage(conversationID!,loggedUser: loggedUser.id, user2: user2["_id"] as! String, message: tvMessageEditor.text!)
+            if conversationID == nil{
+                conversationID = ""
+            }
+            SocketIOManager.sharedInstance.sendMessage(conversationID!,loggedUser: loggedUser.id!, user2: user2["_id"] as! String, message: tvMessageEditor.text!)
             tvMessageEditor.text = ""
             tvMessageEditor.resignFirstResponder()
         }
     }
-    
     
     func configureTableView() {
         tblChat.delegate = self
@@ -129,6 +170,21 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         tblChat.estimatedRowHeight = 90.0
         tblChat.rowHeight = UITableViewAutomaticDimension
         tblChat.tableFooterView = UIView(frame: CGRectZero)
+    }
+    
+    func handleKeyboardDidShowNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                conBottomEditor.constant = keyboardFrame.size.height
+                view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    
+    func handleKeyboardDidHideNotification(notification: NSNotification) {
+        conBottomEditor.constant = 0
+        view.layoutIfNeeded()
     }
     
     func scrollToBottom() {
@@ -166,10 +222,29 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         let from = currentChatMessage["from"] as! String?
         let message = currentChatMessage["message"] as! String?
         let messageDate = currentChatMessage["date"] as! String?
+//
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        let messageDate = dateFormatter.dateFromString((currentChatMessage["date"] as! String?)!)
+//        
+//        var myComponents = calendar.components(.Weekday, fromDate: messageDate!)
+//        var dateStr = self.weekdays[myComponents.weekday] + " "
+//        myComponents = calendar.components(.Month, fromDate: messageDate!)
+//        dateStr += self.months[myComponents.month] + " "
+//        myComponents = calendar.components(.Day, fromDate: messageDate!)
+//        dateStr += String(myComponents.day) + " "
+//        myComponents = calendar.components(.Hour, fromDate: messageDate!)
+//        dateStr += String(myComponents.hour) + ":"
+//        myComponents = calendar.components(.Minute, fromDate: messageDate!)
+//        dateStr += String(myComponents.minute)  + ":"
+//        myComponents = calendar.components(.Second, fromDate: messageDate!)
+//        dateStr += String(myComponents.second)
+        
         if (from == loggedUser.id) {
             cell.lblChatMessage.textAlignment = NSTextAlignment.Right
             cell.lblMessageDetails.textAlignment = NSTextAlignment.Right
 //            cell.lblChatMessage.textColor = lblNewsBanner.backgroundColor
+            
             cell.lblMessageDetails.text = "by \(loggedUserName) @ \(messageDate)"
         }
         else {
@@ -183,4 +258,7 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

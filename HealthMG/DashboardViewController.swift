@@ -167,7 +167,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         index = indexPath.row
-        print("cell selected")
         self.performSegueWithIdentifier("detailDashboardSegue", sender: nil)
         
     }
@@ -322,8 +321,6 @@ private extension DashboardViewController {
                         
                         let myComponents = calendar.components(.Weekday, fromDate: date)
                         self.yAxisTemp.append(self.weekdays[myComponents.weekday])
-                        print(self.weekdays[myComponents.weekday])
-                        print(value)
                     }
                 }
                 else if (i == 3 && min == false){
@@ -331,26 +328,23 @@ private extension DashboardViewController {
                         let date = statistics.startDate
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
                         
-                        self.xAxisMin.append(value)
-                         if ((self.min > value || self.min == 0.0) && (value > 0)) {
-                            self.min = value
+                        self.xAxisMax.append(value)
+                        
+                        if self.max < value{
+                            self.max = value
                         }
                         
                         let myComponents = calendar.components(.Weekday, fromDate: date)
                         self.yAxisTemp.append(self.weekdays[myComponents.weekday])
-                        print(self.weekdays[myComponents.weekday])
-                        print(value)
                     }
                 }
                 else if (i == 3 && min == true){
                     if let quantity = statistics.minimumQuantity() {
                         let value = quantity.doubleValueForUnit(self.healthKitManager.units[i] as! HKUnit)
                         
-                        self.xAxisMax.append(value)
-                        print(value)
-                        
-                        if self.max < value{
-                            self.max = value
+                        self.xAxisMin.append(value)
+                        if ((self.min > value || self.min == 0.0) && (value > 0)) {
+                            self.min = value
                         }
                         
                     }

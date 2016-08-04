@@ -60,14 +60,14 @@ class HeartRateCell: UITableViewCell {
         }
         
         //create a data set with our array
-        let set1: LineChartDataSet = LineChartDataSet(yVals: yVals1, label: "Min")
+        let set1: LineChartDataSet = LineChartDataSet(yVals: yVals1, label: "Max")
         set1.axisDependency = .Left // Line will correlate with left axis values
-        set1.setColor(UIColor.redColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
-        set1.setCircleColor(UIColor.redColor()) // our circle will be dark red
+        set1.setColor(UIColor.flatGreenColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
+        set1.setCircleColor(UIColor.flatGreenColor()) // our circle will be dark red
         set1.lineWidth = 2.0
         set1.circleRadius = 2 // the radius of the node circle
         set1.fillAlpha = 65 / 255.0
-        set1.fillColor = UIColor.redColor()
+        set1.fillColor = UIColor.flatGreenColor()
 //        set1.highlightColor = UIColor.blackColor()
         set1.drawCircleHoleEnabled = true
         set1.valueTextColor = UIColor.blackColor()
@@ -78,14 +78,14 @@ class HeartRateCell: UITableViewCell {
             yVals2.append(ChartDataEntry(value: yAxisMin[i], xIndex: i))
         }
         
-        let set2: LineChartDataSet = LineChartDataSet(yVals: yVals2, label: "Max")
+        let set2: LineChartDataSet = LineChartDataSet(yVals: yVals2, label: "Min")
         set2.axisDependency = .Left // Line will correlate with left axis values
-        set2.setColor(UIColor.greenColor().colorWithAlphaComponent(0.5))
-        set2.setCircleColor(UIColor.greenColor())
+        set2.setColor(UIColor.flatRedColor().colorWithAlphaComponent(0.5))
+        set2.setCircleColor(UIColor.flatRedColor())
         set2.lineWidth = 2.0
         set2.circleRadius = 2
         set2.fillAlpha = 65 / 255.0
-        set2.fillColor = UIColor.greenColor()
+        set2.fillColor = UIColor.flatRedColor()
 //        set2.highlightColor = UIColor.whiColor()
         set2.drawCircleHoleEnabled = true
         set2.valueTextColor = UIColor.blackColor()

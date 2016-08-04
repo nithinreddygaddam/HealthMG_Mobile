@@ -15,7 +15,6 @@ var subscribtion: [String: AnyObject] = [ : ]
 class SubscribtionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var pubSub = "Publishers"
-    var tableIndex = 0
     var publisherUsername: String!
     private var publishersList = [[String: AnyObject]]()
     private var subscribersList = [[String: AnyObject]]()
@@ -200,9 +199,13 @@ class SubscribtionViewController: UIViewController, UITableViewDelegate, UITable
                 (sender: MGSwipeTableCell!) -> Bool in
                 if self.pubSub == "Publishers" {
                     SocketIOManager.sharedInstance.deletePublisher(loggedUser.id, publisher: self.publishersList[indexPath.row])
+                    self.publishersList.removeAtIndex(indexPath.row)
+                    self.tableView.reloadData()
                 }
                 else if self.pubSub == "Subscribers" {
                     SocketIOManager.sharedInstance.deleteSubscriber(loggedUser.id, subscriber: self.subscribersList[indexPath.row])
+                    self.subscribersList.removeAtIndex(indexPath.row)
+                    self.tableView.reloadData()
                 }
                 return true
             })
@@ -227,7 +230,8 @@ class SubscribtionViewController: UIViewController, UITableViewDelegate, UITable
         }
         else if pubSub == "Subscribers" && subscribersList.count > 0{
             SocketIOManager.sharedInstance.getSubscribtion(loggedUser.id, subscriberID: subscribersList[indexPath.row]["_id"] as! String, completionHandler: {(subscribtion2) -> Void in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                 dispatch_async(dispatch_get_main_queue(), { 
                     subscribtion = subscribtion2!
                     self.user2 = self.subscribersList[indexPath.row]
                      self.performSegueWithIdentifier("permissionSegue", sender: nil)

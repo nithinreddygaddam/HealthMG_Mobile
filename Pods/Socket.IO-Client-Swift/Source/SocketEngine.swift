@@ -24,7 +24,7 @@
 
 import Foundation
 
-public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWebsocket {
+public final class SocketEngine : NSObject, NSURLSessionDelegate, SocketEnginePollable, SocketEngineWebsocket {
     public let emitQueue = dispatch_queue_create("com.socketio.engineEmitQueue", DISPATCH_QUEUE_SERIAL)
     public let handleQueue = dispatch_queue_create("com.socketio.engineHandleQueue", DISPATCH_QUEUE_SERIAL)
     public let parseQueue = dispatch_queue_create("com.socketio.engineParseQueue", DISPATCH_QUEUE_SERIAL)
@@ -102,6 +102,10 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
                 forceWebsockets = force
             case let .Path(path):
                 socketPath = path
+                
+                if !socketPath.hasSuffix("/") {
+                    socketPath += "/"
+                }
             case let .VoipEnabled(enable):
                 voipEnabled = enable
             case let .Secure(secure):
@@ -117,6 +121,8 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
         
         super.init()
         
+        sessionDelegate = sessionDelegate ?? self
+        
         (urlPolling, urlWebSocket) = createURLs()
     }
     
@@ -131,21 +137,17 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
     }
     
     private func checkAndHandleEngineError(msg: String) {
-        guard let stringData = msg.dataUsingEncoding(NSUTF8StringEncoding,
-            allowLossyConversion: false) else { return }
-        
         do {
-            if let dict = try NSJSONSerialization.JSONObjectWithData(stringData, options: .MutableContainers) as? NSDictionary {
-                guard let error = dict["message"] as? String else { return }
-                
-                /*
-                 0: Unknown transport
-                 1: Unknown sid
-                 2: Bad handshake request
-                 3: Bad request
-                 */
-                didError(error)
-            }
+            let dict = try msg.toNSDictionary()
+            guard let error = dict["message"] as? String else { return }
+            
+            /*
+             0: Unknown transport
+             1: Unknown sid
+             2: Bad handshake request
+             3: Bad request
+             */
+            didError(error)
         } catch {
             client?.engineDidError("Got unknown error from server \(msg)")
         }
@@ -209,9 +211,7 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
             }
         }
         
-        dispatch_async(emitQueue) {
-            self.doLongPoll(reqPolling)
-        }
+        doLongPoll(reqPolling)
     }
 
     private func createURLs() -> (NSURL, NSURL) {
@@ -363,23 +363,22 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
     }
 
     private func handleOpen(openData: String) {
-        let mesData = openData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         do {
-            let json = try NSJSONSerialization.JSONObjectWithData(mesData,
-                options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-            if let sid = json?["sid"] as? String {
+            let json = try openData.toNSDictionary()
+            
+            if let sid = json["sid"] as? String {
                 let upgradeWs: Bool
 
                 self.sid = sid
                 connected = true
 
-                if let upgrades = json?["upgrades"] as? [String] {
+                if let upgrades = json["upgrades"] as? [String] {
                     upgradeWs = upgrades.contains("websocket")
                 } else {
                     upgradeWs = false
                 }
 
-                if let pingInterval = json?["pingInterval"] as? Double, pingTimeout = json?["pingTimeout"] as? Double {
+                if let pingInterval = json["pingInterval"] as? Double, pingTimeout = json["pingTimeout"] as? Double {
                     self.pingInterval = pingInterval / 1000.0
                     self.pingTimeout = pingTimeout / 1000.0
                 }
@@ -461,7 +460,7 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
         invalidated = false
         session = NSURLSession(configuration: .defaultSessionConfiguration(),
             delegate: sessionDelegate,
-            delegateQueue: NSOperationQueue())
+            delegateQueue: NSOperationQueue.mainQueue())
         sid = ""
         waitingForPoll = false
         waitingForPost = false
@@ -552,5 +551,13 @@ public final class SocketEngine : NSObject, SocketEnginePollable, SocketEngineWe
         } else {
             flushProbeWait()
         }
+    }
+}
+
+extension SocketEngine {
+    public func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?) {
+        DefaultSocketLogger.Logger.error("Engine URLSession became invalid", type: "SocketEngine")
+        
+        didError("Engine URLSession became invalid")
     }
 }

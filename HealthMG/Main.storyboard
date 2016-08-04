@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
+                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ayc-WC-wma">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNn-mP-LSd">
@@ -131,7 +131,7 @@
         <!--MainDashboard-->
         <scene sceneID="g82-y5-PhX">
             <objects>
-                <viewController title="MainDashboard" id="guG-PO-L5b" customClass="DashboardViewController" customModule="HealthMG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" title="MainDashboard" id="guG-PO-L5b" customClass="DashboardViewController" customModule="HealthMG" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JCH-eV-WZn"/>
                         <viewControllerLayoutGuide type="bottom" id="5MB-2R-tqr"/>
@@ -170,9 +170,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-eG-N0j">
-                                <rect key="frame" x="0.0" y="63" width="375" height="283"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-eG-N0j">
+                                <rect key="frame" x="0.0" y="63" width="350" height="283"/>
                                 <color key="backgroundColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="283" id="KfI-tV-PcN"/>
+                                    <constraint firstAttribute="width" constant="350" id="Nme-z0-7CQ"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-IW-kOK" customClass="StatView" customModule="HealthMG" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="408" width="179" height="87"/>
@@ -248,8 +252,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="jfL-eG-N0j" firstAttribute="top" secondItem="uk8-4r-4oq" secondAttribute="top" constant="63" id="7Ex-5U-4MX"/>
                             <constraint firstAttribute="trailing" secondItem="Jti-7E-lrx" secondAttribute="trailing" id="EbO-Vi-BJf"/>
                             <constraint firstItem="Jti-7E-lrx" firstAttribute="leading" secondItem="uk8-4r-4oq" secondAttribute="leading" id="U80-Rn-jk1"/>
+                            <constraint firstItem="jfL-eG-N0j" firstAttribute="leading" secondItem="uk8-4r-4oq" secondAttribute="leading" id="bf9-kK-mbZ"/>
                             <constraint firstItem="Jti-7E-lrx" firstAttribute="top" secondItem="bxN-6r-72N" secondAttribute="bottom" constant="290" id="vGL-dN-L7f"/>
                         </constraints>
                     </view>
@@ -350,11 +356,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GRE-29-iA3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GRE-29-iA3">
                                 <rect key="frame" x="0.0" y="20" width="375" height="582"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36U-yL-kyB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36U-yL-kyB">
                                 <rect key="frame" x="0.0" y="602" width="375" height="65"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ba2-Az-odD">
@@ -379,9 +385,28 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="trailing" secondItem="GRE-29-iA3" secondAttribute="trailing" id="3mq-aq-emH"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="leading" secondItem="GRE-29-iA3" secondAttribute="leading" id="3zt-aR-QDb"/>
+                            <constraint firstAttribute="bottom" secondItem="36U-yL-kyB" secondAttribute="bottom" id="CCI-eb-T1S"/>
+                            <constraint firstItem="IjD-Mm-csO" firstAttribute="top" secondItem="36U-yL-kyB" secondAttribute="bottom" id="DrG-tt-ABq"/>
+                            <constraint firstAttribute="trailing" secondItem="36U-yL-kyB" secondAttribute="trailing" id="Hal-P8-CsL"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="top" secondItem="GRE-29-iA3" secondAttribute="bottom" id="J4b-Z1-bsh"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="top" secondItem="yX6-KY-Dcc" secondAttribute="top" constant="602" id="JRa-AE-7cx"/>
+                            <constraint firstAttribute="trailing" secondItem="GRE-29-iA3" secondAttribute="trailing" id="Koe-sM-K0w"/>
+                            <constraint firstItem="GRE-29-iA3" firstAttribute="leading" secondItem="yX6-KY-Dcc" secondAttribute="leading" id="QRe-kr-2YF"/>
+                            <constraint firstAttribute="trailing" secondItem="36U-yL-kyB" secondAttribute="trailing" id="WUo-pC-Rn1"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="leading" secondItem="yX6-KY-Dcc" secondAttribute="leading" id="Zhl-4L-LZ5"/>
+                            <constraint firstItem="GRE-29-iA3" firstAttribute="top" secondItem="yX6-KY-Dcc" secondAttribute="top" constant="20" id="ciO-gM-Win"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="top" secondItem="GRE-29-iA3" secondAttribute="bottom" id="fj7-gs-09g"/>
+                            <constraint firstItem="GRE-29-iA3" firstAttribute="top" secondItem="yX6-KY-Dcc" secondAttribute="top" constant="20" symbolic="YES" id="jGa-0u-cgy"/>
+                            <constraint firstItem="36U-yL-kyB" firstAttribute="leading" secondItem="yX6-KY-Dcc" secondAttribute="leading" id="jOc-KK-mYh"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="conBottomEditor" destination="DrG-tt-ABq" id="Rdb-2S-i9G"/>
                         <outlet property="tblChat" destination="GRE-29-iA3" id="Wiz-vU-z74"/>
                         <outlet property="tvMessageEditor" destination="ba2-Az-odD" id="P5r-qv-yKK"/>
                     </connections>
@@ -412,7 +437,7 @@
         <!--Register-->
         <scene sceneID="vOu-7y-uLd">
             <objects>
-                <viewController title="Register" id="bWr-NM-cHI" customClass="RegisterViewController" customModule="HealthMG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" title="Register" id="bWr-NM-cHI" customClass="RegisterViewController" customModule="HealthMG" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JNh-e9-Qab"/>
                         <viewControllerLayoutGuide type="bottom" id="VRr-KP-Q3H"/>
@@ -434,7 +459,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="TyS-Ob-q1h">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="zKo-9j-llz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="zKo-9j-llz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="4Ho-Rd-dMm">
                         <autoresizingMask key="autoresizingMask"/>
@@ -468,7 +493,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PG2-z3-mqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2346.5" y="1157.5"/>
+            <point key="canvasLocation" x="2339.5" y="1157.5"/>
         </scene>
         <!--Chat-->
         <scene sceneID="E9G-y1-MUC">
@@ -487,7 +512,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0V-dK-aZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1232.5" y="1263.5"/>
+            <point key="canvasLocation" x="1299.5" y="1263.5"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="reG-VQ-1X3">
@@ -517,7 +542,7 @@
         <image name="spanner-7.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Thn-cB-9kQ"/>
+        <segue reference="TSY-i9-1bc"/>
         <segue reference="ooI-wA-GMl"/>
         <segue reference="NFO-CU-2Rf"/>
     </inferredMetricsTieBreakers>

@@ -12,6 +12,7 @@ import SimpleKeychain
 import ARSLineProgress
 import SwiftyJSON
 import Eureka
+import ChameleonFramework
 
 class RegisterViewController: FormViewController  {
 
@@ -21,35 +22,40 @@ class RegisterViewController: FormViewController  {
             <<< TextRow("username"){ row in
                 row.title = "Username"
                 row.placeholder = "Enter Username"
+                row.value?.lowercaseString
             }
-            <<< PasswordRow("password"){
-                $0.title = "Password"
-                $0.placeholder = "Enter Password"
+            <<< PasswordRow("password"){ row in
+                row.title = "Password"
+                row.placeholder = "Enter Password"
             }
-            <<< NameRow("fName"){
-                $0.title = "First Name"
-                $0.placeholder = "Enter First Name"
+            <<< NameRow("fName"){ row in
+                row.title = "First Name"
+                row.placeholder = "Enter First Name"
             }
-            <<< NameRow("lName"){
-                $0.title = "Last Name"
-                $0.placeholder = "Enter Last Name"
+            <<< NameRow("lName"){ row in
+                row.title = "Last Name"
+                row.placeholder = "Enter Last Name"
             }
-            <<< EmailRow("eMail"){
-                $0.title = "Email"
-                $0.placeholder = "Enter e-Mail"
+            <<< EmailRow("eMail"){ row in
+                row.title = "Email"
+                row.placeholder = "Enter e-Mail"
             }
-            <<< DateInlineRow("dob"){
-                $0.title = "Date of Birth"
-                $0.value = NSDate(timeIntervalSinceReferenceDate: 0)
+            <<< DateInlineRow("dob"){ row in
+                row.title = "Date of Birth"
+                row.value = NSDate(timeIntervalSinceReferenceDate: 0)
             }
-            <<< PickerInlineRow<String>("gender") {
-                $0.title = "Gender"
-                $0.options = ["Male","Female"]
-                $0.value = "Male"    // initially selected
+            <<< PickerInlineRow<String>("gender") { row in
+                row.title = "Gender"
+                row.options = ["Male","Female"]
+                row.value = "Male"    // initially selected
             }
             +++ Section("Register")
             <<< ButtonRow(){
                 $0.title = "Register"
+                }.cellSetup { cell, row in
+                    cell.backgroundColor = .flatGreenColor()
+                }.cellUpdate { cell, row in
+                    cell.textLabel?.textColor = .flatWhiteColor()
                 } .onCellSelection({ (cell, row) in
                     
                     let username: TextRow? = self.form.rowByTag("username")
@@ -61,8 +67,13 @@ class RegisterViewController: FormViewController  {
                     let gender: BaseRow? = self.form.rowByTag("gender")
                     
                     
-                    if(username!.value != nil && password!.value != nil && fName!.value != nil && lName!.value != nil){
-                        Alamofire.request(.POST, "http://127.0.0.1:3000/register", parameters: ["username": username!.value!, "password": password!.value!, "firstName": fName!.value!, "lastName": lName!.value!, "email": eMail!.value!, "dob": dob!.value!, "gender": gender!.baseValue! as! AnyObject ])
+                    if(username!.value != nil || password!.value != nil || fName!.value != nil || lName!.value != nil || eMail!.value != nil){
+                        
+                        let path = NSBundle.mainBundle().pathForResource("PropertyList", ofType: "plist")
+                        let dict = NSDictionary(contentsOfFile: path!)
+                        let url = dict!.objectForKey("awsURL") as! String
+                        
+                        Alamofire.request(.POST, "http://" + url + "/register", parameters: ["username": username!.value!, "password": password!.value!, "firstName": fName!.value!, "lastName": lName!.value!, "email": eMail!.value!, "dob": String(dob!.value!), "gender": gender!.baseValue! as! AnyObject ], encoding: .JSON)
                             .responseJSON { response in
                                 
                                 let json = JSON(data: response.data!)
@@ -75,17 +86,15 @@ class RegisterViewController: FormViewController  {
                                     
                                     if ARSLineProgress.shown { return }
                                     
-                                    progressObject = NSProgress(totalUnitCount: 60)
+                                    progressObject = NSProgress(totalUnitCount: 30)
                                     ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
-                                        
-                                        print(json["user"])
                                         
                                         loggedUser = User(id: json["user"]["_id"].string!, username: json["user"]["username"].string!, fName: json["user"]["firstName"].string!, lName: json["user"]["lastName"].string!, eMail: json["user"]["email"].string!, dob: json["user"]["dateOfBirth"].string!, gender: json["user"]["gender"].string!)
                                         
-                                        //saving user details to user defaults
                                         let userDefaults = NSUserDefaults.standardUserDefaults()
                                         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(loggedUser)
                                         userDefaults.setObject(encodedData, forKey: "loggedUser")
+                                        userDefaults.synchronize()
                                         
                                         SocketIOManager.sharedInstance.establishConnection()
                                         
@@ -98,7 +107,7 @@ class RegisterViewController: FormViewController  {
                                 else{
                                     if ARSLineProgress.shown { return }
                                     
-                                    progressObject = NSProgress(totalUnitCount: 60)
+                                    progressObject = NSProgress(totalUnitCount: 30)
                                     ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
                                         print("This copmletion block is going to be overriden by cancel completion block in launchTimer() method.")
                                     })
@@ -118,6 +127,10 @@ class RegisterViewController: FormViewController  {
             +++ Section("Cancel")
             <<< ButtonRow(){
                 $0.title = "Cancel"
+                }.cellSetup { cell, row in
+                    cell.backgroundColor = .flatRedColor()
+                }.cellUpdate { cell, row in
+                    cell.textLabel?.textColor = .flatWhiteColor()
                 } .onCellSelection({ (cell, row) in
                     self.performSegueWithIdentifier("cancelSegue", sender: nil)
                 })

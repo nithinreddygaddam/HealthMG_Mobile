@@ -34,21 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Chatto.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ChattoAdditions.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>CocoaLumberjack.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DGRunkeeperSwitch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,7 +44,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JBChartView.xcscheme</key>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -70,11 +55,6 @@
 			<false/>
 		</dict>
 		<key>MPGNotification.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PNChartSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -104,11 +84,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftDate.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -127,7 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E25251658566B8AE766CE8FFD885245</key>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3207324F88229E94E0D0622D8BE7FD07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,17 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4BC1A9BF54949617CCD8CFAB294B7F05</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4E1263BFF45F6446CF3DE29AE234C893</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4EA5EF6B87EE6B8ED2139B9D893F81A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,37 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62D4694EBBC6E0A29FDB66383268E3BA</key>
+		<key>75A3C4879E975ECEF37B7E0044878979</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FF2742C9AD186F4E8FB6EE29F8EE088</key>
+		<key>7676565E80BB005CAE96BBCCF2A847C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7AF7E2DF8892E014AE5FCDF57A214D19</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7DD08A69500CBF4A4EFFEEE3FF9E3C54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8A2E8FED01C8A6BC8ADFCF3C3B78368F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9FF588CBC1BA778F2ACF69615C28C512</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3E15BBF3E72843A0D0EB56DB50F6018</key>
+		<key>C26B5F3C8EA31DC9A29AB2EC822D73B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,12 +167,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D261207F267E26E2AEC89FF8807FB750</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DCA0C52964282FC3615F3B10EEE03549</key>
+		<key>EBC05BBBE3E7749CE84A73F0254135EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -233,6 +178,11 @@
 			<true/>
 		</dict>
 		<key>EF89A4DA92CC0D0F76CF983AB2A6F4F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F36989B96B1E9CBDC960992F2B5B0D8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

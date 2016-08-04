@@ -8,6 +8,7 @@
 
 import UIKit
 import MGSwipeTableCell
+import ChameleonFramework
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate {
     
@@ -64,24 +65,14 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             cell.textLabel?.text = conversationsList[indexPath.row]["name"] as? String!
             cell.detailTextLabel?.text = conversationsList[indexPath.row]["text"] as? String!
         
-        //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"message-7.png"), backgroundColor: UIColor.greenColor(),
-            callback: {
-                (sender: MGSwipeTableCell!) -> Bool in
-                
-                self.user2 = self.conversationsList[indexPath.row]["user"] as! [String: AnyObject]!
-                self.conversationID = self.conversationsList[indexPath.row]["id"] as! String!
-                self.performSegueWithIdentifier("chatSegue", sender: nil)
-
-                return true
-        })]
-        cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
         
         //configure right buttons
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.redColor(),
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.flatRedColor(),
             callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
                 SocketIOManager.sharedInstance.deleteChat(self.conversationID!)
+                self.conversationsList.removeAtIndex(indexPath.row)
+                self.tableView.reloadData()
                 return true
         })]
         
@@ -93,6 +84,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.user2 = self.conversationsList[indexPath.row]["user"] as! [String: AnyObject]!
+        self.conversationID = self.conversationsList[indexPath.row]["id"] as! String!
+        self.performSegueWithIdentifier("chatSegue", sender: nil)
         
     }
     

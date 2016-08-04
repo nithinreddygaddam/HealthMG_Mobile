@@ -50,7 +50,13 @@ class SettingsViewController: FormViewController {
                 } .onCellSelection({ (cell, row) in
                     SocketIOManager.sharedInstance.closeConnection()
                     A0SimpleKeychain().deleteEntryForKey("user-jwt")
-                    print("logout")
+                    
+                    loggedUser = User()
+                    let userDefaults = NSUserDefaults.standardUserDefaults()
+                    let encodedData = NSKeyedArchiver.archivedDataWithRootObject(loggedUser)
+                    userDefaults.setObject(encodedData, forKey: "loggedUser")
+                    userDefaults.synchronize()
+                    
                     self.performSegueWithIdentifier("logOutSegue", sender: nil)
                 })
     }
