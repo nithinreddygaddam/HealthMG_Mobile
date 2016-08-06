@@ -16,7 +16,7 @@
                 <subviews>
                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="1vX-Dm-GGn" customClass="BarChartView" customModule="Charts">
                         <rect key="frame" x="117" y="12" width="195" height="110"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="195" id="pg5-UI-oEl"/>
                             <constraint firstAttribute="height" constant="110" id="rxh-y3-8Nl"/>

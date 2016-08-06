@@ -90,7 +90,7 @@ class DetailDashboardViewController: UIViewController {
         // Do any additional setup after loading the view.
 //                self.tabBarController?.tabBar.hidden = true
         self.navigationController?.hidesNavigationBarHairline = true
-        self.navigationController?.navigationBar.barTintColor = FlatBlackDark()
+        self.navigationController?.navigationBar.backgroundColor = FlatBlackDark()
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: colors[index]]
         
         btnDaily.backgroundColor = colors[index]

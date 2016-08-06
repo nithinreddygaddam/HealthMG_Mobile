@@ -12,7 +12,6 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tblChat: UITableView!
     @IBOutlet weak var tvMessageEditor: UITextView!
-    @IBOutlet weak var conBottomEditor: NSLayoutConstraint!
 
     
     var user2: [String: AnyObject] = [ : ]
@@ -52,9 +51,14 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
     //    @IBOutlet weak var conBottomEditor: NSLayoutConstraint!
     
     var chatMessages = [[String: AnyObject]]()
+    var rightButton : UIBarButtonItem!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rightButton = UIBarButtonItem(image: UIImage(named:"bin-7.png"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deleteChat))
+        self.navigationItem.rightBarButtonItem = rightButton
         
         let firstName = user2["firstName"] as? String
         let lastName = user2["lastName"] as? String
@@ -70,6 +74,11 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         swipeGestureRecognizer.delegate = self
         view.addGestureRecognizer(swipeGestureRecognizer)
         
+    }
+    
+    func deleteChat() {
+        SocketIOManager.sharedInstance.deleteChat(self.conversationID!)
+        self.navigationController!.popToRootViewControllerAnimated(true)
     }
     
     func getMsgs(){
@@ -95,21 +104,14 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
+        conversationID = ""
+        self.chatMessages.removeAll()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-                
-        configureTableView()
-        
-        tvMessageEditor.delegate = self
-
-    }
-    
-    //Method used to recieve message
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        self.chatMessages.removeAll()
         
         if self.conversationID == nil {
             SocketIOManager.sharedInstance.getConversationID(loggedUser.id, user2: user2["_id"] as! String, completionHandler: { (conversation) -> Void in
@@ -125,7 +127,7 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         else{
             self.getMsgs()
         }
-
+        
         
         SocketIOManager.sharedInstance.getChatMessage { (messageInfo) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -136,6 +138,18 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tblChat.reloadData()
             })
         }
+        
+                
+        configureTableView()
+        
+        tvMessageEditor.delegate = self
+
+    }
+    
+    //Method used to recieve message
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     
@@ -170,21 +184,6 @@ class ChatWindowController: UIViewController, UITableViewDelegate, UITableViewDa
         tblChat.estimatedRowHeight = 90.0
         tblChat.rowHeight = UITableViewAutomaticDimension
         tblChat.tableFooterView = UIView(frame: CGRectZero)
-    }
-    
-    func handleKeyboardDidShowNotification(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            if let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                conBottomEditor.constant = keyboardFrame.size.height
-                view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    
-    func handleKeyboardDidHideNotification(notification: NSNotification) {
-        conBottomEditor.constant = 0
-        view.layoutIfNeeded()
     }
     
     func scrollToBottom() {

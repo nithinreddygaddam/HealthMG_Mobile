@@ -73,6 +73,7 @@ class PermissionViewController: FormViewController {
                 $0.title = "Save Permissions"
                 } .onCellSelection({ (cell, row) in
                         SocketIOManager.sharedInstance.changePermission(subscribtion)
+                    self.navigationController!.popToRootViewControllerAnimated(true)
                 })
     }
     

@@ -21,7 +21,7 @@ class SocketIOManager: NSObject {
     //retrieve saved token
     let jwt = A0SimpleKeychain().stringForKey("user-jwt") as String!
     
-    lazy var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://52.10.36.59:8100" )!, options: [.Log(true), .ConnectParams(["token": self.jwt]) ])
+    lazy var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://10.0.0.13:8100" )!, options: [.Log(true), .ConnectParams(["token": self.jwt]) ])
 
     override init() {
         super.init()

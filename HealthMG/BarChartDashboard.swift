@@ -44,6 +44,7 @@ class BarChartDashboard: UIView, ChartViewDelegate {
         barChartView.xAxis.labelTextColor = FlatWhite()
         barChartView.leftAxis.labelTextColor = FlatWhite()
         barChartView.leftAxis.axisLineColor = FlatBlack()
+        barChartView.xAxis.labelTextColor = FlatWhite()
         
         barChartView.delegate = self
         

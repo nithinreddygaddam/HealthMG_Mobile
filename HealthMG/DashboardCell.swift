@@ -85,7 +85,7 @@ class DashboardCell: UITableViewCell {
         let chartData = BarChartData(xVals: dataPoints, dataSet: chartDataSet)
         chartData.setDrawValues(false)
         barChartView.data = chartData
-        
+        barChartView.xAxis.labelTextColor = colors[color]
         
     }
 

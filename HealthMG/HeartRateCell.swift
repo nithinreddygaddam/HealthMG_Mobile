@@ -42,6 +42,7 @@ class HeartRateCell: UITableViewCell {
         lineChartView.animate(yAxisDuration: 1.5, easingOption: .EaseInOutQuart)
         lineChartView.descriptionText = ""
         lineChartView.xAxis.drawAxisLineEnabled = false
+        lineChartView.xAxis.labelTextColor = FlatWatermelon()
 //        lineChartView.delegate = self
         
         

@@ -16,7 +16,7 @@
                 <subviews>
                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="KV9-CU-olF" customClass="LineChartView" customModule="Charts">
                         <rect key="frame" x="117" y="12" width="195" height="110"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="fP8-lV-z6N"/>
                             <constraint firstAttribute="width" constant="195" id="hob-vD-Sut"/>
@@ -59,7 +59,7 @@
                 <outlet property="lblStatMin" destination="kz1-7B-AjV" id="HvO-AV-C9f"/>
                 <outlet property="lineChartView" destination="KV9-CU-olF" id="zTU-LA-Vbv"/>
             </connections>
-            <point key="canvasLocation" x="189" y="-92.5"/>
+            <point key="canvasLocation" x="219" y="-199.5"/>
         </tableViewCell>
     </objects>
 </document>

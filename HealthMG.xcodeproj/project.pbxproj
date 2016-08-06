@@ -47,6 +47,8 @@
 		59CE6DE11D25EE3F004D382B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CE6DE01D25EE3F004D382B /* HealthKit.framework */; };
 		59DCDB921D50457B003552A1 /* BaloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DCDB911D50457B003552A1 /* BaloonMarker.swift */; };
 		59DCDB941D506518003552A1 /* BaloonMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59DCDB931D506518003552A1 /* BaloonMarker.xib */; };
+		59E002381D5577B3001FD732 /* SubscribersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E002371D5577B3001FD732 /* SubscribersViewController.swift */; };
+		59E0023A1D558646001FD732 /* bin-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 59E002391D558646001FD732 /* bin-7.png */; };
 		59E735961D25987D007F075E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E735951D25987D007F075E /* AppDelegate.swift */; };
 		59E7359D1D25987D007F075E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359C1D25987D007F075E /* Assets.xcassets */; };
 		59E735A01D25987D007F075E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E7359E1D25987D007F075E /* LaunchScreen.storyboard */; };
@@ -96,6 +98,8 @@
 		59CE6DE01D25EE3F004D382B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		59DCDB911D50457B003552A1 /* BaloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaloonMarker.swift; sourceTree = "<group>"; };
 		59DCDB931D506518003552A1 /* BaloonMarker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaloonMarker.xib; sourceTree = "<group>"; };
+		59E002371D5577B3001FD732 /* SubscribersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscribersViewController.swift; sourceTree = "<group>"; };
+		59E002391D558646001FD732 /* bin-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bin-7.png"; sourceTree = "<group>"; };
 		59E735921D25987D007F075E /* HealthMG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthMG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E735951D25987D007F075E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59E7359C1D25987D007F075E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				5913CCCA1D360E4F003C147C /* ChatListViewController.swift */,
 				5913CCFD1D3AD5C2003C147C /* PermissionViewController.swift */,
 				5913CD021D3BF2A9003C147C /* ChatWindowController.swift */,
+				59E002371D5577B3001FD732 /* SubscribersViewController.swift */,
 			);
 			name = "View Controller ";
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				591AD6261D25F32F008E2851 /* icon-blue-health.png */,
 				593418271D2F996A008528D4 /* dumbbell-7.png */,
 				593418281D2F996A008528D4 /* message-7.png */,
+				59E002391D558646001FD732 /* bin-7.png */,
 				593418291D2F996A008528D4 /* spanner-7.png */,
 				593418331D3050C6008528D4 /* up-arrow.png */,
 				593418341D3050C6008528D4 /* down-arrow.png */,
@@ -309,6 +315,7 @@
 			files = (
 				593418301D2F996A008528D4 /* circle-user-7.png in Resources */,
 				590E691F1D51D5C6007364AE /* jog2.jpg in Resources */,
+				59E0023A1D558646001FD732 /* bin-7.png in Resources */,
 				591871511D48878D00D3426E /* StatView.xib in Resources */,
 				59B0914E1D4B6156007E10D1 /* HeartRateCell.xib in Resources */,
 				59583C321D4D2A7500FF2523 /* LineChartDashboard.xib in Resources */,
@@ -401,6 +408,7 @@
 				5913CCE11D36BDEF003C147C /* ChatCell.swift in Sources */,
 				593418241D2F93A9008528D4 /* SettingsViewController.swift in Sources */,
 				591AD62A1D2653A3008E2851 /* RegisterViewController.swift in Sources */,
+				59E002381D5577B3001FD732 /* SubscribersViewController.swift in Sources */,
 				59DCDB921D50457B003552A1 /* BaloonMarker.swift in Sources */,
 				5913CCC91D356A47003C147C /* SocketIOManager.swift in Sources */,
 				5934181C1D2F930B008528D4 /* DashboardViewController.swift in Sources */,

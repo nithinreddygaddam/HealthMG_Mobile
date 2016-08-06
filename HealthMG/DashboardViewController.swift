@@ -56,6 +56,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.backgroundColor = FlatWhiteDark()
         requestHealthKitAuthorization()
         //disabling to tabs in the offline mode
         if loggedUser.id == nil {

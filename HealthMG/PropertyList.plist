@@ -5,6 +5,6 @@
 	<key>port</key>
 	<string>8100</string>
 	<key>awsURL</key>
-	<string>52.10.36.59</string>
+	<string>10.0.0.13:8080</string>
 </dict>
 </plist>

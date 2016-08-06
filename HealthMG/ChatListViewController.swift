@@ -10,7 +10,7 @@ import UIKit
 import MGSwipeTableCell
 import ChameleonFramework
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate {
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate{
     
     @IBOutlet var tableView: UITableView!
     
@@ -34,12 +34,14 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(animated: Bool) {
         
         conversationsList.removeAll()
+        self.tableView.hidden = true
         
         SocketIOManager.sharedInstance.getConversationsList( loggedUser.id, completionHandler: { (conversationsList) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if(conversationsList != nil){
                     self.conversationsList = conversationsList!
                     self.tableView.registerClass(MGSwipeTableCell.self, forCellReuseIdentifier: self.reuseIdentifier)
+                    self.tableView.hidden = false
                     self.tableView.reloadData()
                 }
             })
@@ -65,12 +67,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             cell.textLabel?.text = conversationsList[indexPath.row]["name"] as? String!
             cell.detailTextLabel?.text = conversationsList[indexPath.row]["text"] as? String!
         
-        
         //configure right buttons
         cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: UIColor.flatRedColor(),
             callback: {
                 (sender: MGSwipeTableCell!) -> Bool in
-                SocketIOManager.sharedInstance.deleteChat(self.conversationID!)
+                SocketIOManager.sharedInstance.deleteChat(self.conversationsList[indexPath.row]["id"] as? String)
                 self.conversationsList.removeAtIndex(indexPath.row)
                 self.tableView.reloadData()
                 return true
