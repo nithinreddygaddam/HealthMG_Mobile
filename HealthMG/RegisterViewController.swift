@@ -49,7 +49,6 @@ class RegisterViewController: FormViewController  {
                 row.options = ["Male","Female"]
                 row.value = "Male"    // initially selected
             }
-            +++ Section("Register")
             <<< ButtonRow(){
                 $0.title = "Register"
                 }.cellSetup { cell, row in
@@ -124,7 +123,7 @@ class RegisterViewController: FormViewController  {
                     }
 
                 })
-            +++ Section("Cancel")
+
             <<< ButtonRow(){
                 $0.title = "Cancel"
                 }.cellSetup { cell, row in

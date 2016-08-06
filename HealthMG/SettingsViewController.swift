@@ -59,6 +59,15 @@ class SettingsViewController: FormViewController {
                     
                     self.performSegueWithIdentifier("logOutSegue", sender: nil)
                 })
+        
+            +++ Section("Privacy Policy")
+            <<< ButtonRow(){
+                $0.title = "Privacy Policy"
+                } .onCellSelection({ (cell, row) in
+                    let url = NSURL(string: "http://healthmg.weebly.com/privacy-policy.html")!
+                    UIApplication.sharedApplication().openURL(url)
+                })
+
     }
 
 

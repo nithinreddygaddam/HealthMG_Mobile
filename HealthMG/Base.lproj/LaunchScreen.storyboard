@@ -17,14 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-blue-health.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-ak-Pzc">
-                                <rect key="frame" x="71" y="211" width="232" height="245"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.55000001192092896" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jog2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-ac-z5F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="731"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-blue-health.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-ak-Pzc">
+                                <rect key="frame" x="71" y="211" width="232" height="245"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="1Cd-ak-Pzc" secondAttribute="bottom" constant="211" id="6uw-BY-68w"/>
+                            <constraint firstItem="1Cd-ak-Pzc" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="191" id="CRQ-6l-K46"/>
+                            <constraint firstItem="1Cd-ak-Pzc" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="71" id="mTg-ty-QVP"/>
+                            <constraint firstAttribute="trailing" secondItem="1Cd-ak-Pzc" secondAttribute="trailing" constant="72" id="wSK-eZ-zQX"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>

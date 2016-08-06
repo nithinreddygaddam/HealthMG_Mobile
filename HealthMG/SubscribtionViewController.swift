@@ -41,7 +41,13 @@ class SubscribtionViewController: UIViewController, UITableViewDelegate, UITable
                 self.tableView.reloadData()
             })
         })
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(false)
         
+       
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,11 +18,18 @@ var loggedUser = User();
 
 class LoginViewController: UIViewController {
     
-    let username = SkyFloatingLabelTextField(frame: CGRectMake(90, 200, 200, 45))
-    let password = SkyFloatingLabelTextField(frame: CGRectMake(90, 250, 200, 45))
+    
+    
+    var username = SkyFloatingLabelTextField()
+    var password = SkyFloatingLabelTextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        username = SkyFloatingLabelTextField(frame: CGRectMake(screenSize.midX - 95, screenSize.midY - 140, 200, 45))
+        password = SkyFloatingLabelTextField(frame: CGRectMake(screenSize.midX - 95, screenSize.midY - 90, 200, 45))
         
         username.placeholder = "Username"
         username.title = "Username"
